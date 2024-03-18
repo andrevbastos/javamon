@@ -3,8 +3,8 @@ package combat;
 import java.util.Random;
 
 public class Pokemon {
-    private String nome;
-    private final String tipo;
+    private String name;
+    private final String type;
     private String vantagem;
     private String desvantagem;
     private final int hpmax;
@@ -18,11 +18,11 @@ public class Pokemon {
     private Moves[] moves;
     private final String sprite;
 
-    public Pokemon(String nome, String tipo, int hpmax, int attack, int spattack, int defense, int spdefense, int speed, int accuracy, Moves[] moves, String sprite) {
-        this.nome = nome; 
-        this.tipo = tipo;
-        // Setar as vantagens e desvantagens conforme o tipo do pokemon
-        switch (tipo) {
+    public Pokemon(String name, String type, int hpmax, int attack, int spattack, int defense, int spdefense, int speed, int accuracy, Moves[] moves, String sprite) {
+        this.name = name; 
+        this.type = type;
+        // Setar as vantagens e desvantagens conforme o type do pokemon
+        switch (type) {
         case "FIRE": 
             this.vantagem = "GRASS";
             this.desvantagem = "WATER";
@@ -47,12 +47,12 @@ public class Pokemon {
         this.sprite = sprite;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getType() {
+        return type;
     }
 
     public String getVantagem() {
@@ -140,13 +140,13 @@ public class Pokemon {
     public void useMove(Pokemon alvo, int i) {
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1; // D100
-        System.out.println("\n" + this.getNome() + " uses " + this.getMoves(i).getNome() + "!");
+        System.out.println("\n" + this.getName() + " uses " + this.getMoves(i).getName() + "!");
 
         // Checagem se acertou o ataque
         if (ataque <= this.getAccuracy()) 
             alvo.takeMove(this.getMoves(i), this);
         else 
-            System.out.println(this.getNome() + " missed.");
+            System.out.println(this.getName() + " missed.");
     }    
     
     // Usar ataque sem escolha
@@ -154,23 +154,23 @@ public class Pokemon {
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1; // D100
         int i = rn.nextInt(3); // ataque aleatório
-        System.out.println("\nFoe`s " + this.getNome() + " uses " + this.getMoves(i).getNome() + "!");
+        System.out.println("\nFoe`s " + this.getName() + " uses " + this.getMoves(i).getName() + "!");
         
         // Checagem se acertou o ataque
         if (ataque <= this.getAccuracy())
             alvo.takeMove(this.getMoves(i), this);
         else
-            System.out.println(this.getNome() + " missed.");
+            System.out.println(this.getName() + " missed.");
     }
 
     // Receber ataque
     public void takeMove(Moves move, Pokemon atacante) {
-        String tipo = move.getTipo();
+        String type = move.getType();
         String category = move.getCategory();
-        String status = move.getNome();
+        String status = move.getName();
         double dano = 0;
 
-        // Checagem do tipo do ataque antes de receber
+        // Checagem do type do ataque antes de receber
         switch (category) {
         case "PHYSICAL":
             dano = (int) ((move.getPower() * atacante.getAttack() / this.getDefense()) / 5) + 2;
@@ -179,60 +179,60 @@ public class Pokemon {
             dano = (int) ((move.getPower() * atacante.getSpattack() / this.getSpdefense()) / 5) + 2;
             break;
         
-        // Tipo de ataques únicos
+        // type de ataques únicos
         case "STATUS":
             switch (status) {
             case "GROWL": 
                 if (move.getPower() != 3) {
                     this.setAttack(-5);
                     move.setPower(1);
-                    System.out.println(this.getNome() + "`s Attack fell.");
+                    System.out.println(this.getName() + "`s Attack fell.");
                 } else 
-                    System.out.println(this.getNome() + "`s Attack can`t be reduced any further.");
+                    System.out.println(this.getName() + "`s Attack can`t be reduced any further.");
                 break;
             case "SMOKESCREEN":
                 if (move.getPower() != 3) {
                     this.setAccuracy(-5);
                     move.setPower(1);
-                    System.out.println(this.getNome() + "`s Accuracy fell.");
+                    System.out.println(this.getName() + "`s Accuracy fell.");
                 } else 
-                    System.out.println(this.getNome() + "`s Accuracy can`t be reduced any further.");
+                    System.out.println(this.getName() + "`s Accuracy can`t be reduced any further.");
                 break;
             case "TAIL WHIP":
                 if (move.getPower() != 3) {
                     this.setDefense(-5);
                     move.setPower(1);
-                    System.out.println(this.getNome() + "`s Defense fell.");
+                    System.out.println(this.getName() + "`s Defense fell.");
                 } else 
-                    System.out.println(this.getNome() + "`s Defense can`t be reduced any further.");
+                    System.out.println(this.getName() + "`s Defense can`t be reduced any further.");
                 break;
             case "GROWTH":
                 if (move.getPower() != 2) {
                     atacante.setAttack(5);
                     atacante.setSpAttack(2);
                     move.setPower(1);
-                    System.out.println(atacante.getNome() + "`s Attack and Sp. Attack rose.");
+                    System.out.println(atacante.getName() + "`s Attack and Sp. Attack rose.");
                 } else 
-                    System.out.println(atacante.getNome() + "`s Attack and Sp. Attack can`t go any further.");
+                    System.out.println(atacante.getName() + "`s Attack and Sp. Attack can`t go any further.");
                 break;
             case "WITHDRAW":
                 if (move.getPower() != 3) {
                     atacante.setDefense(5);
                     move.setPower(1);
-                    System.out.println(atacante.getNome() + "`s Defense rose.");
+                    System.out.println(atacante.getName() + "`s Defense rose.");
                 } else 
-                    System.out.println(atacante.getNome() + "`s Defense can`t go any further.");
+                    System.out.println(atacante.getName() + "`s Defense can`t go any further.");
                 break;
             }
         }
 
         // Receber o dano depois da checagem de categoria
         if (category != "STATUS") {
-            if (tipo == this.desvantagem) {
+            if (type == this.desvantagem) {
                 dano = dano * 1.5;
                 hp -= dano;
                 System.out.println("It was super effective!");
-            } else if (tipo == this.vantagem) {
+            } else if (type == this.vantagem) {
                 dano = dano * 0.5;
                 hp -= dano;
                 System.out.println("It was not very effective...");

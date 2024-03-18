@@ -2,40 +2,39 @@ package combat;
 
 import java.util.*;
 
-public class Pokeleague {
+public class Main {
     public static void main(String[] args) throws Exception {
         Scanner teclado = new Scanner(System.in);
 
-        // Iniciar jogador
+        // Iniciar player
         System.out.println("\nWhat`s your name?");
-        String nome = teclado.nextLine();
-        Trainer jogador = new Trainer(nome,"");
+        String Name = teclado.nextLine();
+        Trainer player = new Trainer(Name,"");
 
         // Iniciar inimigo
         System.out.println("\nWhat`s your rival`s name?");
-        nome = teclado.nextLine();
-        Trainer inimigo = new Trainer(nome, "");
+        Name = teclado.nextLine();
+        Trainer inimigo = new Trainer(Name, "");
 
         // Iniciar pokedex
         Pokedex pokedex = new Pokedex();        
         System.out.println("\nChoose your pokemon...\n1. CHARMANDER\t2. BULBASAUR\t3. SQUIRTLE");
         int i = teclado.nextInt() - 1;
-        pokedex.givePokemon(jogador, i);
+        pokedex.givePokemon(player, i);
         Random rn = new Random();
         i = rn.nextInt(2);
         pokedex.givePokemon(inimigo, i);
         
         // Iniciar Battle
-        Battle game = new Battle(jogador, inimigo);
+        Battle game = new Battle(player, inimigo);
         game.batalhar();
 
         // Resultado
-        if (jogador.getPokemon().getHp() == 0) 
-            System.out.println("\n" + jogador.getNome() + " blacked out...");
+        if (player.getPokemon().getHp() == 0) 
+            System.out.println("\n" + player.getName() + " blacked out...");
         else
-            System.out.println("\n" + jogador.getNome() + " won!");
+            System.out.println("\n" + player.getName() + " won!");
 
         teclado.close();
     }
-
 }

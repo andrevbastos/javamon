@@ -6,9 +6,9 @@ public class Battle {
     private Trainer p1;
     private Trainer p2;
 
-    public Battle(Trainer jogador, Trainer inimigo) {
-        this.p1 = jogador;
-        this.p2 = inimigo;
+    public Battle(Trainer player, Trainer enemy) {
+        this.p1 = player;
+        this.p2 = enemy;
     }
 
     public void batalhar() {
@@ -20,10 +20,10 @@ public class Battle {
         while (!stop) {
 
             // Mostrar vida dos dois
-            System.out.println("\n-\n\n" + p1.getNome() + "`s " + p1.getPokemon().getNome() + ": " + p1.getPokemon().getHp() + "\n" + p2.getNome() + "`s "  + p2.getPokemon().getNome() + ": " + p2.getPokemon().getHp());
+            System.out.println("\n-\n\n" + p1.getName() + "`s " + p1.getPokemon().getName() + ": " + p1.getPokemon().getHp() + "\n" + p2.getName() + "`s "  + p2.getPokemon().getName() + ": " + p2.getPokemon().getHp());
             
-            // Mostrar ataques do pokemon do jogador
-            System.out.println("\n\t1. " + p1.getPokemon().getMoves(0).getNome() + "\t2. " + p1.getPokemon().getMoves(1).getNome() + "\t3. " + p1.getPokemon().getMoves(2).getNome() + "\t4. " + p1.getPokemon().getMoves(3).getNome());
+            // Mostrar ataques do pokemon do player
+            System.out.println("\n\t1. " + p1.getPokemon().getMoves(0).getName() + "\t2. " + p1.getPokemon().getMoves(1).getName() + "\t3. " + p1.getPokemon().getMoves(2).getName() + "\t4. " + p1.getPokemon().getMoves(3).getName());
             
             // Checar qual ataque do player
             int i = teclado.nextInt() - 1;
@@ -32,18 +32,16 @@ public class Battle {
             if (p1.getPokemon().getSpeed() >= p2.getPokemon().getSpeed()) {
                 primeiro = p1;
                 segundo = p2;
-                primeiro.getPokemon().useMove(segundo.getPokemon(), i);
-                // Segundo só ataca se sobreviver o do primeiro
-                if (segundo.getPokemon().getHp() != 0)
-                    segundo.getPokemon().useMove(primeiro.getPokemon());
             } else {
                 primeiro = p2;
                 segundo = p1;
-                primeiro.getPokemon().useMove(segundo.getPokemon());
-                // Segundo só ataca se sobreviver o do primeiro
-                if (segundo.getPokemon().getHp() != 0)
-                    segundo.getPokemon().useMove(primeiro.getPokemon(), i);
             }
+
+            primeiro.getPokemon().useMove(segundo.getPokemon(), i);
+            
+            // Segundo só ataca se sobreviver o do primeiro
+            if (segundo.getPokemon().getHp() != 0)
+                segundo.getPokemon().useMove(primeiro.getPokemon());
 
             // Acaba se um morrer
             if (p1.getPokemon().getHp() == 0 || p2.getPokemon().getHp() == 0)

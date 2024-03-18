@@ -2,27 +2,21 @@ package combat;
 
 public class Trainer {
     
-    private String nome;
-    private int dinheiro;
+    private String name;
     private Pokemon pokemon;
     private String character;
 
-    public Trainer(String nome, String character) {
-        this.nome = nome;
-        this.dinheiro = 200;
+    public Trainer(String name, String character) {
+        this.name = name;
         this.character = character;
     }
 
-    public String getNome() {
-        return this.nome;
+    public String getName() {
+        return this.name;
     }
 
     public Pokemon getPokemon() {
         return this.pokemon;
-    }
-
-    public int getDinheiro() {
-        return this.dinheiro;
     }
 
     public String getCharater() {
@@ -33,15 +27,11 @@ public class Trainer {
         this.character = character;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setPokemon(Pokemon pokemon) {
         this.pokemon = pokemon;
-    }    
-    
-    public void setDinheiro(int valor) {
-        this.dinheiro += valor;
     }
 }

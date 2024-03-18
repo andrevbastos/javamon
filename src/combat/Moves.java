@@ -1,14 +1,14 @@
 package combat;
 
 public class Moves {
-    private String nome;
-    private String tipo;
+    private String name;
+    private String type;
     private int power;
     private String category;
 
-    public Moves(String nome, String tipo, int power, String category) {
-        this.nome = nome;
-        this.tipo = tipo;
+    public Moves(String name, String type, int power, String category) {
+        this.name = name;
+        this.type = type;
         this.power = power;
         this.category = category;
     }
@@ -17,12 +17,12 @@ public class Moves {
         this.power += i;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getType() {
+        return type;
     }
 
     public int getPower() {
