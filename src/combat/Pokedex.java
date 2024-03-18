@@ -1,7 +1,7 @@
 package combat;
 
 public class Pokedex {
-    // Sets únicos pra cada pokemon
+    // Movesets únicos pra cada pokemon
     Moves charmanderMoves[] = {
         new Moves("GROWL", "NORMAL", 0, "STATUS"),
         new Moves("SCRATCH", "NORMAL", 40, "PHYSICAL"),
@@ -27,24 +27,26 @@ public class Pokedex {
     String squirtleSprite = "";
     String bulbasaurSprite = "";
 
-    // Da uma instância NOVA de pokemon para um objeto treinador
-    public void givePokemon(Trainer treinador, int i) {
+    // Da uma instância NOVA de pokemon para um objeto trainer
+    public void givePokemon(Trainer trainer, int i) {
         switch (i) {
             case 0:
-                treinador.setPokemon(new Pokemon("CHARMANDER", "FIRE", 39, 52, 60, 43, 50, 65, 100, charmanderMoves, charmanderSprite));   
+                trainer.setPokemon(new Pokemon("CHARMANDER", "FIRE", 39, 52, 60, 43, 50, 65, 100, charmanderMoves, charmanderSprite));
                 break;
 
             case 1:
-                treinador.setPokemon(new Pokemon("BULBASAUR", "GRASS", 45, 49, 65, 49, 65, 45, 100, bulbasaurMoves, squirtleSprite));   
+                trainer.setPokemon(new Pokemon("BULBASAUR", "GRASS", 45, 49, 65, 49, 65, 45, 100, bulbasaurMoves, squirtleSprite));  
                 break;
 
             case 2:
-                treinador.setPokemon(new Pokemon("SQUIRTLE", "WATER", 44, 48, 50, 65, 64, 43, 100, squirtleMoves, bulbasaurSprite));   
+                trainer.setPokemon(new Pokemon("SQUIRTLE", "WATER", 44, 48, 50, 65, 64, 43, 100, squirtleMoves, bulbasaurSprite));     
                 break;
                 
             default:
                 break;
         }
+        
+        System.out.println("\n" + trainer.getName() + " chose a " + trainer.getPokemon());   
     }
 
 }

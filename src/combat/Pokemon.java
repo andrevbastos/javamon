@@ -47,6 +47,11 @@ public class Pokemon {
         this.sprite = sprite;
     }
 
+    @Override
+    public String toString() {
+        return name + " [" + type + "] ";
+    }
+
     public String getName() {
         return name;
     }
@@ -68,7 +73,7 @@ public class Pokemon {
     }
 
     public int getHp() {
-        // Vida não é recebida como negativa
+        // Vida não é enviada como negativa
         if (this.hp > 0) 
             return hp;
         else
@@ -140,7 +145,7 @@ public class Pokemon {
     public void useMove(Pokemon alvo, int i) {
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1; // D100
-        System.out.println("\n" + this.getName() + " uses " + this.getMoves(i).getName() + "!");
+        System.out.println("\n" + this + "uses " + this.getMoves(i).getName() + "!");
 
         // Checagem se acertou o ataque
         if (ataque <= this.getAccuracy()) 
@@ -154,7 +159,7 @@ public class Pokemon {
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1; // D100
         int i = rn.nextInt(3); // ataque aleatório
-        System.out.println("\nFoe`s " + this.getName() + " uses " + this.getMoves(i).getName() + "!");
+        System.out.println("\nFoe`s " + this + "uses " + this.getMoves(i).getName() + "!");
         
         // Checagem se acertou o ataque
         if (ataque <= this.getAccuracy())
@@ -230,16 +235,18 @@ public class Pokemon {
         if (category != "STATUS") {
             if (type == this.desvantagem) {
                 dano = dano * 1.5;
-                hp -= dano;
                 System.out.println("It was super effective!");
             } else if (type == this.vantagem) {
                 dano = dano * 0.5;
-                hp -= dano;
                 System.out.println("It was not very effective...");
             } else {
-                hp -= dano;
                 System.out.println("It was effective.");
             }
+            
+            if (hp - dano < 0)
+                hp = 0;
+            else
+                hp -= dano;
         }
     }
 }
