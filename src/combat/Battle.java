@@ -32,16 +32,23 @@ public class Battle {
             if (p1.getPokemon().getSpeed() >= p2.getPokemon().getSpeed()) {
                 primeiro = p1;
                 segundo = p2;
+
+                primeiro.getPokemon().useMove(segundo.getPokemon(), i);            
+                
+                // Segundo só ataca se sobreviver o do primeiro
+                if (segundo.getPokemon().getHp() != 0)
+                    segundo.getPokemon().useMove(primeiro.getPokemon());
+
             } else {
                 primeiro = p2;
                 segundo = p1;
-            }
 
-            primeiro.getPokemon().useMove(segundo.getPokemon(), i);
-            
-            // Segundo só ataca se sobreviver o do primeiro
-            if (segundo.getPokemon().getHp() != 0)
-                segundo.getPokemon().useMove(primeiro.getPokemon());
+                primeiro.getPokemon().useMove(segundo.getPokemon());            
+                
+                // Segundo só ataca se sobreviver o do primeiro
+                if (segundo.getPokemon().getHp() != 0)
+                    segundo.getPokemon().useMove(primeiro.getPokemon(), 1);
+            }
 
             // Acaba se um morrer
             if (p1.getPokemon().getHp() == 0 || p2.getPokemon().getHp() == 0)

@@ -32,21 +32,21 @@ public class Pokedex {
         switch (i) {
             case 0:
                 trainer.setPokemon(new Pokemon("CHARMANDER", "FIRE", 39, 52, 60, 43, 50, 65, 100, charmanderMoves, charmanderSprite));
+                System.out.println("\n" + trainer.getName() + " chose a " + trainer.getPokemon());  
                 break;
 
             case 1:
-                trainer.setPokemon(new Pokemon("BULBASAUR", "GRASS", 45, 49, 65, 49, 65, 45, 100, bulbasaurMoves, squirtleSprite));  
+                trainer.setPokemon(new Pokemon("BULBASAUR", "GRASS", 45, 49, 65, 49, 65, 45, 100, bulbasaurMoves, squirtleSprite)); 
+                System.out.println("\n" + trainer.getName() + " chose a " + trainer.getPokemon());   
                 break;
 
             case 2:
-                trainer.setPokemon(new Pokemon("SQUIRTLE", "WATER", 44, 48, 50, 65, 64, 43, 100, squirtleMoves, bulbasaurSprite));     
+                trainer.setPokemon(new Pokemon("SQUIRTLE", "WATER", 44, 48, 50, 65, 64, 43, 100, squirtleMoves, bulbasaurSprite)); 
+                System.out.println("\n" + trainer.getName() + " chose a " + trainer.getPokemon());      
                 break;
                 
             default:
                 break;
-        }
-        
-        System.out.println("\n" + trainer.getName() + " chose a " + trainer.getPokemon());   
+        } 
     }
-
 }

@@ -184,7 +184,7 @@ public class Pokemon {
             dano = (int) ((move.getPower() * atacante.getSpattack() / this.getSpdefense()) / 5) + 2;
             break;
         
-        // type de ataques únicos
+        // Type de ataques de status
         case "STATUS":
             switch (status) {
             case "GROWL": 
