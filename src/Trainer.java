@@ -1,5 +1,3 @@
-package combat;
-
 public class Trainer {
     
     private String name;
@@ -9,6 +7,11 @@ public class Trainer {
     public Trainer(String name, String character) {
         this.name = name;
         this.character = character;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public String getName() {

@@ -1,5 +1,3 @@
-package combat;
-
 import java.util.*;
 
 public class Main {
@@ -21,8 +19,8 @@ public class Main {
         System.out.println("\nChoose your pokemon...\n1. CHARMANDER\t2. BULBASAUR\t3. SQUIRTLE");
         int i = teclado.nextInt() - 1;
         pokedex.givePokemon(player, i);
-        Random rn = new Random();
-        i = rn.nextInt(2);
+        System.out.println("\nChoose your pokemon...\n1. CHARMANDER\t2. BULBASAUR\t3. SQUIRTLE");
+        i = teclado.nextInt() - 1;
         pokedex.givePokemon(inimigo, i);
         
         // Iniciar Battle

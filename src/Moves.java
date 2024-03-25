@@ -1,5 +1,3 @@
-package combat;
-
 public class Moves {
     private String name;
     private String type;

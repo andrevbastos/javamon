@@ -1,5 +1,3 @@
-package combat;
-
 public class Pokedex {
     // Movesets únicos pra cada pokemon
     Moves charmanderMoves[] = {
