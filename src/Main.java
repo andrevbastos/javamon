@@ -25,14 +25,8 @@ public class Main {
         
         // Iniciar Battle
         Battle game = new Battle(player, inimigo);
-        game.batalhar();
-
-        // Resultado
-        if (player.getPokemon().getHp() == 0) 
-            System.out.println("\n" + player.getName() + " blacked out...");
-        else
-            System.out.println("\n" + player.getName() + " won!");
-
+        game.battle();
+        
         teclado.close();
     }
 }

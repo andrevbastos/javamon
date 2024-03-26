@@ -1,8 +1,6 @@
 public class Pokemon {
     private String name;
     private final String type;
-    private String vantagem;
-    private String desvantagem;
     private final int hpmax;
     private double hp;
     private double attack;
@@ -40,14 +38,6 @@ public class Pokemon {
 
     public String getType() {
         return type;
-    }
-
-    public String getVantagem() {
-        return vantagem;
-    }
-
-    public String getDesvantagem() {
-        return desvantagem;
     }
 
     public int getHpmax() {
