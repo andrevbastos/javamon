@@ -1,48 +1,49 @@
-import java.util.HashMap;
-import java.util.Map;
+// import java.util.HashMap;
+// import java.util.Map;
 import java.util.Random;
 
 public class Battle {
     private Trainer p1;
     private Trainer p2;
     
-    static Map<String, Map<String, Double>> typeChart = new HashMap<>();
-    static{
-        // Criar as vantagens para cada tipo
-        Map<String, Double> fireMap = new HashMap<>();
-        fireMap.put("GRASS", 2.0);
-        fireMap.put("WATER", 0.5);
+    // // Tabela hash dos tipos e suas vantagens
+    // static Map<String, Map<String, Double>> typeChart = new HashMap<>();
+    // static{
+    //     // Criar as vantagens para cada tipo
+    //     Map<String, Double> fireMap = new HashMap<>();
+    //     fireMap.put("GRASS", 2.0);
+    //     fireMap.put("WATER", 0.5);
 
-        Map<String, Double> waterMap = new HashMap<>();
-        waterMap.put("FIRE", 2.0);
-        waterMap.put("GRASS", 0.5);
+    //     Map<String, Double> waterMap = new HashMap<>();
+    //     waterMap.put("FIRE", 2.0);
+    //     waterMap.put("GRASS", 0.5);
 
-        Map<String, Double> grassMap = new HashMap<>();
-        grassMap.put("WATER", 2.0);
-        grassMap.put("FIRE", 0.5);
+    //     Map<String, Double> grassMap = new HashMap<>();
+    //     grassMap.put("WATER", 2.0);
+    //     grassMap.put("FIRE", 0.5);
 
-        // Colocar os tipos e suas vantagens no typeChart
-        typeChart.put("FIRE", fireMap);
-        typeChart.put("WATER", waterMap);
-        typeChart.put("GRASS", grassMap);
-    }
+    //     // Colocar os tipos e suas vantagens no typeChart
+    //     typeChart.put("FIRE", fireMap);
+    //     typeChart.put("WATER", waterMap);
+    //     typeChart.put("GRASS", grassMap);
+    // }
     
-    public static double checkMultiplier(String typeAttacker, String typeDefender) {
-        // Se não tiver o tipo do atacante ou se o tipo do atacante não tiver vantagens contra o defensor retorna 1
-        if (!typeChart.containsKey(typeAttacker) || !typeChart.get(typeAttacker).containsKey(typeDefender)) {
-            return 1;
-        }
+    // // Checar as vantagens a partir do tipo
+    // public static double checkMultiplier(String typeAttacker, String typeDefender) {
+    //     // Se não tiver o tipo do atacante ou se o tipo do atacante não tiver vantagens contra o defensor retorna 1
+    //     if (!typeChart.containsKey(typeAttacker) || !typeChart.get(typeAttacker).containsKey(typeDefender)) {
+    //         return 1;
+    //     }
         
-        // Retorna o tipo de vantagem do atacante sobre o defensor
-        return typeChart.get(typeAttacker).get(typeDefender);
+    //     // Retorna o tipo de vantagem do atacante sobre o defensor
+    //     return typeChart.get(typeAttacker).get(typeDefender);
 
-    }
+    // }
 
     public Battle(Trainer p1, Trainer p2) {
         this.p1 = p1;
         this.p2 = p2;
     }
-
 
     public void battle() {
         Trainer first;
@@ -172,31 +173,31 @@ public class Battle {
 
         // Receber o damage depois da checagem de categoria
         if (category != "STATUS") {
-            double multiplier = checkMultiplier(attacker.getType(), defender.getType());
+            // double multiplier = checkMultiplier(attacker.getType(), defender.getType());
 
-            damage = damage * multiplier;
+            // damage = damage * multiplier;
 
             if (defender.getHp() - damage < 0)
                 defender.setHp(0);
             else
                 defender.setHp(defender.getHp() - damage);
 
-            switch (multiplier) {
-                case 1.5:
-                    System.out.println("It's very effectie!\n");
-                    break;
+            // switch (multiplier) {
+            //     case 1.5:
+            //         System.out.println("It's very effectie!\n");
+            //         break;
                 
-                case 0.5:
-                    System.out.println("It's not very effectie...\n");
-                    break;
+            //     case 0.5:
+            //         System.out.println("It's not very effectie...\n");
+            //         break;
                 
-                case 0.0    :
-                    System.out.println("It doesn't affect the opposing " + defender.getName() + ".\n");
-                    break;
+            //     case 0.0    :
+            //         System.out.println("It doesn't affect the opposing " + defender.getName() + ".\n");
+            //         break;
                     
-                default:
-                    break;
-            }
+            //     default:
+            //         break;
+            // }
         }
     }
 }
