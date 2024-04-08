@@ -1,6 +1,8 @@
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Random;
 
-public class Battle {
+public class Battle extends TypeMap {
     private Trainer p1;
     private Trainer p2;
 
@@ -9,21 +11,21 @@ public class Battle {
         this.p2 = p2;
     }
 
-    // public void status(Moves move, Pokemon p) {
-    //     try {
-    //         Method method = p.getClass().getMethod(move.getAttribute1());
-    //         method.invoke(p, 1);
+    public void status(Moves move, Pokemon p) {
+        try {
+            Method method = p.getClass().getMethod(move.getAttribute1());
+            method.invoke(p);
 
-    //     } catch (NoSuchMethodException e) {
-    //         e.printStackTrace();
-    //     } catch (SecurityException e) {
-    //         e.printStackTrace();
-    //     } catch (IllegalAccessException e) {
-    //         e.printStackTrace();
-    //     } catch (InvocationTargetException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void battle() {
         Trainer first;
@@ -56,10 +58,8 @@ public class Battle {
             } else {
                 first = p2;
                 second = p1;
-                System.out.println("escolheu o primeiro");
 
-                useMove(first, second);    
-                System.out.println("usou move");       
+                useMove(first, second);   
                 
                 // second só ataca se sobreviver o do first
                 if (second.getPokemon().getHp() != 0)
@@ -98,6 +98,7 @@ public class Battle {
     public void takeMove(Moves move, Pokemon attacker, Pokemon defender) {
         String category = move.getCategory();
         double damage = 0;
+        double multiplier = checkMultiplier(move.getType(), defender.getType());
 
         // Checagem do type do ataque antes de receber
         switch (category) {
@@ -120,7 +121,18 @@ public class Battle {
         }
 
         // Receber o damage depois da checagem de categoria
-        if (category != "STATUS") {
+        if (category != "STATUS1" || category != "STATUS2") {
+            if (multiplier == 1.0) {
+                System.out.println("It's effective.");
+            } else if (multiplier == 1.5) {
+                System.out.println("It's super effective!");
+            } else if (multiplier == 0.5) {
+                System.out.println("It's not very effective...");
+            }
+
+            damage = damage * multiplier;
+            System.out.println(damage);   
+
             if (defender.getHp() - damage < 0)
                 defender.setHp(0);
             else

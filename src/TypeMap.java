@@ -9,15 +9,15 @@ public class TypeMap {
     static{
         // Criar as vantagens para cada tipo
         Map<String, Double> fireMap = new HashMap<>();
-            fireMap.put("GRASS", 2.0);
+            fireMap.put("GRASS", 1.5);
             fireMap.put("WATER", 0.5);
     
         Map<String, Double> waterMap = new HashMap<>();
-            waterMap.put("FIRE", 2.0);
+            waterMap.put("FIRE", 1.5);
             waterMap.put("GRASS", 0.5);
     
         Map<String, Double> grassMap = new HashMap<>();
-            grassMap.put("WATER", 2.0);
+            grassMap.put("WATER", 1.5);
             grassMap.put("FIRE", 0.5);
     
         // Colocar os tipos e suas vantagens no typeChart
