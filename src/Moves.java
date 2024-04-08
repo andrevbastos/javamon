@@ -3,12 +3,25 @@ public class Moves {
     private String type;
     private int power;
     private String category;
+    private String attribute1;
+    private String attribute2;
 
     public Moves(String name, String type, int power, String category) {
         this.name = name;
         this.type = type;
         this.power = power;
         this.category = category;
+        this.attribute1 = null;
+        this.attribute2 = null;
+    }
+
+    public Moves(String name, String type, int power, String category, String attribute1, String attribute2) {
+        this.name = name;
+        this.type = type;
+        this.power = power;
+        this.category = category;
+        this.attribute1 = attribute1;
+        this.attribute2 = attribute2;
     }
 
     public void setPower(int i) {
@@ -29,5 +42,13 @@ public class Moves {
 
     public String getCategory() {
         return category;
+    }
+
+    public String getAttribute1() {
+        return attribute1;
+    }
+
+    public String getAttribute2() {
+        return attribute2;
     }
 }

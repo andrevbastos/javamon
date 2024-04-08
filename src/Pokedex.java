@@ -1,24 +1,24 @@
 public class Pokedex {
     // Movesets únicos pra cada pokemon
     Moves charmanderMoves[] = {
-        new Moves("GROWL", "NORMAL", 0, "STATUS"),
+        new Moves("GROWL", "NORMAL", 0, "STATUS1", "setAttack", null),
         new Moves("SCRATCH", "NORMAL", 40, "PHYSICAL"),
         new Moves("EMBER", "FIRE", 40, "SPECIAL"),
-        new Moves("SMOKESCREEN", "NORMAL", 0, "STATUS")
+        new Moves("SMOKESCREEN", "NORMAL", 0, "STATUS1", "setAccuracy", null)
     };
 
     Moves bulbasaurMoves[] = {
-        new Moves("GROWL", "NORMAL", 0, "STATUS"),
+        new Moves("GROWL", "NORMAL", 0, "STATUS1", "setAttack", null),
         new Moves("TACKLE", "NORMAL", 40, "PHYSICAL"),
         new Moves("VINE WHIP", "GRASS", 45, "PHYSICAL"),
-        new Moves("GROWTH", "NORMAL", 0, "STATUS")
+        new Moves("GROWTH", "NORMAL", 0, "STATUS2", "setAttack", "setSpAttack")
     };
 
     Moves squirtleMoves[] = {
-        new Moves("TAIL WHIP", "NORMAL", 0, "STATUS"),
+        new Moves("TAIL WHIP", "NORMAL", 0, "STATUS1", "setDefense", null),
         new Moves("TACKLE", "NORMAL", 40, "PHYSICAL"),
         new Moves("WATER GUN", "WATER", 40, "SPECIAL"),
-        new Moves("WITHDRAW", "WATER", 0, "STATUS")
+        new Moves("WITHDRAW", "WATER", 0, "STATUS2", "setDefense", null)
     };
 
     String charmanderSprite = "";

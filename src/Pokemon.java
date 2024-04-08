@@ -3,26 +3,28 @@ public class Pokemon {
     private final String type;
     private final int hpmax;
     private double hp;
-    private double attack;
-    private double spattack;
-    private double defense;
-    private double spdefense;
-    private double speed;
-    private double accuracy;
+    private double[] attack;
+    private double[] spattack;
+    private double[] defense;
+    private double[] spdefense;
+    private double[] speed;
+    private double[] accuracy;
+
     private Moves[] moves;
     private final String sprite;
 
-    public Pokemon(String name, String type, int hpmax, int attack, int spattack, int defense, int spdefense, int speed, int accuracy, Moves[] moves, String sprite) {
+    public Pokemon(String name, String type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed
+                    , double accuracy, Moves[] moves, String sprite) {
         this.name = name; 
         this.type = type;
         this.hpmax = hpmax;
         this.hp = hpmax;
-        this.attack = attack;
-        this.spattack = spattack;
-        this.defense = defense;
-        this.spdefense = spdefense;
-        this.speed = speed;
-        this.accuracy = accuracy;
+        this.attack = new double[] {0, attack};
+        this.spattack = new double[] {0, spattack};
+        this.defense = new double[] {0, defense};
+        this.spdefense = new double[] {0, spdefense};
+        this.speed = new double[] {0, speed};
+        this.accuracy = new double[] {0, accuracy};
         this.moves = moves;
         this.sprite = sprite;
     }
@@ -53,27 +55,27 @@ public class Pokemon {
     }
 
     public double getAttack() {
-        return attack;
+        return attack[1];
     }
 
     public double getSpattack() {
-        return spattack;
+        return spattack[1];
     }
 
     public double getDefense() {
-        return defense;
+        return defense[1];
     }
 
     public double getSpdefense() {
-        return spdefense;
+        return spdefense[1];
     }
 
     public double getSpeed() {
-        return speed;
+        return speed[1];
     }
 
     public double getAccuracy() {
-        return accuracy;
+        return accuracy[1];
     }
 
     public Moves getMoves(int i) {
@@ -88,28 +90,39 @@ public class Pokemon {
     public void setHp(double hp) {
         this.hp = hp;
     }
-
-    public void setAttack(int i) {
-        this.attack += i;
+    
+    public void setAttack(int stage) {
+        this.attack[0] += stage;
     }
 
-    public void setSpAttack(int i) {
-        this.spattack += i;
+    public void setSpattack(int stage) {
+        this.spattack[0] += stage;
     }
 
-    public void setDefense(int i) {
-        this.defense += i;
+    public void setDefense(int stage) {
+        this.defense[0] += stage;
     }
 
-    public void setSpDefense(int i) {
-        this.spdefense += i;
+    public void setSpdefense(int stage) {
+        this.spdefense[0] += stage;
     }
 
-    public void setSpeed(int i) {
-        this.speed += i;
+    public void setSpeed(int stage) {
+        this.speed[0] += stage;
     }
 
-    public void setAccuracy(int i) {
-        this.accuracy += i;
+    public void setAccuracy(int stage) {
+        this.accuracy[0] += stage;
+    }
+
+    public void heal() {
+        this.hp = hpmax;
+        this.attack[0] = 0;
+        this.spattack[0] = 0;
+        this.defense[0] = 0;
+        this.spdefense[0] = 0;
+        this.speed[0] = 0;
+        this.accuracy[0] = 0;
+
     }
 }
