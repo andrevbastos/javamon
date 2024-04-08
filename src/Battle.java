@@ -1,4 +1,3 @@
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Random;
 
@@ -11,21 +10,26 @@ public class Battle extends TypeMap {
         this.p2 = p2;
     }
 
-    public void status(Moves move, Pokemon p) {
-        try {
-            Method method = p.getClass().getMethod(move.getAttribute1());
-            method.invoke(p);
+    public void status(Moves move, Pokemon p, int value) {
+        Method m;
+		try {
+			m = acharMetodoPeloNome(Pokemon.class, "set" + move.getAttribute1());
+			m.invoke(p, value);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
     }
+
+    public static Method acharMetodoPeloNome(Class<?> c, String nome) throws Exception {
+		for (Method m : c.getMethods()) {
+			if (m.getName().equals(nome)) {
+				return m;
+			}
+		}
+		throw new Exception("Método " + nome + " não encontrado");
+	}
+
 
     public void battle() {
         Trainer first;
@@ -46,10 +50,8 @@ public class Battle extends TypeMap {
 
                 first = p1;
                 second = p2;
-                System.out.println("escolheu o primeiro");
 
-                useMove(first, second);    
-                System.out.println("usou move");         
+                useMove(first, second);        
                 
                 // second só ataca se sobreviver o do first
                 if (second.getPokemon().getHp() != 0)
@@ -107,15 +109,15 @@ public class Battle extends TypeMap {
             break;
 
         case "SPECIAL":
-            damage = (int) ((move.getPower() * attacker.getSpattack() / defender.getSpdefense()) / 5) + 2;
+            damage = (int) ((move.getPower() * attacker.getSpAttack() / defender.getSpDefense()) / 5) + 2;
             break;
         
         case "STATUS1":
-            
+            status(move, defender, -1);
             break;
 
         case "STATUS2":
-
+            status(move, attacker, 1);
             break;
             
         }
