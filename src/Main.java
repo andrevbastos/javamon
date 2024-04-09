@@ -16,10 +16,10 @@ public class Main {
 
         // Iniciar pokedex
         Pokedex pokedex = new Pokedex();        
-        System.out.println("\nChoose your pokemon...\n1. CHARMANDER\t2. BULBASAUR\t3. SQUIRTLE");
+        System.out.println("\nChoose your pokemon...\n1. CHARMANDER2. BULBASAUR3. SQUIRTLE");
         int i = teclado.nextInt() - 1;
         pokedex.givePokemon(player, i);
-        System.out.println("\nChoose your pokemon...\n1. CHARMANDER\t2. BULBASAUR\t3. SQUIRTLE");
+        System.out.println("\nChoose your pokemon...\n1. CHARMANDER2. BULBASAUR3. SQUIRTLE");
         i = teclado.nextInt() - 1;
         pokedex.givePokemon(inimigo, i);
         

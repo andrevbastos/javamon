@@ -106,10 +106,12 @@ public class Battle extends TypeMap {
         switch (category) {
         case "PHYSICAL":
             damage = (int) ((move.getPower() * attacker.getAttack() / defender.getDefense()) / 5) + 2;
+            takeDamage(multiplier);
             break;
 
         case "SPECIAL":
             damage = (int) ((move.getPower() * attacker.getSpAttack() / defender.getSpDefense()) / 5) + 2;
+            takeDamage(multiplier);
             break;
         
         case "STATUS1":
@@ -123,7 +125,17 @@ public class Battle extends TypeMap {
         }
 
         // Receber o damage depois da checagem de categoria
-        if (category != "STATUS1" || category != "STATUS2") {
+        damage = damage * multiplier; 
+        System.out.println(damage);
+
+        if (defender.getHp() - damage < 0)
+            defender.setHp(0);
+        else
+            defender.setHp(defender.getHp() - damage);
+
+    }
+
+    public void takeDamage(double multiplier) {
             if (multiplier == 1.0) {
                 System.out.println("It's effective.");
             } else if (multiplier == 1.5) {
@@ -131,14 +143,5 @@ public class Battle extends TypeMap {
             } else if (multiplier == 0.5) {
                 System.out.println("It's not very effective...");
             }
-
-            damage = damage * multiplier;
-            System.out.println(damage);   
-
-            if (defender.getHp() - damage < 0)
-                defender.setHp(0);
-            else
-                defender.setHp(defender.getHp() - damage);
-        }
     }
 }

@@ -55,61 +55,75 @@ public class Pokemon {
     }
 
     public double getAttack() {
-        int value;
+        double value;
         if (attack[0] > 0) {
-            value = (int) ((2 + Math.abs(attack[0]) / 2) * attack[1]);
-            return value;
+            value = attack[1] * (2 + Math.abs(attack[0])) / 2;
         } else if (attack[0] < 0) {
-            return ((2 / 2 + Math.abs(attack[0])) * attack[1]);
+            value = attack[1] * 2 / (2 + Math.abs(attack[0]));
         } else 
-            return attack[1];
+            value = attack[1];
+
+        return value;
     }
 
     public double getSpAttack() {
-        int value;
-        if (attack[0] > 0) {
-            value = (int) ((2 + Math.abs(spattack[0] / 2)) * spattack[1]);
-            return value;
-        } else if (attack[0] < 0) {
-            return ((2 / 2 + Math.abs(spattack[0])) * spattack[1]);
+        double value;
+        if (spattack[0] > 0) {
+            value = spattack[1] * (2 + Math.abs(spattack[0])) / 2;
+        } else if (spattack[0] < 0) {
+            value = spattack[1] * 2 / (2 + Math.abs(spattack[0]));
         } else 
-            return spattack[1];
+            value = spattack[1];
+
+        return value;
     }
 
     public double getDefense() {
+        double value;
         if (defense[0] > 0) {
-            return ((2 + Math.abs(defense[0]) / 2) * defense[1]);
-        } else if (attack[0] < 0) {
-            return ((2 / 2 + Math.abs(defense[0])) * defense[1]);
+            value = defense[1] * (2 + Math.abs(defense[0])) / 2;
+        } else if (defense[0] < 0) {
+            value = defense[1] * 2 / (2 + Math.abs(defense[0]));
         } else 
-            return defense[1];
+            value = defense[1];
+
+        return value;
     }
 
     public double getSpDefense() {
+        double value;
         if (spdefense[0] > 0) {
-            return ((2 + Math.abs(spdefense[0]) / 2) * spdefense[1]);
-        } else if (attack[0] < 0) {
-            return ((2 / 2 + Math.abs(spdefense[0])) * spdefense[1]);
+            value = spdefense[1] * (2 + Math.abs(spdefense[0])) / 2;
+        } else if (spdefense[0] < 0) {
+            value = spdefense[1] * 2 / (2 + Math.abs(spdefense[0]));
         } else 
-            return spdefense[1];
+            value = spdefense[1];
+
+        return value;
     }
 
     public double getSpeed() {
+        double value;
         if (speed[0] > 0) {
-            return ((2 + Math.abs(speed[0]) / 2) * speed[1]);
-        } else if (attack[0] < 0) {
-            return ((2 / 2 + Math.abs(speed[0])) * speed[1]);
+            value = speed[1] * (2 + Math.abs(speed[0])) / 2;
+        } else if (speed[0] < 0) {
+            value = speed[1] * 2 / (2 + Math.abs(speed[0]));
         } else 
-            return speed[1];
+            value = speed[1];
+
+        return value;
     }
 
     public double getAccuracy() {
+        double value;
         if (accuracy[0] > 0) {
-            return ((2 + Math.abs(accuracy[0]) / 2) * accuracy[1]);
-        } else if (attack[0] < 0) {
-            return ((2 / 2 + Math.abs(accuracy[0])) * accuracy[1]);
+            value = accuracy[1] * (2 + Math.abs(accuracy[0])) / 2;
+        } else if (accuracy[0] < 0) {
+            value = accuracy[1] * 2 / (2 + Math.abs(accuracy[0]));
         } else 
-            return accuracy[1];
+            value = accuracy[1];
+
+        return value;
     }
 
     public Moves getMoves(int i) {
@@ -126,27 +140,61 @@ public class Pokemon {
     }
     
     public void setAttack(int stage) {
-        this.attack[0] += stage;
+        if (attack[1] + stage >= 6) {
+            this.attack[0] += stage;
+            System.out.println(this + "`s Attack fell.");
+        } else
+            System.out.println(this + "`s Attack can`t go any lower");
     }
 
     public void setSpAttack(int stage) {
-        this.spattack[0] += stage;
+        if (spattack[1] + stage >= 6) {
+            this.spattack[0] += stage;
+            System.out.println(this + "`s Sp. Attack fell.");
+        } else
+            System.out.println(this + "`s Sp. Attack can`t go any lower");
     }
 
     public void setDefense(int stage) {
-        this.defense[0] += stage;
+        if (defense[1] + stage >= 6) {
+            this.defense[0] += stage;
+            System.out.println(this + "`s Defense fell.");
+        } else
+            System.out.println(this + "`s Defense can`t go any lower");
     }
 
     public void setSpdefense(int stage) {
-        this.spdefense[0] += stage;
+        if (spdefense[1] + stage >= 6) {   
+            this.spdefense[0] += stage;
+            System.out.println(this + "`s Sp. Defense fell.");
+        } else
+            System.out.println(this + "`s Sp. Defense can`t go any lower");
     }
 
     public void setSpeed(int stage) {
-        this.speed[0] += stage;
+        if (speed[1] + stage >= 6) {  
+            this.speed[0] += stage;
+            System.out.println(this + "`s Speed fell.");
+        } else
+            System.out.println(this + "`s Speed can`t go any lower");
     }
 
     public void setAccuracy(int stage) {
-        this.accuracy[0] += stage;
+        if (accuracy[1] + stage >= 6) { 
+            this.accuracy[0] += stage;
+            System.out.println(this + "`s Accuracy fell.");
+        } else
+            System.out.println(this + "`s Accuracy can`t go any lower");
+    }
+
+    public void checkStats() {
+        System.out.println( this 
+            + "\nAttack: " + attack[0] + " " + getAttack() 
+            + "\nSpAttack: " + spattack[0] + " " + getSpAttack() 
+            + "\nDefense: " + defense[0] + " " + getDefense()
+            + "\nSpDefense: " + spdefense[0] + " " + getSpDefense()
+            + "\nSpeed: " + speed[0] + " " + getSpeed()
+            + "\nAccuracy: " + accuracy[0] + " " + getAccuracy() );
     }
 
     public void heal() {
