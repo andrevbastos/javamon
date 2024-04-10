@@ -140,7 +140,7 @@ public class Pokemon {
     }
     
     public void setAttack(int stage) {
-        if (attack[1] + stage >= 6) {
+        if (attack[1] + stage >= 3) {
             this.attack[0] += stage;
             System.out.println(this + "`s Attack fell.");
         } else
@@ -148,7 +148,7 @@ public class Pokemon {
     }
 
     public void setSpAttack(int stage) {
-        if (spattack[1] + stage >= 6) {
+        if (spattack[1] + stage >= 3) {
             this.spattack[0] += stage;
             System.out.println(this + "`s Sp. Attack fell.");
         } else
@@ -156,7 +156,7 @@ public class Pokemon {
     }
 
     public void setDefense(int stage) {
-        if (defense[1] + stage >= 6) {
+        if (defense[1] + stage >= 3) {
             this.defense[0] += stage;
             System.out.println(this + "`s Defense fell.");
         } else
@@ -164,7 +164,7 @@ public class Pokemon {
     }
 
     public void setSpdefense(int stage) {
-        if (spdefense[1] + stage >= 6) {   
+        if (spdefense[1] + stage >= 3) {   
             this.spdefense[0] += stage;
             System.out.println(this + "`s Sp. Defense fell.");
         } else
@@ -172,7 +172,7 @@ public class Pokemon {
     }
 
     public void setSpeed(int stage) {
-        if (speed[1] + stage >= 6) {  
+        if (speed[1] + stage >= 3) {  
             this.speed[0] += stage;
             System.out.println(this + "`s Speed fell.");
         } else
@@ -180,7 +180,7 @@ public class Pokemon {
     }
 
     public void setAccuracy(int stage) {
-        if (accuracy[1] + stage >= 6) { 
+        if (accuracy[1] + stage >= 3) { 
             this.accuracy[0] += stage;
             System.out.println(this + "`s Accuracy fell.");
         } else
