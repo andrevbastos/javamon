@@ -1,3 +1,5 @@
+package main.combat;
+
 public class Trainer {
     
     private String name;

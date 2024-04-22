@@ -1,3 +1,5 @@
+package main.combat;
+
 public class Moves {
     private String name;
     private String type;

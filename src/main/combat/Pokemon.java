@@ -1,3 +1,5 @@
+package main.combat;
+
 public class Pokemon {
     private String name;
     private final String type;
@@ -55,73 +57,39 @@ public class Pokemon {
     }
 
     public double getAttack() {
-        double value;
-        if (attack[0] > 0) {
-            value = attack[1] * (2 + Math.abs(attack[0])) / 2;
-        } else if (attack[0] < 0) {
-            value = attack[1] * 2 / (2 + Math.abs(attack[0]));
-        } else 
-            value = attack[1];
-
-        return value;
+        return getStagedStatus(attack);
     }
 
     public double getSpAttack() {
-        double value;
-        if (spattack[0] > 0) {
-            value = spattack[1] * (2 + Math.abs(spattack[0])) / 2;
-        } else if (spattack[0] < 0) {
-            value = spattack[1] * 2 / (2 + Math.abs(spattack[0]));
-        } else 
-            value = spattack[1];
-
-        return value;
+        return getStagedStatus(spattack);
     }
 
     public double getDefense() {
-        double value;
-        if (defense[0] > 0) {
-            value = defense[1] * (2 + Math.abs(defense[0])) / 2;
-        } else if (defense[0] < 0) {
-            value = defense[1] * 2 / (2 + Math.abs(defense[0]));
-        } else 
-            value = defense[1];
-
-        return value;
+        return getStagedStatus(defense);
     }
 
     public double getSpDefense() {
-        double value;
-        if (spdefense[0] > 0) {
-            value = spdefense[1] * (2 + Math.abs(spdefense[0])) / 2;
-        } else if (spdefense[0] < 0) {
-            value = spdefense[1] * 2 / (2 + Math.abs(spdefense[0]));
-        } else 
-            value = spdefense[1];
-
-        return value;
+        return getStagedStatus(spdefense);
     }
 
     public double getSpeed() {
-        double value;
-        if (speed[0] > 0) {
-            value = speed[1] * (2 + Math.abs(speed[0])) / 2;
-        } else if (speed[0] < 0) {
-            value = speed[1] * 2 / (2 + Math.abs(speed[0]));
-        } else 
-            value = speed[1];
-
-        return value;
+        return getStagedStatus(speed);
     }
 
     public double getAccuracy() {
+        return getStagedStatus(accuracy);
+    }
+
+    public double getStagedStatus(double[] type) { 
+
         double value;
-        if (accuracy[0] > 0) {
-            value = accuracy[1] * (2 + Math.abs(accuracy[0])) / 2;
-        } else if (accuracy[0] < 0) {
-            value = accuracy[1] * 2 / (2 + Math.abs(accuracy[0]));
+
+        if (type[0] > 0) {
+            value = type[1] * (2 + Math.abs(type[0])) / 2;
+        } else if (type[0] < 0) {
+            value = type[1] * 2 / (2 + Math.abs(type[0]));
         } else 
-            value = accuracy[1];
+            value = type[1];
 
         return value;
     }

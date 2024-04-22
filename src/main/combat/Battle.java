@@ -1,3 +1,5 @@
+package main.combat;
+
 import java.lang.reflect.Method;
 import java.util.Random;
 
@@ -9,26 +11,6 @@ public class Battle extends TypeMap {
         this.p1 = p1;
         this.p2 = p2;
     }
-
-    public void status(Moves move, Pokemon p, int value) {
-        Method m;
-		try {
-			m = acharMetodoPeloNome(Pokemon.class, "set" + move.getAttribute1());
-			m.invoke(p, value);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-    }
-
-    public static Method acharMetodoPeloNome(Class<?> c, String nome) throws Exception {
-		for (Method m : c.getMethods()) {
-			if (m.getName().equals(nome)) {
-				return m;
-			}
-		}
-		throw new Exception("Método " + nome + " não encontrado");
-	}
 
 
     public void battle() {
@@ -144,4 +126,24 @@ public class Battle extends TypeMap {
                 System.out.println("It's not very effective...");
             }
     }
+
+    public void status(Moves move, Pokemon p, int value) {
+        Method m;
+		try {
+			m = acharMetodoPeloNome(Pokemon.class, "set" + move.getAttribute1());
+			m.invoke(p, value);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+
+    public static Method acharMetodoPeloNome(Class<?> c, String nome) throws Exception {
+		for (Method m : c.getMethods()) {
+			if (m.getName().equals(nome)) {
+				return m;
+			}
+		}
+		throw new Exception("Método " + nome + " não encontrado");
+	}
 }
