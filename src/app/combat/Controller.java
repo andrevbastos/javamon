@@ -1,4 +1,4 @@
-package main.combat;
+package app.combat;
 
 public class Controller {
 
@@ -11,7 +11,12 @@ public class Controller {
         givePokemon(inimigo, PokemonFactory.getPokemon("SQUIRTLE"));
 
         Battle b = new Battle(player, inimigo);
-        b.battle();
+        
+        int i = 5;
+        while (i != 0) {
+            b.battle();
+            i--;
+        }
 
     }
 

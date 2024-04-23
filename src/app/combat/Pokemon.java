@@ -1,4 +1,4 @@
-package main.combat;
+package app.combat;
 
 public class Pokemon {
     private String name;

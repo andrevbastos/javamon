@@ -1,4 +1,4 @@
-package main.visuals;
+package app.visuals;
 
 import java.awt.*;
 import javax.swing.*;

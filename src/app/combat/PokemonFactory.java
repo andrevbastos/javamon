@@ -1,4 +1,4 @@
-package main.combat;
+package app.combat;
 
 public class PokemonFactory {
     // Movesets e sprites únicos pra cada pokemon

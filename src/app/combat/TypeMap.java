@@ -1,4 +1,4 @@
-package main.combat;
+package app.combat;
 
 import java.util.HashMap;
 import java.util.Map;

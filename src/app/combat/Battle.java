@@ -1,4 +1,4 @@
-package main.combat;
+package app.combat;
 
 import java.lang.reflect.Method;
 import java.util.Random;
@@ -61,6 +61,9 @@ public class Battle{
         }
 
         System.out.println("\n" + winner.getName() + " won!");
+        p1.getPokemon().heal();
+        p2.getPokemon().heal();
+        
     }
 
     // Atacar
