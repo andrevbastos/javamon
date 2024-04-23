@@ -3,7 +3,7 @@ package main.combat;
 import java.lang.reflect.Method;
 import java.util.Random;
 
-public class Battle extends TypeMap {
+public class Battle{
     private Trainer p1;
     private Trainer p2;
 
@@ -11,7 +11,6 @@ public class Battle extends TypeMap {
         this.p1 = p1;
         this.p2 = p2;
     }
-
 
     public void battle() {
         Trainer first;
@@ -82,7 +81,7 @@ public class Battle extends TypeMap {
     public void takeMove(Moves move, Pokemon attacker, Pokemon defender) {
         String category = move.getCategory();
         double damage = 0;
-        double multiplier = checkMultiplier(move.getType(), defender.getType());
+        double multiplier = TypeMap.checkMultiplier(move.getType(), defender.getType());
 
         // Checagem do type do ataque antes de receber
         switch (category) {
@@ -118,13 +117,13 @@ public class Battle extends TypeMap {
     }
 
     public void takeDamage(double multiplier) {
-            if (multiplier == 1.0) {
-                System.out.println("It's effective.");
-            } else if (multiplier == 1.5) {
-                System.out.println("It's super effective!");
-            } else if (multiplier == 0.5) {
-                System.out.println("It's not very effective...");
-            }
+        if (multiplier == 1.0) {
+            System.out.println("It's effective.");
+        } else if (multiplier == 1.5) {
+            System.out.println("It's super effective!");
+        } else if (multiplier == 0.5) {
+            System.out.println("It's not very effective...");
+        }
     }
 
     public void status(Moves move, Pokemon p, int value) {
@@ -142,7 +141,7 @@ public class Battle extends TypeMap {
 		for (Method m : c.getMethods()) {
 			if (m.getName().equals(nome)) {
 				return m;
-			}
+			} 
 		}
 		throw new Exception("Método " + nome + " não encontrado");
 	}

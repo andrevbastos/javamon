@@ -15,5 +15,7 @@ public class GamePanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.drawLine(0, 0, 960, 640);
+
+        
     }
 }

@@ -29,12 +29,12 @@ public class TypeMap {
     }
         
     // Checar as vantagens a partir do tipo
-    public double checkMultiplier(String typeAttacker, String typeDefender) {
+    public static double checkMultiplier(String typeAttacker, String typeDefender) {
         // Se não tiver o tipo do atacante ou se o tipo do atacante não tiver vantagens contra o defensor retorna 1
         if (!typeChart.containsKey(typeAttacker) || !typeChart.get(typeAttacker).containsKey(typeDefender)) 
             return 1;
         else
             // Retorna o tipo de vantagem do atacante sobre o defensor
-            return typeChart.get(typeAttacker).get(typeDefender);
+            return typeChart.get(typeAttacker).get(typeDefender);   
     }
 }
