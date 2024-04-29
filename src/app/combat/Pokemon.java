@@ -11,9 +11,8 @@ public class Pokemon {
     private double[] spdefense;
     private double[] speed;
     private double[] accuracy;
-
     private Moves[] moves;
-    private final String sprite;
+    public static String sprite;
 
     public Pokemon(String name, String type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed
                     , double accuracy, Moves[] moves, String sprite) {
@@ -28,7 +27,6 @@ public class Pokemon {
         this.speed = new double[] {0, speed};
         this.accuracy = new double[] {0, accuracy};
         this.moves = moves;
-        this.sprite = sprite;
     }
 
     @Override

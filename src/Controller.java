@@ -1,8 +1,22 @@
-package app.combat;
+
+
+import app.combat.Battle;
+import app.combat.Pokemon;
+import app.combat.PokemonFactory;
+import app.combat.Trainer;
+import app.visuals.GamePanel;
+import app.visuals.GameWindow;
 
 public class Controller {
 
-    public static void startSimulation() {
+    private GameWindow gameWindow;
+    private GamePanel gamePanel;
+
+    public Controller() {
+
+        gamePanel = new GamePanel();
+        gameWindow = new GameWindow(gamePanel);
+        gamePanel.requestFocus();
 
         Trainer player = new Trainer("a");
         givePokemon(player, PokemonFactory.getPokemon("CHARMANDER"));
@@ -17,7 +31,6 @@ public class Controller {
             b.battle();
             i--;
         }
-
     }
 
     public static void givePokemon(Trainer t, Pokemon p) {

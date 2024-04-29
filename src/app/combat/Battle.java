@@ -90,12 +90,12 @@ public class Battle{
         switch (category) {
         case "PHYSICAL":
             damage = (int) ((move.getPower() * attacker.getAttack() / defender.getDefense()) / 5) + 2;
-            takeDamage(multiplier);
+            multiplierToText(multiplier);
             break;
 
         case "SPECIAL":
             damage = (int) ((move.getPower() * attacker.getSpAttack() / defender.getSpDefense()) / 5) + 2;
-            takeDamage(multiplier);
+            multiplierToText(multiplier);
             break;
         
         case "STATUS1":
@@ -119,7 +119,7 @@ public class Battle{
 
     }
 
-    public void takeDamage(double multiplier) {
+    public void multiplierToText(double multiplier) {
         if (multiplier == 1.0) {
             System.out.println("It's effective.");
         } else if (multiplier == 1.5) {
@@ -132,7 +132,7 @@ public class Battle{
     public void status(Moves move, Pokemon p, int value) {
         Method m;
 		try {
-			m = acharMetodoPeloNome(Pokemon.class, "set" + move.getAttribute1());
+			m = methodTroughName(Pokemon.class, "set" + move.getAttribute1());
 			m.invoke(p, value);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class Battle{
 
     }
 
-    public static Method acharMetodoPeloNome(Class<?> c, String nome) throws Exception {
+    public static Method methodTroughName(Class<?> c, String nome) throws Exception {
 		for (Method m : c.getMethods()) {
 			if (m.getName().equals(nome)) {
 				return m;

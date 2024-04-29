@@ -1,21 +1,29 @@
 package app.visuals;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
+import app.inputs.*;
 
 public class GamePanel extends JPanel {
+    private KeyboardInput keyboardInput;
+    private MouseInput mouseInput;
 
-    GamePanel() {
-
-        this.setPreferredSize(new Dimension(960, 640));
+    public GamePanel() {
+        keyboardInput = new KeyboardInput();
+        mouseInput = new MouseInput();
+        
+        addKeyListener(keyboardInput);
+        addMouseListener(mouseInput);
+        addMouseMotionListener(mouseInput);
     }
 
-    public void paint(Graphics g) {
-
+    public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
+        super.paintComponent(g2d);
 
-        g2d.drawLine(0, 0, 960, 640);
 
-        
     }
 }
