@@ -17,13 +17,12 @@ public class GamePanel extends JPanel {
         
         addKeyListener(keyboardInput);
         addMouseListener(mouseInput);
-        addMouseMotionListener(mouseInput);
     }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         super.paintComponent(g2d);
 
-
+        
     }
 }

@@ -6,6 +6,7 @@ import java.util.Random;
 public class Battle{
     private Trainer p1;
     private Trainer p2;
+    public static boolean wait;
 
     public Battle(Trainer p1, Trainer p2) {
         this.p1 = p1;
@@ -16,15 +17,12 @@ public class Battle{
         Trainer first;
         Trainer second;
         Trainer winner = null;
-        int i = 0;
         boolean stop = false;
 
         while (!stop) {
-            i++;
-
             // Mostrar vida dos dois
-            System.out.println("\n- Round " + i + "\n\n" + p1.getName() + "`s " + p1.getPokemon().getName() + ": " + p1.getPokemon().getHp()
-             + "\n" + p2.getName() + "`s "  + p2.getPokemon().getName() + ": " + p2.getPokemon().getHp());
+            // System.out.println("\n\n" + p1.getName() + "`s " + p1.getPokemon().getName() + ": " + p1.getPokemon().getHp()
+            //  + "\n" + p2.getName() + "`s "  + p2.getPokemon().getName() + ": " + p2.getPokemon().getHp());
 
             // Setar qual pokemon vai agir first e ataque de cada um em ordem
             if (p1.getPokemon().getSpeed() >= p2.getPokemon().getSpeed()) {
@@ -32,21 +30,24 @@ public class Battle{
                 first = p1;
                 second = p2;
 
-                useMove(first, second);        
+                useMove(first, second);  
                 
                 // second só ataca se sobreviver o do first
-                if (second.getPokemon().getHp() != 0)
+                if (second.getPokemon().getHp() != 0) {
                     useMove(second, first);
+                }
 
             } else {
                 first = p2;
                 second = p1;
 
-                useMove(first, second);   
+                useMove(first, second); 
                 
                 // second só ataca se sobreviver o do first
-                if (second.getPokemon().getHp() != 0)
+                if (second.getPokemon().getHp() != 0) {
                     useMove(second, first);
+                }
+
             }
 
             if (p1.getPokemon().getHp() == 0) {
@@ -68,6 +69,14 @@ public class Battle{
 
     // Atacar
     public void useMove(Trainer attacker, Trainer defender) {
+        while(wait){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1;    // D100
         int i = rn.nextInt(3);              // ataque aleatório
@@ -117,6 +126,7 @@ public class Battle{
         else
             defender.setHp(defender.getHp() - damage);
 
+        wait = true;
     }
 
     public void multiplierToText(double multiplier) {

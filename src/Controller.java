@@ -1,11 +1,5 @@
-
-
-import app.combat.Battle;
-import app.combat.Pokemon;
-import app.combat.PokemonFactory;
-import app.combat.Trainer;
-import app.visuals.GamePanel;
-import app.visuals.GameWindow;
+import app.combat.*;
+import app.visuals.*;
 
 public class Controller {
 

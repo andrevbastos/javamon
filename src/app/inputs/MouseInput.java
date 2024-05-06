@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import app.combat.Battle;
+
 public class MouseInput implements MouseListener, MouseMotionListener {
 
     @Override
@@ -12,7 +14,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+        Battle.wait = false;
     }
 
     @Override
@@ -33,7 +35,6 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        
     }
     
 }
