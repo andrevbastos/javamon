@@ -1,4 +1,4 @@
-package app.combat;
+package combat;
 
 public class Moves {
     private String name;

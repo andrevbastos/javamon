@@ -1,8 +1,7 @@
-import app.combat.*;
-import app.visuals.*;
+import combat.*;
+import visuals.*;
 
 public class Controller {
-
     private GameWindow gameWindow;
     private GamePanel gamePanel;
 

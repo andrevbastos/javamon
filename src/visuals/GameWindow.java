@@ -1,4 +1,4 @@
-package app.visuals;
+package visuals;
 
 import javax.swing.JFrame;
 

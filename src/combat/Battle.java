@@ -1,12 +1,13 @@
-package app.combat;
+package combat;
 
 import java.lang.reflect.Method;
 import java.util.Random;
 
+import visuals.GamePanel;
+
 public class Battle{
     private Trainer p1;
     private Trainer p2;
-    public static boolean wait;
 
     public Battle(Trainer p1, Trainer p2) {
         this.p1 = p1;
@@ -30,7 +31,7 @@ public class Battle{
                 first = p1;
                 second = p2;
 
-                useMove(first, second);  
+                useMove(first, second);
                 
                 // second só ataca se sobreviver o do first
                 if (second.getPokemon().getHp() != 0) {
@@ -69,12 +70,10 @@ public class Battle{
 
     // Atacar
     public void useMove(Trainer attacker, Trainer defender) {
-        while(wait){
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
         Random rn = new Random();
@@ -126,7 +125,6 @@ public class Battle{
         else
             defender.setHp(defender.getHp() - damage);
 
-        wait = true;
     }
 
     public void multiplierToText(double multiplier) {
