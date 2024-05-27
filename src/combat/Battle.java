@@ -3,8 +3,6 @@ package combat;
 import java.lang.reflect.Method;
 import java.util.Random;
 
-import visuals.GamePanel;
-
 public class Battle{
     private Trainer p1;
     private Trainer p2;

@@ -1,35 +1,46 @@
 package visuals;
 
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-
 import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 
-public class GamePanel extends JPanel {
-    Font pkmn, hollow, solid;
+public class GamePanel extends JPanel implements Runnable {
+    static Font pkmn, hollow, solid;
+
+    Thread gameThread;
+    Start startPanel;
+    Controller combatPanel;
+
+    int fps = 60;
+    private long last_update_time = System.nanoTime();
+
+    public enum SimState {
+        START_SCREEN,
+        COMBAT_SCREEN
+    }
+
+    private SimState currentState;
+
+    public SimState getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(SimState currentState) {
+        this.currentState = currentState;
+    }
 
     public GamePanel() {
 
         createFonts();
 
-        ImageIcon image = new ImageIcon("res/charizard_front.png");
+        this.setPreferredSize(new Dimension(480, 320));
+        this.setDoubleBuffered(true);
+
         JLabel label = new JLabel();
-        label.setText("fodase");
-        label.setIcon(image);
-        label.setHorizontalTextPosition(JLabel.CENTER);
-        label.setVerticalTextPosition(JLabel.BOTTOM);
-        label.setForeground(new Color(0xff5000));
-        label.setFont(solid.deriveFont(Font.PLAIN, 60));
-
+        label.setFont(solid.deriveFont(Font.PLAIN, 64));
+        label.setText("Javamon");
         this.add(label);
-    }
 
-    public void paintComponent(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        super.paintComponent(g2d);
-
-        
     }
 
     public void createFonts() {
@@ -43,4 +54,60 @@ public class GamePanel extends JPanel {
             e.printStackTrace();
         }
     }
+
+    public void startGameThread() {
+
+        this.startPanel = new Start(this);
+    
+        currentState = SimState.START_SCREEN;
+    
+        startPanel.runStartSequence();
+        
+        this.combatPanel = new Controller(startPanel.getPlayer(), startPanel.getRival(), this);
+    
+        currentState = SimState.COMBAT_SCREEN;
+
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
+
+    @Override
+    public void run() {
+        double delta = 0;
+        double draw_interval = 1_000_000_000 / fps;
+
+        while (gameThread != null) {
+            long now = System.nanoTime();
+            delta += (now - last_update_time) / draw_interval;
+            last_update_time = now;
+
+            while (delta >= 1) {
+                update();
+                delta--;
+            }
+
+            repaint();
+
+            try {
+                double remaining_time = (last_update_time - now + draw_interval) / 1_000_000_000;
+                remaining_time = remaining_time < 0 ? 0 : remaining_time;
+
+                Thread.sleep((long)remaining_time);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void update() {
+        
+    }   
+    
+    public void paintComponent(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        super.paintComponent(g2d);
+
+        
+    }
+
 }

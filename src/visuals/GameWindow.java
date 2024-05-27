@@ -1,21 +1,33 @@
 package visuals;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
-public class GameWindow {
-    private JFrame jframe;
-    public int width = 960;
-    public int height = 640;
+public class GameWindow extends JFrame {
+    public GameWindow() {
+        this.setTitle("2024 © IFC | Javamon");
+        
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    public GameWindow(GamePanel gamePanel) {
+        initialize();
+    }
 
-        jframe = new JFrame();
+    public void initialize() {
+        ImageIcon icon = null;
 
-        jframe.setSize(width, height);
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jframe.add(gamePanel);
-        jframe.setLocationRelativeTo(null);
-        jframe.setVisible(true);
+        try {
+            icon = new ImageIcon("res/pokemon/charizard_front.png");
+            this.setIconImage(icon.getImage());
 
+            GamePanel panel = new GamePanel();
+            this.add(panel);
+            this.pack();
+            this.requestFocus();
+            panel.startGameThread();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
