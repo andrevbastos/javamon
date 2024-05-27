@@ -1,8 +1,10 @@
+import visuals.GameWindow;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         
         //Inicia a simulação
-        Controller c = new Controller();
+        GameWindow gm = new GameWindow();
 
     }
 }
