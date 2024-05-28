@@ -1,6 +1,9 @@
 package visuals;
 
 import javax.swing.*;
+
+import combat.Battle;
+
 import java.awt.*;
 import java.io.*;
 
@@ -9,7 +12,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
     Start startPanel;
-    Controller combatPanel;
+    Battle combatPanel;    
+    
+    private String p1Name;
+    private int p1Hp;
+    private String p2Name;
+    private int p2Hp;
+    private String textBox;
 
     int fps = 60;
     private long last_update_time = System.nanoTime();
@@ -56,19 +65,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void startGameThread() {
-
         this.startPanel = new Start(this);
-    
         currentState = SimState.START_SCREEN;
-    
         startPanel.runStartSequence();
         
-        this.combatPanel = new Controller(startPanel.getPlayer(), startPanel.getRival(), this);
-    
+        this.combatPanel = new Battle(startPanel.getPlayer(), startPanel.getRival(), this);
         currentState = SimState.COMBAT_SCREEN;
 
-        gameThread = new Thread(this);
-        gameThread.start();
+        // Iniciar a lógica da batalha
+        combatPanel.battle();
     }
 
     @Override
@@ -102,12 +107,40 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
         
     }   
-    
-    public void paintComponent(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        super.paintComponent(g2d);
 
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setFont(pkmn.deriveFont(Font.PLAIN, 15));
+    
+        if (currentState == SimState.COMBAT_SCREEN) {
+            g2d.drawString(p1Name + ": ", 50, 120);
+            g2d.drawString("\t" + p1Hp, 50, 140);
         
+            g2d.drawString(p2Name + ": ", 50, 190);
+            g2d.drawString("\t" + p2Hp, 50, 210);
+
+            g2d.drawString(textBox, 50, 260);
+        }
+    }
+
+    public void updatePokemon1Info(String name, int hp) {
+        this.p1Name = name;
+        this.p1Hp = hp;
+        repaint();
+    }
+
+    public void updatePokemon2Info(String name, int hp) {
+        this.p2Name = name;
+        this.p2Hp = hp;
+        repaint();
+    }
+
+    public void updateTextBox(String txt) {
+        this.textBox = txt;
+        repaint();
     }
 
 }

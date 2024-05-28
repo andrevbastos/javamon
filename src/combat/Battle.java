@@ -3,13 +3,20 @@ package combat;
 import java.lang.reflect.Method;
 import java.util.Random;
 
-public class Battle{
-    private Trainer p1;
-    private Trainer p2;
+import visuals.GamePanel;
 
-    public Battle(Trainer p1, Trainer p2) {
-        this.p1 = p1;
-        this.p2 = p2;
+public class Battle{
+    private Trainer t1;
+    private Trainer t2;
+    private GamePanel gp;
+
+    public Battle(Trainer t1, Trainer t2, GamePanel gp) {
+        this.t1 = t1;
+        this.t2 = t2;
+        this.gp = gp;
+        
+        updatePokemonInfo();
+
     }
 
     public void battle() {
@@ -19,71 +26,49 @@ public class Battle{
         boolean stop = false;
 
         while (!stop) {
-            // Mostrar vida dos dois
-            // System.out.println("\n\n" + p1.getName() + "`s " + p1.getPokemon().getName() + ": " + p1.getPokemon().getHp()
-            //  + "\n" + p2.getName() + "`s "  + p2.getPokemon().getName() + ": " + p2.getPokemon().getHp());
 
-            // Setar qual pokemon vai agir first e ataque de cada um em ordem
-            if (p1.getPokemon().getSpeed() >= p2.getPokemon().getSpeed()) {
+            first = (t1.getPokemon().getSpeed() >= t2.getPokemon().getSpeed()) ? t1 : t2;
+            second = (first == t1) ? t2 : t1;
 
-                first = p1;
-                second = p2;
-
-                useMove(first, second);
-                
-                // second só ataca se sobreviver o do first
-                if (second.getPokemon().getHp() != 0) {
-                    useMove(second, first);
-                }
-
-            } else {
-                first = p2;
-                second = p1;
-
-                useMove(first, second); 
-                
-                // second só ataca se sobreviver o do first
-                if (second.getPokemon().getHp() != 0) {
-                    useMove(second, first);
-                }
-
+            useMove(first, second);
+            updatePokemonInfo();
+            
+            // second só ataca se sobreviver o do first
+            if (second.getPokemon().getHp() != 0) {
+                useMove(second, first);
+                updatePokemonInfo();
             }
 
-            if (p1.getPokemon().getHp() == 0) {
-                winner = p2;
-                stop = true;
-            }
+            winner = (t1.getPokemon().getHp() == 0) ? t2 : (t2.getPokemon().getHp() == 0) ? t1 : null;
+            stop = (winner != null);
 
-            if (p2.getPokemon().getHp() == 0) {
-                winner = p1;
-                stop = true;
-            }
         }
 
         System.out.println("\n" + winner.getName() + " won!");
-        p1.getPokemon().heal();
-        p2.getPokemon().heal();
+        t1.getPokemon().heal();
+        t2.getPokemon().heal();
         
     }
 
     // Atacar
     public void useMove(Trainer attacker, Trainer defender) {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1;    // D100
         int i = rn.nextInt(3);              // ataque aleatório
-        System.out.println("\n" + attacker + "`s " + attacker.getPokemon() + " uses " + attacker.getPokemon().getMoves(i).getName() + "!");
+        String txt;
+
+        txt = attacker.getPokemon() + " uses " + attacker.getPokemon().getMoves(i).getName() + "!";
+        txt = (attacker == t2) ? "Foe " + txt : txt;
+        updateTextBox(txt);
         
         // Checagem se acertou o ataque
         if (ataque <= attacker.getPokemon().getAccuracy())
             takeMove(attacker.getPokemon().getMoves(i), attacker.getPokemon(), defender.getPokemon());
-        else
-            System.out.println(attacker + "`s " + attacker.getPokemon()  + " missed.");
+        else {
+            txt = attacker.getPokemon()  + " missed.";
+            txt = (attacker == t2) ? "Foe " + txt : txt;
+            updateTextBox(txt);
+        }
     }
 
     // Receber ataque
@@ -115,23 +100,24 @@ public class Battle{
         }
 
         // Receber o damage depois da checagem de categoria
-        damage = damage * multiplier; 
-        System.out.println(damage);
+        damage = damage * multiplier;
 
-        if (defender.getHp() - damage < 0)
-            defender.setHp(0);
-        else
-            defender.setHp(defender.getHp() - damage);
+        if (category != "STATUS1" && category != "STATUS2") {
+            if (defender.getHp() - damage < 0)
+                defender.setHp(0);
+            else
+                defender.setHp(defender.getHp() - damage);
+        }
 
     }
 
     public void multiplierToText(double multiplier) {
         if (multiplier == 1.0) {
-            System.out.println("It's effective.");
+            updateTextBox("It's effective.");
         } else if (multiplier == 1.5) {
-            System.out.println("It's super effective!");
+            updateTextBox("It's super effective!");
         } else if (multiplier == 0.5) {
-            System.out.println("It's not very effective...");
+            updateTextBox("It's not very effective...");
         }
     }
 
@@ -139,7 +125,10 @@ public class Battle{
         Method m;
 		try {
 			m = methodTroughName(Pokemon.class, "set" + move.getAttribute1());
-			m.invoke(p, value);
+            String txt = (String) m.invoke(p, value);
+            if (p == t2.getPokemon())
+                txt = "Foe " + txt;
+			updateTextBox(txt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -154,4 +143,14 @@ public class Battle{
 		}
 		throw new Exception("Método " + nome + " não encontrado");
 	}
+
+    private void updatePokemonInfo() {
+        gp.updatePokemon1Info(t1.getPokemon().getName(), t1.getPokemon().getHp());
+        gp.updatePokemon2Info(t2.getPokemon().getName(), t2.getPokemon().getHp());
+    }
+
+    private void updateTextBox(String txt) {
+        gp.updateTextBox(txt);
+    }
+
 }

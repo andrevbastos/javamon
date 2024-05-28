@@ -31,7 +31,7 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return name + " [" + type + "]";
+        return name;
     }
 
     public String getName() {
@@ -46,10 +46,10 @@ public class Pokemon {
         return hpmax;
     }
 
-    public double getHp() {
+    public int getHp() {
         // Vida não é enviada como negativa
         if (this.hp > 0) 
-            return hp;
+            return (int) hp;
         else
             return 0;
     }
@@ -105,56 +105,56 @@ public class Pokemon {
         this.hp = hp;
     }
     
-    public void setAttack(int stage) {
+    public String setAttack(int stage) {
         if (attack[1] + stage >= 3) {
             this.attack[0] += stage;
-            System.out.println(this + "`s Attack fell.");
+            return (this + "'s Attack fell.");
         } else
-            System.out.println(this + "`s Attack can`t go any lower");
+            return (this + "'s Attack can't go any lower");
     }
 
-    public void setSpAttack(int stage) {
+    public String setSpAttack(int stage) {
         if (spattack[1] + stage >= 3) {
             this.spattack[0] += stage;
-            System.out.println(this + "`s Sp. Attack fell.");
+            return (this + "'s Sp. Attack fell.");
         } else
-            System.out.println(this + "`s Sp. Attack can`t go any lower");
+            return (this + "'s Sp. Attack can't go any lower");
     }
 
-    public void setDefense(int stage) {
+    public String setDefense(int stage) {
         if (defense[1] + stage >= 3) {
             this.defense[0] += stage;
-            System.out.println(this + "`s Defense fell.");
+            return (this + "'s Defense fell.");
         } else
-            System.out.println(this + "`s Defense can`t go any lower");
+            return (this + "'s Defense can't go any lower");
     }
 
-    public void setSpdefense(int stage) {
+    public String setSpdefense(int stage) {
         if (spdefense[1] + stage >= 3) {   
             this.spdefense[0] += stage;
-            System.out.println(this + "`s Sp. Defense fell.");
+            return (this + "'s Sp. Defense fell.");
         } else
-            System.out.println(this + "`s Sp. Defense can`t go any lower");
+            return (this + "'s Sp. Defense can't go any lower");
     }
 
-    public void setSpeed(int stage) {
+    public String setSpeed(int stage) {
         if (speed[1] + stage >= 3) {  
             this.speed[0] += stage;
-            System.out.println(this + "`s Speed fell.");
+            return (this + "'s Speed fell.");
         } else
-            System.out.println(this + "`s Speed can`t go any lower");
+            return (this + "'s Speed can't go any lower");
     }
 
-    public void setAccuracy(int stage) {
+    public String setAccuracy(int stage) {
         if (accuracy[1] + stage >= 3) { 
             this.accuracy[0] += stage;
-            System.out.println(this + "`s Accuracy fell.");
+            return (this + "'s Accuracy fell.");
         } else
-            System.out.println(this + "`s Accuracy can`t go any lower");
+            return (this + "'s Accuracy can't go any lower");
     }
 
-    public void checkStats() {
-        System.out.println( this 
+    public String checkStats() {
+        return ( this 
             + "\nAttack: " + attack[0] + " " + getAttack() 
             + "\nSpAttack: " + spattack[0] + " " + getSpAttack() 
             + "\nDefense: " + defense[0] + " " + getDefense()
