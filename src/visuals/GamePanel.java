@@ -45,11 +45,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(480, 320));
         this.setDoubleBuffered(true);
 
-        JLabel label = new JLabel();
-        label.setFont(solid.deriveFont(Font.PLAIN, 64));
-        label.setText("Javamon");
-        this.add(label);
-
     }
 
     public void createFonts() {
@@ -113,8 +108,11 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
+        g2d.setFont(solid.deriveFont(Font.PLAIN, 60));
+        g2d.setColor(Color.BLACK);
+        g2d.drawString("Javamon", 110, 80);
+
         g2d.setFont(pkmn.deriveFont(Font.PLAIN, 15));
-    
         if (currentState == SimState.COMBAT_SCREEN) {
             g2d.drawString(p1Name + ": ", 50, 120);
             g2d.drawString("\t" + p1Hp, 50, 140);

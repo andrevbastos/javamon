@@ -27,9 +27,11 @@ public class Battle{
 
         while (!stop) {
 
+            // Escolhe o primeiro e segundo a atacar com base na velocidade dos pokemons
             first = (t1.getPokemon().getSpeed() >= t2.getPokemon().getSpeed()) ? t1 : t2;
             second = (first == t1) ? t2 : t1;
 
+            // first ataca
             useMove(first, second);
             updatePokemonInfo();
             
@@ -112,9 +114,7 @@ public class Battle{
     }
 
     public void multiplierToText(double multiplier) {
-        if (multiplier == 1.0) {
-            updateTextBox("It's effective.");
-        } else if (multiplier == 1.5) {
+        if (multiplier == 1.5) {
             updateTextBox("It's super effective!");
         } else if (multiplier == 0.5) {
             updateTextBox("It's not very effective...");
@@ -123,11 +123,12 @@ public class Battle{
 
     public void status(Moves move, Pokemon p, int value) {
         Method m;
+
+        // Busca o metodo usado para reduzir a status escolhido
 		try {
 			m = methodTroughName(Pokemon.class, "set" + move.getAttribute1());
             String txt = (String) m.invoke(p, value);
-            if (p == t2.getPokemon())
-                txt = "Foe " + txt;
+            txt = (p == t2.getPokemon()) ? "Foe " + txt : txt;
 			updateTextBox(txt);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,11 +145,13 @@ public class Battle{
 		throw new Exception("Método " + nome + " não encontrado");
 	}
 
+    // Devolve os valores de vida e nome dos pokemons para o game panel
     private void updatePokemonInfo() {
         gp.updatePokemon1Info(t1.getPokemon().getName(), t1.getPokemon().getHp());
         gp.updatePokemon2Info(t2.getPokemon().getName(), t2.getPokemon().getHp());
     }
 
+    // Altera o texto mostrado no game panel
     private void updateTextBox(String txt) {
         gp.updateTextBox(txt);
     }
