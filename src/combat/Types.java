@@ -1,14 +1,13 @@
 package combat;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class TypeMap {
+public class Types {
 
     // Tabela hash dos tipos e suas vantagens
     static Map<String, Map<String, Double>> typeChart = new HashMap<>();
 
-    static{
+    static {
         // Criar as vantagens para cada tipo
         Map<String, Double> fireMap = new HashMap<>();
             fireMap.put("GRASS", 1.5);
@@ -21,8 +20,12 @@ public class TypeMap {
         Map<String, Double> grassMap = new HashMap<>();
             grassMap.put("WATER", 1.5);
             grassMap.put("FIRE", 0.5);
+            
+        Map<String, Double> electricMap = new HashMap<>();
+            grassMap.put("WATER", 1.5);
+            grassMap.put("GRASS", 0.5);
+            grassMap.put("ELECTRIC", 0.5);
     
-        // Colocar os tipos e suas vantagens no typeChart
         typeChart.put("FIRE", fireMap);
         typeChart.put("WATER", waterMap);
         typeChart.put("GRASS", grassMap);
@@ -37,4 +40,5 @@ public class TypeMap {
             // Retorna o tipo de vantagem do atacante sobre o defensor
             return typeChart.get(typeAttacker).get(typeDefender);   
     }
+
 }

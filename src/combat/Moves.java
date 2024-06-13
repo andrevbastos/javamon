@@ -8,7 +8,7 @@ public class Moves {
     private String attribute1;
     private String attribute2;
 
-    public Moves(String name, String type, int power, String category) {
+    public Moves(String name, String type, String category, int power) {
         this.name = name;
         this.type = type;
         this.power = power;
@@ -17,10 +17,10 @@ public class Moves {
         this.attribute2 = null;
     }
 
-    public Moves(String name, String type, int power, String category, String attribute1, String attribute2) {
+    public Moves(String name, String type, String category, String attribute1, String attribute2) {
         this.name = name;
         this.type = type;
-        this.power = power;
+        this.power = 0;
         this.category = category;
         this.attribute1 = attribute1;
         this.attribute2 = attribute2;
@@ -53,4 +53,5 @@ public class Moves {
     public String getAttribute2() {
         return attribute2;
     }
+
 }

@@ -7,7 +7,6 @@ public class GameWindow extends JFrame {
         this.setTitle("2024 © IFC | Javamon");
         
         this.setResizable(false);
-        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

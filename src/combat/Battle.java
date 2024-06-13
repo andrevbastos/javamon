@@ -3,92 +3,83 @@ package combat;
 import java.lang.reflect.Method;
 import java.util.Random;
 
-import visuals.GamePanel;
+import visuals.screens.*;
 
 public class Battle{
-    private Trainer t1;
-    private Trainer t2;
-    private GamePanel gp;
+    private Pokemon p1;
+    private Pokemon p2;
+    private Combat c;
 
-    public Battle(Trainer t1, Trainer t2, GamePanel gp) {
-        this.t1 = t1;
-        this.t2 = t2;
-        this.gp = gp;
+    public Battle(Combat c) {
+        this.c = c;
         
-        updatePokemonInfo();
-
     }
 
-    public void battle() {
-        Trainer first;
-        Trainer second;
-        Trainer winner = null;
+    public void setP1(Pokemon p1) {
+        this.p1 = p1;
+    }
+
+    public void setP2(Pokemon p2) {
+        this.p2 = p2;
+    }
+
+    public String run() {
+        Pokemon first;
+        Pokemon second;
+        Pokemon winner = null;
         boolean stop = false;
+        c.addToHistory("(" + p1.getName() + " x " + p2.getName() + ": ");
 
         while (!stop) {
 
-            // Escolhe o primeiro e segundo a atacar com base na velocidade dos pokemons
-            first = (t1.getPokemon().getSpeed() >= t2.getPokemon().getSpeed()) ? t1 : t2;
-            second = (first == t1) ? t2 : t1;
+            first = (p1.getSpeed() >= p2.getSpeed()) ? p1 : p2;
+            second = (first == p1) ? p2 : p1;
 
-            // first ataca
             useMove(first, second);
-            updatePokemonInfo();
             
-            // second só ataca se sobreviver o do first
-            if (second.getPokemon().getHp() != 0) {
+            if (second.getHp() != 0) {
                 useMove(second, first);
-                updatePokemonInfo();
             }
 
-            winner = (t1.getPokemon().getHp() == 0) ? t2 : (t2.getPokemon().getHp() == 0) ? t1 : null;
+            winner = (p1.getHp() == 0) ? p2 : (p2.getHp() == 0) ? p1 : null;
             stop = (winner != null);
 
         }
 
-        System.out.println("\n" + winner.getName() + " won!");
-        t1.getPokemon().heal();
-        t2.getPokemon().heal();
+        p1.heal();
+        p2.heal();
+        c.addToHistory(");\n");
+        return winner.getName();
         
     }
 
-    // Atacar
-    public void useMove(Trainer attacker, Trainer defender) {
+    public void useMove(Pokemon attacker, Pokemon defender) {
         Random rn = new Random();
-        int ataque = rn.nextInt(99) + 1;    // D100
-        int i = rn.nextInt(3);              // ataque aleatório
+        int ataque = rn.nextInt(99) + 1;
+        int i = rn.nextInt(3);
         String txt;
 
-        txt = attacker.getPokemon() + " uses " + attacker.getPokemon().getMoves(i).getName() + "!";
-        txt = (attacker == t2) ? "Foe " + txt : txt;
-        updateTextBox(txt);
+        txt = " " + attacker + " uses " + attacker.getMoves(i).getName() + ";";
+        c.addToHistory(txt);
         
-        // Checagem se acertou o ataque
-        if (ataque <= attacker.getPokemon().getAccuracy())
-            takeMove(attacker.getPokemon().getMoves(i), attacker.getPokemon(), defender.getPokemon());
-        else {
-            txt = attacker.getPokemon()  + " missed.";
-            txt = (attacker == t2) ? "Foe " + txt : txt;
-            updateTextBox(txt);
-        }
+        if (ataque <= attacker.getAccuracy())
+            takeMove(attacker.getMoves(i), attacker, defender);
+
     }
 
     // Receber ataque
     public void takeMove(Moves move, Pokemon attacker, Pokemon defender) {
         String category = move.getCategory();
         double damage = 0;
-        double multiplier = TypeMap.checkMultiplier(move.getType(), defender.getType());
+        double multiplier = Types.checkMultiplier(move.getType(), defender.getType());
 
-        // Checagem do type do ataque antes de receber
         switch (category) {
         case "PHYSICAL":
             damage = (int) ((move.getPower() * attacker.getAttack() / defender.getDefense()) / 5) + 2;
-            multiplierToText(multiplier);
             break;
 
         case "SPECIAL":
             damage = (int) ((move.getPower() * attacker.getSpAttack() / defender.getSpDefense()) / 5) + 2;
-            multiplierToText(multiplier);
             break;
         
         case "STATUS1":
@@ -101,7 +92,6 @@ public class Battle{
             
         }
 
-        // Receber o damage depois da checagem de categoria
         damage = damage * multiplier;
 
         if (category != "STATUS1" && category != "STATUS2") {
@@ -113,23 +103,12 @@ public class Battle{
 
     }
 
-    public void multiplierToText(double multiplier) {
-        if (multiplier == 1.5) {
-            updateTextBox("It's super effective!");
-        } else if (multiplier == 0.5) {
-            updateTextBox("It's not very effective...");
-        }
-    }
-
     public void status(Moves move, Pokemon p, int value) {
         Method m;
 
-        // Busca o metodo usado para reduzir a status escolhido
 		try {
 			m = methodTroughName(Pokemon.class, "set" + move.getAttribute1());
-            String txt = (String) m.invoke(p, value);
-            txt = (p == t2.getPokemon()) ? "Foe " + txt : txt;
-			updateTextBox(txt);
+            m.invoke(p, value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -144,16 +123,7 @@ public class Battle{
 		}
 		throw new Exception("Método " + nome + " não encontrado");
 	}
-
-    // Devolve os valores de vida e nome dos pokemons para o game panel
-    private void updatePokemonInfo() {
-        gp.updatePokemon1Info(t1.getPokemon().getName(), t1.getPokemon().getHp());
-        gp.updatePokemon2Info(t2.getPokemon().getName(), t2.getPokemon().getHp());
-    }
-
-    // Altera o texto mostrado no game panel
-    private void updateTextBox(String txt) {
-        gp.updateTextBox(txt);
-    }
+    
+    
 
 }
