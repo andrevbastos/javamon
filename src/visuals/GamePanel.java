@@ -1,42 +1,28 @@
 package visuals;
 
 import javax.swing.*;
-
-import visuals.screens.Combat;
-import visuals.screens.Start;
-
 import java.awt.*;
 import java.io.*;
 
+import visuals.screens.*;
+import combat.*;
+
 public class GamePanel extends JPanel {
-    private static Font pkmn, hollow, solid;
+    private static Font pkmn, solid;
 
     private int prefWidth = 960;
     private int prefHeight = 640;
 
     private Start startPanel;
-    private Combat combatPanel;    
-    
-    private String p1Name;
-    private int p1Hp;
-    private String p2Name;
-    private int p2Hp;
-    private String textBox = "";
+    private Combat combatPanel;
+
+    private Pokemon[] selectedPokemons;
 
     public enum SimState {
         START_SCREEN,
         COMBAT_SCREEN
     }
-
     private SimState currentState;
-
-    public SimState getCurrentState() {
-        return currentState;
-    }
-
-    public void setCurrentState(SimState currentState) {
-        this.currentState = currentState;
-    }
 
     public GamePanel() {
 
@@ -50,7 +36,6 @@ public class GamePanel extends JPanel {
     public void createFonts() {
         try {
             pkmn = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/PKMN.ttf"));
-            hollow = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/PokemonHollow.ttf"));
             solid = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/PokemonSolid.ttf"));
 
         } catch (FontFormatException | IOException e) {
@@ -58,7 +43,7 @@ public class GamePanel extends JPanel {
         }
     }
 
-    public void startGameThread() {
+    public void startSimThread() {
 
         // this.startPanel = new Start(this);
         // currentState = SimState.START_SCREEN;
@@ -67,7 +52,7 @@ public class GamePanel extends JPanel {
         currentState = SimState.COMBAT_SCREEN;
         if (currentState == SimState.COMBAT_SCREEN) {
             this.combatPanel = new Combat(this);
-            combatPanel.runStartSequence();
+            combatPanel.runCombatSequence();
         }
 
     }  
@@ -82,35 +67,53 @@ public class GamePanel extends JPanel {
         g2d.setColor(Color.BLACK);
         g2d.drawString("Javamon", (prefWidth/2) - (textWidth/2), 80);
 
-        g2d.setFont(pkmn.deriveFont(Font.PLAIN, 15));
-        if (currentState == SimState.COMBAT_SCREEN) {
-            g2d.drawString(p1Name + ": ", 50, 140);
-            g2d.drawString("" + p1Hp, 50, 160);
-        
-            g2d.drawString(p2Name + ": ", 50, 210);
-            g2d.drawString("" + p2Hp, 50, 230);
+        if (selectedPokemons != null) {
+            g2d.setFont(pkmn.deriveFont(Font.PLAIN, 15));
+            int pokemonHeight = 180;
 
-            g2d.drawString(textBox, 50, 270);
+            for (Pokemon p : selectedPokemons) {
+                int victories = p.getVictories();
+                int rounds = (int) p.getRounds() / p.getVictories();
+                g2d.drawString(p.getName() + ": won " + victories + " in an avegerage of " + rounds + " rounds", 200, pokemonHeight);
+                pokemonHeight += 40;
+            }
+
+            orderPokemon();
+            pokemonHeight += 40;
+            for (int i = 0; i < selectedPokemons.length; i++) {
+                g2d.drawString("" + (i + 1) + ". " +selectedPokemons[i].getName(), 200, pokemonHeight);
+                pokemonHeight += 40;
+            }
+
         }
     }
 
-    public void updatePokemon1Info(String name, int hp) {
-        this.p1Name = name;
-        this.p1Hp = hp;
+    public void setSimStats(Pokemon[] sp) {
+        this.selectedPokemons = sp;
         repaint();
     }
 
-    public void updatePokemon2Info(String name, int hp) {
-        this.p2Name = name;
-        this.p2Hp = hp;
-        repaint();
+    public void orderPokemon() {
+        int i, j;
+        Pokemon temp;
+
+        for (i = selectedPokemons.length - 1; i > 0; i--) {
+            for (j = 0; j < i; j++) {
+                if (selectedPokemons[j].getVictories() < selectedPokemons[j + 1].getVictories()) {
+                    temp = selectedPokemons[j];
+                    selectedPokemons[j] = selectedPokemons[j + 1];
+                    selectedPokemons[j + 1] = temp;
+                } else if (selectedPokemons[j].getVictories() == selectedPokemons[j + 1].getVictories()) {
+                    if (selectedPokemons[j].getRounds() > selectedPokemons[j + 1].getRounds()) {
+                        temp = selectedPokemons[j];
+                        selectedPokemons[j] = selectedPokemons[j + 1];
+                        selectedPokemons[j + 1] = temp;
+                    }
+                }
+            }
+        }
     }
 
-    public void updateTextBox(String txt) {
-        this.textBox = txt;
-        repaint();
-    }
-    
     public int getPrefWidth() {
         return prefWidth;
     }

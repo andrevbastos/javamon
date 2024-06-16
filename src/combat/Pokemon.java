@@ -1,5 +1,10 @@
 package combat;
 
+import java.lang.reflect.Method;
+import java.util.Random;
+
+import visuals.screens.Combat;
+
 public class Pokemon {
     private String name;
     private final String type;
@@ -12,9 +17,10 @@ public class Pokemon {
     private double[] speed;
     private double[] accuracy;
     private Moves[] moves;
+    private int victories;
+    private int rounds;
 
-    public Pokemon(String name, String type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed
-                    , double accuracy, Moves[] moves) {
+    public Pokemon(String name, String type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Moves[] moves) {
         this.name = name; 
         this.type = type;
         this.hpmax = hpmax;
@@ -26,6 +32,8 @@ public class Pokemon {
         this.speed = new double[] {0, speed};
         this.accuracy = new double[] {0, accuracy};
         this.moves = moves;
+        this.victories = 0;
+        this.rounds = 0;
     }
 
     @Override
@@ -46,7 +54,6 @@ public class Pokemon {
     }
 
     public int getHp() {
-        // Vida não é enviada como negativa
         if (this.hp > 0) 
             return (int) hp;
         else
@@ -54,30 +61,30 @@ public class Pokemon {
     }
 
     public double getAttack() {
-        return getStagedStatus(attack);
+        return getStagedStats(attack);
     }
 
     public double getSpAttack() {
-        return getStagedStatus(spattack);
+        return getStagedStats(spattack);
     }
 
     public double getDefense() {
-        return getStagedStatus(defense);
+        return getStagedStats(defense);
     }
 
     public double getSpDefense() {
-        return getStagedStatus(spdefense);
+        return getStagedStats(spdefense);
     }
 
     public double getSpeed() {
-        return getStagedStatus(speed);
+        return getStagedStats(speed);
     }
 
     public double getAccuracy() {
-        return getStagedStatus(accuracy);
+        return getStagedStats(accuracy);
     }
 
-    public double getStagedStatus(double[] type) { 
+    public double getStagedStats(double[] type) { 
 
         double value;
 
@@ -92,7 +99,6 @@ public class Pokemon {
     }
 
     public Moves getMoves(int i) {
-        // Pega o move do pokemon dentro do seu vetor de moves
         return moves[i];
     }
 
@@ -136,14 +142,94 @@ public class Pokemon {
         }
     }
 
-    public String checkStats() {
-        return ( this 
-            + "\nAttack: " + attack[0] + " " + getAttack() 
-            + "\nSpAttack: " + spattack[0] + " " + getSpAttack() 
-            + "\nDefense: " + defense[0] + " " + getDefense()
-            + "\nSpDefense: " + spdefense[0] + " " + getSpDefense()
-            + "\nSpeed: " + speed[0] + " " + getSpeed()
-            + "\nAccuracy: " + accuracy[0] + " " + getAccuracy() );
+    public void useMove(Pokemon defender, Combat c) {
+        Random rn = new Random();
+        int ataque = rn.nextInt(99) + 1;
+        int i = rn.nextInt(3);
+        String txt;
+
+        txt = " " + this + " uses " + this.getMoves(i).getName() + ",";
+        c.addToHistory(txt);
+        
+        if (ataque <= this.getAccuracy()) {
+            defender.takeMove(this.getMoves(i), this);
+        }
+
+    }
+
+    public void takeMove(Moves move, Pokemon attacker) {
+        String category = move.getCategory();
+        double damage = 0;
+        double multiplier = Types.checkMultiplier(move.getType(), this.getType());
+
+        switch (category) {
+        case "PHYSICAL":
+            damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
+            break;
+
+        case "SPECIAL":
+            damage = (int) ((move.getPower() * attacker.getSpAttack() / this.getSpDefense()) / 5) + 2;
+            break;
+        
+        case "STATUS1":
+            status(move, this, -1);
+            break;
+
+        case "STATUS2":
+            status(move, attacker, 1);
+            break;
+            
+        }
+
+        damage = damage * multiplier;
+
+        if (category != "STATUS1" && category != "STATUS2") {
+            if (hp - damage < 0) {
+                hp = 0;
+            } else {
+                hp += -damage;
+            }
+        }
+
+    }
+    
+    private void status(Moves move, Pokemon p, int value) {
+        Method m;
+		try {
+			m = methodTroughName(Pokemon.class, "set" + move.getAttribute1());
+            m.invoke(p, value);
+            if (move.getAttribute2() != null) { 
+			    m = methodTroughName(Pokemon.class, "set" + move.getAttribute2());
+                m.invoke(p, value);
+            }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+
+    private Method methodTroughName(Class<?> c, String nome) throws Exception {
+		for (Method m : c.getMethods()) {
+			if (m.getName().equals(nome)) {
+				return m;
+			} 
+		}
+		throw new Exception("Método " + nome + " não encontrado");
+	}
+
+    public int getVictories() {
+        return victories;
+    }
+
+    public int getRounds() {
+        return rounds;
+    }
+
+    public void addVictory() {
+        this.victories += 1;
+    }
+
+    public void setRounds(int r) {
+        this.rounds += r;
     }
 
     public void heal() {
@@ -154,6 +240,6 @@ public class Pokemon {
         this.spdefense[0] = 0;
         this.speed[0] = 0;
         this.accuracy[0] = 0;
-
     }
+
 }

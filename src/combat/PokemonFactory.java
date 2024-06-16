@@ -4,28 +4,24 @@ import java.util.Random;
 
 public class PokemonFactory {
     MovesFactory mf = new MovesFactory();
-
     Moves charmanderMoves[] = {
         mf.getMove("GROWL"),
         mf.getMove("SCRATCH"),
         mf.getMove("EMBER"),
         mf.getMove("SMOKESCREEN")
     };
-
     Moves bulbasaurMoves[] = {
         mf.getMove("GROWL"),
         mf.getMove("TACKLE"),
         mf.getMove("VINE WHIP"),
         mf.getMove("GROWTH")
     };
-
     Moves squirtleMoves[] = {
         mf.getMove("TAIL WHIP"),
         mf.getMove("TACKLE"),
         mf.getMove("WATER GUN"),
         mf.getMove("WITHDRAW")
     };
-
     Moves pikachuMoves[] = {
         mf.getMove("THUNDER SHOCK"),
         mf.getMove("GROWL"),

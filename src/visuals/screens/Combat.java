@@ -1,5 +1,7 @@
 package visuals.screens;
 
+import java.io.*;
+
 import combat.*;
 import visuals.GamePanel;
 
@@ -23,28 +25,52 @@ public class Combat {
 
     }
 
-    public void runStartSequence() {
-
+    public void runCombatSequence() {
         for (int i = 0; i < selectedPokemons.length; i++) {
             for (int j = i + 1; j < selectedPokemons.length; j++) {
                 if (i != j) {
                     battle.setP1(selectedPokemons[i]);
                     battle.setP2(selectedPokemons[j]);
                     for (int k = repetitions; k >= 0; k--) {
-                        winners += battle.run() + "; ";
+                        battle.run();
                     }
-                    winners += "\n\n";
                 }
             }
         }
 
-        System.out.println(winners);
-        System.out.println(moveHistory);
+        createLogs();
+        gp.setSimStats(selectedPokemons);
+    }
 
+    public void addWinner(String txt) {
+        winners += txt;
     }
 
     public void addToHistory(String txt) {
         this.moveHistory += txt;
+    }
+
+    public void createLogs() {
+        try {
+            createWinnersLog();
+            createMoveHistoryLog();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createWinnersLog() throws IOException {
+        String winnersFilename = "winners_log.txt";
+        try (BufferedWriter w = new BufferedWriter(new FileWriter(winnersFilename))) {
+            w.write(winners);
+        }
+    }
+
+    private void createMoveHistoryLog() throws IOException {
+        String moveHistoryFilename = "move_history_log.txt";
+        try (BufferedWriter w = new BufferedWriter(new FileWriter(moveHistoryFilename))) {
+            w.write(moveHistory);
+        }
     }
 
 }

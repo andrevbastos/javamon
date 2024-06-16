@@ -24,7 +24,7 @@ public class GameWindow extends JFrame {
             this.add(panel);
             this.pack();
             this.requestFocus();
-            panel.startGameThread();
+            panel.startSimThread();
         } catch (Exception e) {
             e.printStackTrace();
         }

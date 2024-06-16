@@ -10,7 +10,7 @@ public class MovesFactory {
         createMoves();
     }
 
-    public void createMoves() {
+    private void createMoves() {
         addMove("GROWL", "NORMAL","STATUS1", "Attack", null);
         addMove("SCRATCH", "NORMAL", "PHYSICAL", 40);
         addMove("EMBER", "FIRE", "SPECIAL", 40);
@@ -26,12 +26,12 @@ public class MovesFactory {
         addMove("AGILITY", "PSYCHIC", "STATUS2", "Speed", null);
     }
 
-    public void addMove(String name, String type, String category, int power) {
+    private void addMove(String name, String type, String category, int power) {
         Moves move = new Moves(name, type, category, power);
         movesChart.put(name, move);
     }
 
-    public void addMove(String name, String type, String category, String attribute1, String attribute2) {
+    private void addMove(String name, String type, String category, String attribute1, String attribute2) {
         Moves move = new Moves(name, type, category, attribute1, attribute2);
         movesChart.put(name, move);
     }
