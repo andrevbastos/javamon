@@ -60,14 +60,14 @@ public class Combat {
     }
 
     private void createWinnersLog() throws IOException {
-        String winnersFilename = "winners_log.txt";
+        String winnersFilename = "logs/winners_log.txt";
         try (BufferedWriter w = new BufferedWriter(new FileWriter(winnersFilename))) {
             w.write(winners);
         }
     }
 
     private void createMoveHistoryLog() throws IOException {
-        String moveHistoryFilename = "move_history_log.txt";
+        String moveHistoryFilename = "logs/move_history_log.txt";
         try (BufferedWriter w = new BufferedWriter(new FileWriter(moveHistoryFilename))) {
             w.write(moveHistory);
         }
