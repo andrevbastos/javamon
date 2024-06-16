@@ -51,7 +51,11 @@ public class Combat {
     }
 
     public void createLogs() {
-        try {
+        try {        
+            File logsDir = new File("logs");
+            if (!logsDir.exists()) {
+                logsDir.mkdirs();
+            }
             createWinnersLog();
             createMoveHistoryLog();
         } catch (IOException e) {
