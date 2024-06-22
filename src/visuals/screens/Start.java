@@ -2,61 +2,67 @@ package visuals.screens;
 
 import visuals.*;
 
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Start {
 
     private GamePanel gp;
-    private JButton charmanderButton;
-    private JButton squirtleButton;
-    private JButton bulbasaurButton;
-    private int buttonWidth = 150;
-    private int buttonHeight = 150;
-
+    private JButton okButton;
+    private JTextField repetitionsField;
+    private JToggleButton charmanderButton;
+    private JToggleButton squirtleButton;
+    private JToggleButton bulbasaurButton;
+    private ArrayList<String> selectedPokemons;
 
     public Start(GamePanel gp) {
         
         this.gp = gp;
-        int numButtons = 3; // Número de botões
-        int buttonSpacing = 20; // Espaçamento entre os botões
-        int totalButtonWidth = numButtons * buttonWidth + (numButtons - 1) * buttonSpacing;
-        int buttonX = (gp.getPrefWidth() - totalButtonWidth) / 2;
-        int buttonY = (gp.getPrefHeight() - 200) / 2;
+        this.selectedPokemons = new ArrayList<String>();
+
+        createButtons();        
         
+    }
+
+    public void createButtons() {
+
         try {
-            charmanderButton = new JButton(new ImageIcon("res/pokemon/charmander.png"));
-            squirtleButton = new JButton(new ImageIcon("res/pokemon/squirtle.png"));
-            bulbasaurButton = new JButton(new ImageIcon("res/pokemon/bulbasaur.png"));
+            charmanderButton = new JToggleButton(new ImageIcon("res/pokemon/charmander.png"));
+            charmanderButton.setName("CHARMANDER");
+            squirtleButton = new JToggleButton(new ImageIcon("res/pokemon/squirtle.png"));
+            squirtleButton.setName("SQUIRTLE");
+            bulbasaurButton = new JToggleButton(new ImageIcon("res/pokemon/bulbasaur.png"));
+            bulbasaurButton.setName("BULBASAUR");
+            okButton = new JButton("OK");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        
-        charmanderButton.setBounds(buttonX, buttonY, buttonWidth, buttonHeight);
-        charmanderButton.addActionListener(new ActionListener() {
+        addSelectionAction(charmanderButton);
+        addSelectionAction(squirtleButton);
+        addSelectionAction(bulbasaurButton);
+
+        okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
             }
         });
 
-        squirtleButton.setBounds(buttonX + buttonWidth + buttonSpacing, buttonY, buttonWidth, buttonHeight);
-        squirtleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        });
+    }
 
-        bulbasaurButton.setBounds(buttonX + 2 * (buttonWidth + buttonSpacing), buttonY, buttonWidth, buttonHeight);
-        bulbasaurButton.addActionListener(new ActionListener() {
+    public void addSelectionAction(JToggleButton b) {
+        b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                if (selectedPokemons.contains(b.getName())) {
+                    selectedPokemons.remove(b.getName());
+                } else {
+                    selectedPokemons.add(b.getName());
+                }
             }
         });
-        
     }
 
     public void runStartSequence() {

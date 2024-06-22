@@ -10,18 +10,21 @@ public class PokemonFactory {
         mf.getMove("EMBER"),
         mf.getMove("SMOKESCREEN")
     };
+    
     Moves bulbasaurMoves[] = {
         mf.getMove("GROWL"),
         mf.getMove("TACKLE"),
         mf.getMove("VINE WHIP"),
         mf.getMove("GROWTH")
     };
+
     Moves squirtleMoves[] = {
         mf.getMove("TAIL WHIP"),
         mf.getMove("TACKLE"),
         mf.getMove("WATER GUN"),
         mf.getMove("WITHDRAW")
     };
+
     Moves pikachuMoves[] = {
         mf.getMove("THUNDER SHOCK"),
         mf.getMove("GROWL"),

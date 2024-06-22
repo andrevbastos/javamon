@@ -10,7 +10,7 @@ public class Combat {
     private GamePanel gp;
     private Pokemon[] selectedPokemons;
     private Battle battle;
-    private int repetitions = 10;
+    private int repetitions = 1000;
     private String winners = "";
     private String moveHistory = "";
 
@@ -34,12 +34,14 @@ public class Combat {
                     for (int k = repetitions; k >= 0; k--) {
                         battle.run();
                     }
+                    addWinner("\n");
                 }
             }
         }
 
         createLogs();
-        gp.setSimStats(selectedPokemons);
+        gp.setCombatStats(selectedPokemons);
+        
     }
 
     public void addWinner(String txt) {
@@ -65,14 +67,14 @@ public class Combat {
 
     private void createWinnersLog() throws IOException {
         String winnersFilename = "logs/winners_log.txt";
-        try (BufferedWriter w = new BufferedWriter(new FileWriter(winnersFilename))) {
+        try (BufferedWriter w = new BufferedWriter(new FileWriter(winnersFilename, false))) {
             w.write(winners);
         }
     }
 
     private void createMoveHistoryLog() throws IOException {
         String moveHistoryFilename = "logs/move_history_log.txt";
-        try (BufferedWriter w = new BufferedWriter(new FileWriter(moveHistoryFilename))) {
+        try (BufferedWriter w = new BufferedWriter(new FileWriter(moveHistoryFilename, false))) {
             w.write(moveHistory);
         }
     }

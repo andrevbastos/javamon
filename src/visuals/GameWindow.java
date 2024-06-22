@@ -17,7 +17,7 @@ public class GameWindow extends JFrame {
         ImageIcon icon = null;
 
         try {
-            icon = new ImageIcon("res/pokemon/charizard_front.png");
+            icon = new ImageIcon("res/pokemon/charmander.png");
             this.setIconImage(icon.getImage());
 
             GamePanel panel = new GamePanel();

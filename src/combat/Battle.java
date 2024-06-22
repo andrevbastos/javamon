@@ -54,6 +54,7 @@ public class Battle{
 
         c.addToHistory(" " + rounds + ");\n");
         c.addWinner(winner.getName() + "; ");
+        
     }
     
 }
