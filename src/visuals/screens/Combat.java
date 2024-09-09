@@ -36,6 +36,7 @@ public class Combat {
                     }
                     addWinner("\n");
                 }
+                gp.setCombatStats(selectedPokemons);
             }
         }
 

@@ -14,7 +14,6 @@ public class GamePanel extends JPanel {
     private int prefWidth = 960;
     private int prefHeight = 640;
 
-    private Start startPanel;
     private Combat combatPanel;
 
     private Pokemon[] selectedPokemons;
@@ -41,10 +40,6 @@ public class GamePanel extends JPanel {
     }
 
     public void startSimThread() {
-        // this.startPanel = new Start(this);
-        // currentState = SimState.START_SCREEN;
-        // startPanel.runStartSequence();
-
         currentState = SimState.COMBAT_SCREEN;
         if (currentState == SimState.COMBAT_SCREEN) {
             this.combatPanel = new Combat(this);
