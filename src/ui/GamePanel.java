@@ -1,12 +1,11 @@
-package visuals;
+package ui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
-import visuals.screens.*;
-import combat.*;
+import models.*;
 
 public class GamePanel extends JPanel {
     private Font pkmn, solid;
@@ -64,10 +63,12 @@ public class GamePanel extends JPanel {
             g2d.setFont(pkmn.deriveFont(Font.PLAIN, 15));
             int pokemonHeight = 220;
             for (Pokemon p : selectedPokemons) {
-                int victories = p.getVictories();
-                int rounds = (int) p.getRounds() / p.getVictories();
-                g2d.drawString(p.getName() + ": won " + victories + " in an avegerage of " + rounds + " rounds", 200, pokemonHeight);
-                pokemonHeight += 40;
+                if (p.getVictories() != 0) {
+                    int victories = p.getVictories();
+                    int rounds = (int) p.getRounds() / p.getVictories();
+                    g2d.drawString(p.getName() + ": won " + victories + " in an avegerage of " + rounds + " rounds", 200, pokemonHeight);
+                    pokemonHeight += 40;
+                }
             }
             orderPokemon();
             pokemonHeight += 40;

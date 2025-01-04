@@ -1,4 +1,4 @@
-package combat;
+package models;
 
 public class Moves {
     private String name;

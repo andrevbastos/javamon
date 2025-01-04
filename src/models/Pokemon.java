@@ -1,9 +1,7 @@
-package combat;
+package models;
 
 import java.lang.reflect.Method;
 import java.util.Random;
-
-import visuals.screens.Combat;
 
 public class Pokemon {
     private String name;
@@ -49,10 +47,6 @@ public class Pokemon {
         return type;
     }
 
-    public int getHpmax() {
-        return hpmax;
-    }
-
     public int getHp() {
         if (this.hp > 0) 
             return (int) hp;
@@ -85,7 +79,6 @@ public class Pokemon {
     }
 
     public double getStagedStats(double[] type) { 
-
         double value;
 
         if (type[0] > 0) {
@@ -142,18 +135,19 @@ public class Pokemon {
         }
     }
 
-    public void useMove(Pokemon defender, Combat c) {
+    public String useMove(Pokemon defender) {
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1;
         int i = rn.nextInt(3);
         String txt;
 
-        txt = " " + this + " uses " + this.getMoves(i).getName() + ",";
-        c.addToHistory(txt);
         
         if (ataque <= this.getAccuracy()) {
             defender.takeMove(this.getMoves(i), this);
         }
+        
+        txt = " " + this + " uses " + this.getMoves(i).getName() + ",";
+        return txt;
 
     }
 

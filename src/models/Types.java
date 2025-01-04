@@ -1,4 +1,4 @@
-package combat;
+package models;
 
 import java.util.*;
 
@@ -29,6 +29,7 @@ public class Types {
         typeChart.put("FIRE", fireMap);
         typeChart.put("WATER", waterMap);
         typeChart.put("GRASS", grassMap);
+        typeChart.put("ELECTRIC", electricMap);
     }
         
     // Checar as vantagens a partir do tipo

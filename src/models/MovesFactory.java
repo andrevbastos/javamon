@@ -1,5 +1,4 @@
-package combat;
-
+package models;
 import java.util.*;
 
 public class MovesFactory {
