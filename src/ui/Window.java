@@ -18,7 +18,7 @@ public class Window extends JFrame {
             Panel panel = new Panel(400, 400);
             this.add(panel);
             this.pack();
-            this.requestFocus();
+            panel.requestFocusInWindow();
         } catch (Exception e) {
             e.printStackTrace();
         }

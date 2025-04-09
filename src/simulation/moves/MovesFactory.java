@@ -25,6 +25,14 @@ public class MovesFactory {
         addMove("THUNDER SHOCK", "ELECTRIC", "SPECIAL", 40);
         addMove("SWIFT", "NORMAL", "SPECIAL", 60);
         addMove("AGILITY", "PSYCHIC", "STATUS2", "Speed", null);
+        addMove("SPLASH", "NORMAL", "STATUS1", "Accuracy", null);
+        addMove("BITE", "DARK", "PHYSICAL", 60);
+        addMove("ROCK THROW", "ROCK", "PHYSICAL", 50);
+        addMove("DEFENSE CURL", "NORMAL", "STATUS2", "Defense", null);
+        addMove("ROLLOUT", "ROCK", "PHYSICAL", 30);
+        addMove("THUNDERBOLT", "ELECTRIC", "SPECIAL", 90);
+        addMove("RAZOR LEAF", "GRASS", "PHYSICAL", 55);
+        addMove("SOLAR BEAM", "GRASS", "SPECIAL", 120);
     }
 
     private void addMove(String name, String type, String category, int power) {
