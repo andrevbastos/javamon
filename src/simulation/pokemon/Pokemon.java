@@ -1,10 +1,13 @@
-package models;
+package simulation.pokemon;
 
 import java.lang.reflect.Method;
 import java.util.Random;
 
+import simulation.moves.Moves;
+import simulation.util.Types;
+
 public class Pokemon {
-    private String name;
+    private final String name;
     private final String type;
     private final int hpmax;
     private double hp;

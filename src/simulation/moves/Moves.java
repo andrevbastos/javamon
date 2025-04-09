@@ -1,4 +1,4 @@
-package models;
+package simulation.moves;
 
 public class Moves {
     private String name;

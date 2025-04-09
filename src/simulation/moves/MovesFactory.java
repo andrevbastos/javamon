@@ -1,5 +1,7 @@
-package models;
-import java.util.*;
+package simulation.moves;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MovesFactory {
     
