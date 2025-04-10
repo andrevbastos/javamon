@@ -1,12 +1,12 @@
-package simulation.moves;
+package model.moves;
 
 public class Moves {
-    private String name;
-    private String type;
-    private String category;
-    private int power;
-    private String attribute1;
-    private String attribute2;
+    private final String name;
+    private final String type;
+    private final String category;
+    private final int power;
+    private final String attribute1;
+    private final String attribute2;
 
     public Moves(String name, String type, String category, int power) {
         this.name = name;
@@ -24,10 +24,6 @@ public class Moves {
         this.power = 0;
         this.attribute1 = attribute1;
         this.attribute2 = attribute2;
-    }
-
-    public void setPower(int i) {
-        this.power += i;
     }
 
     public String getName() {

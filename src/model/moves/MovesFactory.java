@@ -1,11 +1,11 @@
-package simulation.moves;
+package model.moves;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MovesFactory {
     
-    private Map<String, Moves> movesChart = new HashMap<>();
+    private final Map<String, Moves> movesChart = new HashMap<>();
 
     public MovesFactory() {
         createMoves();

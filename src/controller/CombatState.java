@@ -1,11 +1,11 @@
-package simulation;
+package controller;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
-import simulation.pokemon.Pokemon;
-import simulation.pokemon.PokemonFactory;
-import ui.Panel;
+import model.Combat;
+import model.pokemon.Pokemon;
+import model.pokemon.PokemonFactory;
+import view.Panel;
 
 public class CombatState implements SimulationState {
     public ArrayList<Pokemon> selectedPokemons = new ArrayList<>();
@@ -20,15 +20,16 @@ public class CombatState implements SimulationState {
     @Override
     public void handleInput(Simulation sim, String input) { }
 
-    public void createPokemons(Simulation sim) {
+    @Override
+    public void run(Simulation sim) {
         PokemonFactory pf = new PokemonFactory();
-
+        
         for (String pokeName : sim.getSelectedPokemons()) {
             this.selectedPokemons.add(pf.getPokemon(pokeName));
         }
-    }
-    
-    public void run() {
         
-    }    
+        Combat combat = new Combat(selectedPokemons);
+        sim.addToLog(combat.run(sim.getRepetitions()));
+        sim.setState(sim.getStatsState());
+    }
 }

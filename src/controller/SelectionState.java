@@ -1,10 +1,10 @@
-package simulation;
+package controller;
 
-import ui.Panel;
 import java.awt.Graphics2D;
+import view.Panel;
 
 public class SelectionState implements SimulationState {
-    private String[] availablePokemons = {"CHARMANDER", "BULBASAUR", "SQUIRTLE", "PIKACHU" };
+    private final String[] availablePokemons = {"CHARMANDER", "BULBASAUR", "SQUIRTLE", "PIKACHU", "GYARADOS", "GEODUDE", "JOLTEON", "VENUSAUR" };
 
     @Override
     public void update(Simulation sim, Panel panel, Graphics2D g2d) {
@@ -23,8 +23,6 @@ public class SelectionState implements SimulationState {
             if (input.equals("ENTER")) {
                 if (sim.getSelectedPokemons().size() >= 2) {
                     sim.setState(sim.getCombatState());
-                    sim.getCombatState().createPokemons(sim);
-                    sim.getCombatState().run();
                 } else {
                     System.out.println("Not enough pokémons!");
                 }
@@ -39,4 +37,7 @@ public class SelectionState implements SimulationState {
             System.out.println("Input inválido!");
         }
     }
+
+    @Override
+    public void run(Simulation sim) { }
 }

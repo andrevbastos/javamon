@@ -1,28 +1,35 @@
-package simulation;
+package controller;
 
-import ui.Panel;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import model.util.LogHandler;
+import view.Panel;
 
 public class Simulation {
-    private ArrayList<String> selectedPokemons = new ArrayList<>();
-    private SimulationState selectionState = new SelectionState();
-    private CombatState combatState = new CombatState();
+    private final Panel panel;
+    private final int repetitions = 1000;
+    private final ArrayList<String> selectedPokemons = new ArrayList<>();
+    private final LogHandler log = new LogHandler();
+
+    private final SimulationState selectionState = new SelectionState();
+    private final CombatState combatState = new CombatState();
+    private final StatsState statsState = new StatsState();
 
     private SimulationState currentState;
-
-    public Simulation() {
+    
+    public Simulation(Panel panel) {
+        this.panel = panel;
         this.currentState = new SelectionState();
     }
-
+    
     public void update(Panel panel, Graphics2D g2d) {
         currentState.update(this, panel, g2d);
     }
-
+    
     public void handleInput(String input) {
         currentState.handleInput(this, input);
     }
-
+    
     public void selectPokemon(String pokemonName) {
         if (selectedPokemons.contains(pokemonName)) {
             selectedPokemons.remove(pokemonName);
@@ -32,24 +39,42 @@ public class Simulation {
             System.out.println(pokemonName + " adicionado à seleção!");
         }
     }
+    
+    public void addToLog(String string) {
+        log.addToLog(string);
+    }
 
-    public void setState(SimulationState state) {
-        this.currentState = state;
+    public void createLog() {
+        log.createLog();
     }
 
     public ArrayList<String> getSelectedPokemons() {
         return selectedPokemons;
     }
+    
+    public int getRepetitions() {
+        return repetitions;
+    }
+
+    public void setState(SimulationState state) {
+        this.currentState = state;
+        currentState.run(this);
+        panel.repaint();
+    }
 
     public SimulationState getSelectionState() {
         return selectionState;
     }
-    
+        
     public CombatState getCombatState() {
         return combatState;
+    }    
+    
+    public StatsState getStatsState() {
+        return statsState;
     }
-
+    
     public void reset() {
         selectedPokemons.clear();
-    }
-}
+    }    
+}    

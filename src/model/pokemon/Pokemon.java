@@ -1,25 +1,22 @@
-package simulation.pokemon;
+package model.pokemon;
 
 import java.lang.reflect.Method;
 import java.util.Random;
-
-import simulation.moves.Moves;
-import simulation.util.Types;
+import model.moves.Moves;
+import model.util.Types;
 
 public class Pokemon {
     private final String name;
     private final String type;
     private final int hpmax;
+    private final double[] attack;
+    private final double[] spattack;
+    private final double[] defense;
+    private final double[] spdefense;
+    private final double[] speed;
+    private final double[] accuracy;
+    private final Moves[] moves;
     private double hp;
-    private double[] attack;
-    private double[] spattack;
-    private double[] defense;
-    private double[] spdefense;
-    private double[] speed;
-    private double[] accuracy;
-    private Moves[] moves;
-    private int victories;
-    private int rounds;
 
     public Pokemon(String name, String type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Moves[] moves) {
         this.name = name; 
@@ -33,8 +30,6 @@ public class Pokemon {
         this.speed = new double[] {0, speed};
         this.accuracy = new double[] {0, accuracy};
         this.moves = moves;
-        this.victories = 0;
-        this.rounds = 0;
     }
 
     @Override
@@ -142,16 +137,12 @@ public class Pokemon {
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1;
         int i = rn.nextInt(3);
-        String txt;
-
         
         if (ataque <= this.getAccuracy()) {
             defender.takeMove(this.getMoves(i), this);
         }
-        
-        txt = " " + this + " uses " + this.getMoves(i).getName() + ",";
-        return txt;
 
+        return this.getMoves(i).getName();
     }
 
     public void takeMove(Moves move, Pokemon attacker) {
@@ -160,22 +151,10 @@ public class Pokemon {
         double multiplier = Types.checkMultiplier(move.getType(), this.getType());
 
         switch (category) {
-        case "PHYSICAL":
-            damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
-            break;
-
-        case "SPECIAL":
-            damage = (int) ((move.getPower() * attacker.getSpAttack() / this.getSpDefense()) / 5) + 2;
-            break;
-        
-        case "STATUS1":
-            status(move, this, -1);
-            break;
-
-        case "STATUS2":
-            status(move, attacker, 1);
-            break;
-            
+            case "PHYSICAL" -> damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
+            case "SPECIAL" -> damage = (int) ((move.getPower() * attacker.getSpAttack() / this.getSpDefense()) / 5) + 2;
+            case "STATUS1" -> status(move, this, -1);
+            case "STATUS2" -> status(move, attacker, 1);
         }
 
         damage = damage * multiplier;
@@ -212,22 +191,6 @@ public class Pokemon {
 		}
 		throw new Exception("Método " + nome + " não encontrado");
 	}
-
-    public int getVictories() {
-        return victories;
-    }
-
-    public int getRounds() {
-        return rounds;
-    }
-
-    public void addVictory() {
-        this.victories += 1;
-    }
-
-    public void setRounds(int r) {
-        this.rounds += r;
-    }
 
     public void heal() {
         this.hp = hpmax;

@@ -1,19 +1,19 @@
-package ui;
+package view;
 
-import simulation.Simulation;
-import javax.swing.JPanel;
+import controller.Simulation;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Font;
-import java.awt.FontFormatException;
+import javax.swing.JPanel;
 
 public class Panel extends JPanel {
-    private Simulation sim = new Simulation();
+    private final Simulation sim = new Simulation(this);
     public int width, height;
     public Font pkmn, solid;
 
@@ -44,25 +44,16 @@ public class Panel extends JPanel {
         String input = "";
         
         switch(keyCode) {
-            case KeyEvent.VK_ENTER:
-                input = "ENTER";
-                break;
-            case KeyEvent.VK_1:
-                input = "1";
-                break;
-            case KeyEvent.VK_2:
-                input = "2";
-                break;
-            case KeyEvent.VK_3:
-                input = "3";
-                break;
-            case KeyEvent.VK_4:
-                input = "4";
-                break;
-            case KeyEvent.VK_R:
-                input = "R";
-                break;
-            // Adicione mais teclas conforme necessário
+            case KeyEvent.VK_ENTER -> input = "ENTER";
+            case KeyEvent.VK_1 -> input = "1";
+            case KeyEvent.VK_2 -> input = "2";
+            case KeyEvent.VK_3 -> input = "3";
+            case KeyEvent.VK_4 -> input = "4";
+            case KeyEvent.VK_5 -> input = "5";
+            case KeyEvent.VK_6 -> input = "6";
+            case KeyEvent.VK_7 -> input = "7";
+            case KeyEvent.VK_8 -> input = "8";
+            case KeyEvent.VK_R -> input = "R";
         }
         
         if (!input.isEmpty()) {
