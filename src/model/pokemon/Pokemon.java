@@ -138,7 +138,7 @@ public class Pokemon {
         }
     }
 
-    public void setSpdefense(int stage) {
+    public void setSpDefense(int stage) {
         if (spdefense[0] + stage <= 3 || spdefense[0] + stage >= -3) {   
             this.spdefense[0] += stage;
         }
@@ -158,8 +158,8 @@ public class Pokemon {
 
     public String useMove(AbilityObserver observer, Pokemon defender) {
         Random rn = new Random();
-        int ataque = rn.nextInt(99) + 1;
-        Move selectedMove = this.getMove(rn.nextInt(3));
+        int ataque = rn.nextInt(100) + 1;
+        Move selectedMove = this.getMove(rn.nextInt(4));
         AtomicReference<Float> multiplier = new AtomicReference<>(1.0f);
         
         if (ataque <= this.getAccuracy()) {

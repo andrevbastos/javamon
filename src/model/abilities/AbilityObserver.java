@@ -18,9 +18,9 @@ public class AbilityObserver {
     }
 
     public void handleEvent(AbilityEvent event, Move move, AtomicReference<Float> multiplier) {
-        if (p1.getAbility().getAbilityEvent() == event)
+        if (p1.getAbility() != null && p1.getAbility().getAbilityEvent() == event)
             p1.ability(p2, move, multiplier);
-        if (p2.getAbility().getAbilityEvent() == event)
+        if (p2.getAbility() != null && p2.getAbility().getAbilityEvent() == event)
             p2.ability(p1, move, multiplier);
     }
 }

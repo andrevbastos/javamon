@@ -4,17 +4,36 @@ import java.awt.Graphics2D;
 import view.Panel;
 
 public class SelectionState implements SimulationState {
-    private final String[] availablePokemons = {"CHARMANDER", "BULBASAUR", "SQUIRTLE", "PIKACHU", "GEODUDE" };
+    private int pokeIndex = 0;
+    private final String[] availablePokemons = {
+        "CHARMANDER", "BULBASAUR", "SQUIRTLE",
+        "PIKACHU", "CATERPIE", "POOCHYENA",
+        "AXEW", "TOGEPI", "MANKEY", 
+        "ROOKIDEE", "GASTLY", "SANDSHREW", 
+        "VULPIX-ALOLA", "RATATTA", "EKANS", 
+        "SPOINK", "NOSEPASS", "KLINK"
+    };
 
     @Override
     public void update(Simulation sim, Panel panel, Graphics2D g2d) {
         g2d.setFont(panel.pkmn.deriveFont(20f));
+        g2d.drawString("Select your pokémons", 50, 50);
         
-        g2d.drawString("Selecione pokémons:", 50, 50);
+        g2d.setFont(panel.pkmn.deriveFont(10f));
+        int endIndex = Math.min(pokeIndex + 9, availablePokemons.length);
         
-        for (int i = 0; i < availablePokemons.length; i++) {
-            g2d.drawString((i+1) + ". " + availablePokemons[i], 50, 80 + i * 30);
+        for (int i = pokeIndex; i < endIndex; i++) {
+            int displayPos = i - pokeIndex + 1;
+            g2d.drawString(
+                displayPos + ". " + availablePokemons[i],
+                (panel.width/2) - (panel.width/5),
+                80 + (displayPos-1) * 30
+            );
         }
+        
+        g2d.drawString("E to next page", 10, panel.height - 10);
+        g2d.drawString("Q to next page", 10, panel.height - 30);
+        g2d.drawString("" + (1+(pokeIndex/9)), panel.width - 30, panel.height - 10);
     }
 
     @Override
@@ -24,20 +43,32 @@ public class SelectionState implements SimulationState {
                 if (sim.getSelectedPokemons().size() >= 2) {
                     sim.setState(sim.getCombatState());
                 } else {
-                    System.out.println("Not enough pokémons!");
+                    System.out.println("Selecione pelo menos 2 Pokémon!");
                 }
                 return;
             }
+            if (input.equalsIgnoreCase("E")) {
+                pokeIndex = Math.min(pokeIndex + 9, availablePokemons.length - 9);
+                sim.repaint();
+                return;
+            }
+            if (input.equalsIgnoreCase("Q")) {
+                pokeIndex = Math.max(0, pokeIndex - 9);
+                sim.repaint();
+                return;
+            }
+    
             int choice = Integer.parseInt(input);
-            if (choice >= 1 && choice <= availablePokemons.length) {
-                String pokemonName = availablePokemons[choice - 1];
+            int displayedPokemons = Math.min(9, availablePokemons.length - pokeIndex);
+            if (choice >= 1 && choice <= displayedPokemons) {
+                String pokemonName = availablePokemons[pokeIndex + choice - 1];
                 sim.selectPokemon(pokemonName);
+                sim.repaint();
+            } else {
+                System.out.println("Invalid number! Choose from 1 to " + displayedPokemons);
             }
         } catch (NumberFormatException e) {
-            System.out.println("Input inválido!");
+            System.out.println("Invalid input!");
         }
     }
-
-    @Override
-    public void run(Simulation sim) { }
 }

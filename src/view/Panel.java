@@ -53,12 +53,15 @@ public class Panel extends JPanel {
             case KeyEvent.VK_6 -> input = "6";
             case KeyEvent.VK_7 -> input = "7";
             case KeyEvent.VK_8 -> input = "8";
+            case KeyEvent.VK_9 -> input = "9";
+            case KeyEvent.VK_E -> input = "E";
+            case KeyEvent.VK_Q -> input = "Q";
             case KeyEvent.VK_R -> input = "R";
         }
         
         if (!input.isEmpty()) {
             sim.handleInput(input);
-            repaint(); // Redesenha o painel após processar a entrada
+            repaint();
         }
     }
 

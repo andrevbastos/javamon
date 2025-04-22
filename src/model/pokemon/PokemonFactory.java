@@ -35,13 +35,6 @@ public class PokemonFactory {
         mf.getMove("AGILITY")
     };
 
-    private final Move geodudeMoves[] = {
-        mf.getMove("TACKLE"),
-        mf.getMove("ROCK THROW"),
-        mf.getMove("DEFENSE CURL"),
-        mf.getMove("ROLLOUT")
-    };
-
     private final Move caterpieMoves[] = {
         mf.getMove("TACKLE"),
         mf.getMove("STRING SHOT"),
@@ -162,11 +155,6 @@ public class PokemonFactory {
                 Pokemon pikachu = new Pokemon("PIKACHU", Type.ELECTRIC, 35, 55, 40, 35, 50, 90, 100, pikachuMoves);
                 return pikachu;
             }
-            
-            case "GEODUDE" -> {
-                Pokemon geodude = new Pokemon("GEODUDE", Type.ROCK, 40, 80, 100, 30, 30, 20, 100, geodudeMoves);
-                return geodude;
-            }
 
             case "CATERPIE" -> {
                 Pokemon caterpie = new Pokemon("CATERPIE", Type.BUG, 45, 30, 35, 20, 20, 45, 100, caterpieMoves);
@@ -180,6 +168,7 @@ public class PokemonFactory {
             case "AXEW" -> {
                 return new Pokemon("AXEW", Type.DRAGON, 46, 87, 60, 30, 40, 57, 100, axewMoves);
             }
+
             case "TOGEPI" -> {
                 return new Pokemon("TOGEPI", Type.FAIRY, 35, 20, 65, 40, 65, 20, 100, togepiMoves);
             }

@@ -7,7 +7,7 @@ import view.Panel;
 
 public class Simulation {
     private final Panel panel;
-    private final int repetitions = 10;
+    private final int repetitions = 1000;
     private final ArrayList<String> selectedPokemons = new ArrayList<>();
     private final LogHandler log = new LogHandler();
 
@@ -24,6 +24,11 @@ public class Simulation {
     
     public void update(Panel panel, Graphics2D g2d) {
         currentState.update(this, panel, g2d);
+    }
+
+    public void repaint() {
+        panel.repaint();
+        panel.revalidate();
     }
     
     public void handleInput(String input) {
@@ -58,8 +63,7 @@ public class Simulation {
 
     public void setState(SimulationState state) {
         this.currentState = state;
-        currentState.run(this);
-        panel.repaint();
+        repaint();
     }
 
     public SimulationState getSelectionState() {
