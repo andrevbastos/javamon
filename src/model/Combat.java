@@ -1,9 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+
+import model.abilities.AbilityEvent;
+import model.abilities.AbilityObserver;
 import model.pokemon.Pokemon;
 
 public class Combat {
+    private AbilityObserver observer = new AbilityObserver();
     private ArrayList<Pokemon> selectedPokemons = new ArrayList<>();
 
     public Combat(ArrayList<Pokemon> selectedPokemons) {
@@ -27,17 +31,22 @@ public class Combat {
     }
 
     private String singleBattle(Pokemon p1, Pokemon p2) {
+        observer.setPokemons(p1, p2);
         Pokemon winner = null;
         Pokemon first, last;
         String moves = "";
 
+        observer.handleEvent(AbilityEvent.BATTLE_START);
+
         while (winner == null) {
+            observer.handleEvent(AbilityEvent.TURN_START);
+
             first = (p1.getSpeed() >= p2.getSpeed()) ? p1 : p2;
             last = (first == p1) ? p2 : p1;
 
-            moves += "{" + first.getName() + ":" + first.useMove(last);
+            moves += "{" + first.getName() + ":" + first.useMove(observer, last);
             if (last.getHp() > 0) {
-                moves += "," + last.getName() + ":" + last.useMove(first);
+                moves += "," + last.getName() + ":" + last.useMove(observer, first);
             }
             moves += "}";
 
@@ -46,6 +55,7 @@ public class Combat {
             else if (p2.getHp() == 0)
                 winner = p1;
             else {
+                observer.handleEvent(AbilityEvent.TURN_END);
                 winner = null;
                 moves += ",";
             }

@@ -6,7 +6,7 @@ import model.util.Types.Type;
 
 public class MovesFactory {
     
-    private final Map<String, Moves> movesChart = new HashMap<>();
+    private final Map<String, Move> movesChart = new HashMap<>();
 
     public MovesFactory() {
         createMoves();
@@ -26,27 +26,37 @@ public class MovesFactory {
         addMove("THUNDER SHOCK", Type.ELECTRIC, "SPECIAL", 40);
         addMove("SWIFT", Type.NORMAL, "SPECIAL", 60);
         addMove("AGILITY", Type.PSYCHIC, "STATUS2", "Speed", null);
-        addMove("SPLASH", Type.NORMAL, "STATUS1", "Accuracy", null);
         addMove("BITE", Type.DARK, "PHYSICAL", 60);
         addMove("ROCK THROW", Type.ROCK, "PHYSICAL", 50);
         addMove("DEFENSE CURL", Type.NORMAL, "STATUS2", "Defense", null);
         addMove("ROLLOUT", Type.ROCK, "PHYSICAL", 30);
-        addMove("THUNDERBOLT", Type.ELECTRIC, "SPECIAL", 90);
-        addMove("RAZOR LEAF", Type.GRASS, "PHYSICAL", 55);
-        addMove("SOLAR BEAM", Type.GRASS, "SPECIAL", 120);
+        addMove("HARDEN", Type.NORMAL, "STATUS2", "Defense", null);
+        addMove("STRING SHOT", Type.BUG, "STATUS1", "Speed", null);
+        addMove("QUICK ATTACK", Type.NORMAL, "PHYSICAL", 40);
+        addMove("BUG BITE", Type.BUG, "PHYSICAL", 60);
+        addMove("DRAGON RAGE", Type.DRAGON, "SPECIAL", 40);
+        addMove("FAIRY WIND", Type.FAIRY, "SPECIAL", 40);
+        addMove("LOW KICK", Type.FIGHTING, "PHYSICAL", 50);
+        addMove("KARATE CHOP", Type.FIGHTING, "PHYSICAL", 50);
+        addMove("NIGHT SHADE", Type.GHOST, "SPECIAL", 100);
+        addMove("POWDER SNOW", Type.ICE, "SPECIAL", 40);
+        addMove("ICY WIND", Type.ICE, "SPECIAL", 55);
+        addMove("POISON STING", Type.POISON, "PHYSICAL", 15);
+        addMove("GEAR GRIND", Type.STEEL, "PHYSICAL", 50);
+        addMove("PECK", Type.FLYING, "PHYSICAL", 35);
     }
 
     private void addMove(String name, Type type, String category, int power) {
-        Moves move = new Moves(name, type, category, power);
+        Move move = new Move(name, type, category, power);
         movesChart.put(name, move);
     }
 
     private void addMove(String name, Type type, String category, String attribute1, String attribute2) {
-        Moves move = new Moves(name, type, category, attribute1, attribute2);
+        Move move = new Move(name, type, category, attribute1, attribute2);
         movesChart.put(name, move);
     }
 
-    public Moves getMove(String name) {
+    public Move getMove(String name) {
         return movesChart.get(name);   
     }
 

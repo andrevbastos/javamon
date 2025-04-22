@@ -2,13 +2,19 @@ package model.pokemon;
 
 import java.lang.reflect.Method;
 import java.util.Random;
-import model.moves.Moves;
+import java.util.concurrent.atomic.AtomicReference;
+
+import model.abilities.Ability;
+import model.abilities.AbilityEvent;
+import model.abilities.AbilityObserver;
+import model.moves.Move;
 import model.util.Types;
 import model.util.Types.Type;
 
 public class Pokemon {
     private final String name;
     private final Type type;
+    private Ability ability;
     private final int hpmax;
     private final double[] attack;
     private final double[] spattack;
@@ -16,10 +22,10 @@ public class Pokemon {
     private final double[] spdefense;
     private final double[] speed;
     private final double[] accuracy;
-    private final Moves[] moves;
+    private final Move[] moves;
     private double hp;
 
-    public Pokemon(String name, Type type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Moves[] moves) {
+    public Pokemon(String name, Type type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Move[] moves) {
         this.name = name; 
         this.type = type;
         this.hpmax = hpmax;
@@ -44,6 +50,22 @@ public class Pokemon {
 
     public Type getType() {
         return type;
+    }
+
+    public void setAbility(Ability ability) {
+        this.ability = ability;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
+
+    public void ability(Pokemon enemy, Move move, AtomicReference<Float> multiplier) {
+        ability.execute(enemy, move, multiplier);
+    }
+
+    public int getHpmax() {
+        return hpmax;
     }
 
     public int getHp() {
@@ -90,7 +112,7 @@ public class Pokemon {
         return value;
     }
 
-    public Moves getMoves(int i) {
+    public Move getMove(int i) {
         return moves[i];
     }
 
@@ -134,22 +156,25 @@ public class Pokemon {
         }
     }
 
-    public String useMove(Pokemon defender) {
+    public String useMove(AbilityObserver observer, Pokemon defender) {
         Random rn = new Random();
         int ataque = rn.nextInt(99) + 1;
-        int i = rn.nextInt(3);
+        Move selectedMove = this.getMove(rn.nextInt(3));
+        AtomicReference<Float> multiplier = new AtomicReference<>(1.0f);
         
         if (ataque <= this.getAccuracy()) {
-            defender.takeMove(this.getMoves(i), this);
+            observer.handleEvent(AbilityEvent.BEFORE_MOVE, selectedMove, multiplier);
+            defender.takeMove(observer, this, selectedMove, multiplier);
+            observer.handleEvent(AbilityEvent.AFTER_MOVE);
         }
 
-        return this.getMoves(i).getName();
+        return selectedMove.getName();
     }
 
-    public void takeMove(Moves move, Pokemon attacker) {
+    public void takeMove(AbilityObserver observer, Pokemon attacker, Move move, AtomicReference<Float>  multiplier) {
         String category = move.getCategory();
         double damage = 0;
-        double multiplier = Types.checkMultiplier(move.getType(), this.getType());
+        multiplier.set(multiplier.get() * Types.checkMultiplier(move.getType(), this.getType()));
 
         switch (category) {
             case "PHYSICAL" -> damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
@@ -158,19 +183,18 @@ public class Pokemon {
             case "STATUS2" -> status(move, attacker, 1);
         }
 
-        damage = damage * multiplier;
-
         if (category != "STATUS1" && category != "STATUS2") {
+            damage = damage * multiplier.get();
             if (hp - damage < 0) {
                 hp = 0;
             } else {
+                observer.handleEvent(AbilityEvent.ON_HIT, move, multiplier);
                 hp += -damage;
             }
         }
-
     }
     
-    private void status(Moves move, Pokemon p, int value) {
+    private void status(Move move, Pokemon p, int value) {
         Method m;
 		try {
 			m = methodTroughName(Pokemon.class, "set" + move.getAttribute1());

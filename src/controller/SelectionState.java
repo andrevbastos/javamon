@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import view.Panel;
 
 public class SelectionState implements SimulationState {
-    private final String[] availablePokemons = {"CHARMANDER", "BULBASAUR", "SQUIRTLE", "PIKACHU", "GYARADOS", "GEODUDE", "JOLTEON", "VENUSAUR" };
+    private final String[] availablePokemons = {"CHARMANDER", "BULBASAUR", "SQUIRTLE", "PIKACHU", "GEODUDE" };
 
     @Override
     public void update(Simulation sim, Panel panel, Graphics2D g2d) {
