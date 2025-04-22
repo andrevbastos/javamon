@@ -4,10 +4,11 @@ import java.lang.reflect.Method;
 import java.util.Random;
 import model.moves.Moves;
 import model.util.Types;
+import model.util.Types.Type;
 
 public class Pokemon {
     private final String name;
-    private final String type;
+    private final Type type;
     private final int hpmax;
     private final double[] attack;
     private final double[] spattack;
@@ -18,7 +19,7 @@ public class Pokemon {
     private final Moves[] moves;
     private double hp;
 
-    public Pokemon(String name, String type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Moves[] moves) {
+    public Pokemon(String name, Type type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Moves[] moves) {
         this.name = name; 
         this.type = type;
         this.hpmax = hpmax;
@@ -41,7 +42,7 @@ public class Pokemon {
         return name;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 

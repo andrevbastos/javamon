@@ -7,7 +7,7 @@ import view.Panel;
 
 public class Simulation {
     private final Panel panel;
-    private final int repetitions = 1000;
+    private final int repetitions = 10;
     private final ArrayList<String> selectedPokemons = new ArrayList<>();
     private final LogHandler log = new LogHandler();
 

@@ -1,14 +1,16 @@
 package model.moves;
 
+import model.util.Types.Type;
+
 public class Moves {
     private final String name;
-    private final String type;
+    private final Type type;
     private final String category;
     private final int power;
     private final String attribute1;
     private final String attribute2;
 
-    public Moves(String name, String type, String category, int power) {
+    public Moves(String name, Type type, String category, int power) {
         this.name = name;
         this.type = type;
         this.category = category;
@@ -17,7 +19,7 @@ public class Moves {
         this.attribute2 = null;
     }
 
-    public Moves(String name, String type, String category, String attribute1, String attribute2) {
+    public Moves(String name, Type type, String category, String attribute1, String attribute2) {
         this.name = name;
         this.type = type;
         this.category = category;
@@ -30,7 +32,7 @@ public class Moves {
         return name;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
