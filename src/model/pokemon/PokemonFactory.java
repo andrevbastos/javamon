@@ -139,78 +139,91 @@ public class PokemonFactory {
                 Pokemon charmander = new Pokemon("CHARMANDER", Type.FIRE, 39, 52, 60, 43, 50, 65, 100, charmanderMoves);
                 return charmander;
             }
-            
+        
             case "BULBASAUR" -> {
                 Pokemon bulbasaur = new Pokemon("BULBASAUR", Type.GRASS, 45, 49, 65, 49, 65, 45, 100, bulbasaurMoves);
                 bulbasaur.setAbility(new Overgrow(bulbasaur));
                 return bulbasaur;
             }
-                    
+        
             case "SQUIRTLE" -> {
                 Pokemon squirtle = new Pokemon("SQUIRTLE", Type.WATER, 44, 48, 50, 65, 64, 43, 100, squirtleMoves);
                 return squirtle;
             }
-                
+        
             case "PIKACHU" -> {
-                Pokemon pikachu = new Pokemon("PIKACHU", Type.ELECTRIC, 35, 55, 40, 35, 50, 90, 100, pikachuMoves);
+                Pokemon pikachu = new Pokemon("PIKACHU", Type.ELECTRIC, 35, 55, 50, 30, 40, 90, 100, pikachuMoves);
                 return pikachu;
             }
-
+        
             case "CATERPIE" -> {
-                Pokemon caterpie = new Pokemon("CATERPIE", Type.BUG, 45, 30, 35, 20, 20, 45, 100, caterpieMoves);
+                Pokemon caterpie = new Pokemon("CATERPIE", Type.BUG, 45, 30, 20, 35, 20, 45, 100, caterpieMoves);
                 return caterpie;
             }
-
+        
             case "POOCHYENA" -> {
-                return new Pokemon("POOCHYENA", Type.DARK, 35, 55, 35, 30, 30, 35, 100, poochyenaMoves);
+                Pokemon poochyena = new Pokemon("POOCHYENA", Type.DARK, 35, 55, 30, 35, 30, 35, 100, poochyenaMoves);
+                return poochyena;
             }
-
+        
             case "AXEW" -> {
-                return new Pokemon("AXEW", Type.DRAGON, 46, 87, 60, 30, 40, 57, 100, axewMoves);
+                Pokemon axew = new Pokemon("AXEW", Type.DRAGON, 46, 70, 30, 60, 40, 57, 100, axewMoves);
+                return axew;
             }
-
+        
             case "TOGEPI" -> {
-                return new Pokemon("TOGEPI", Type.FAIRY, 35, 20, 65, 40, 65, 20, 100, togepiMoves);
+                Pokemon togepi = new Pokemon("TOGEPI", Type.FAIRY, 35, 20, 40, 65, 65, 20, 100, togepiMoves);
+                return togepi;
             }
-
+        
             case "MANKEY" -> {
-                return new Pokemon("MANKEY", Type.FIGHTING, 40, 80, 35, 35, 45, 70, 100, mankeyMoves);
+                Pokemon mankey = new Pokemon("MANKEY", Type.FIGHTING, 40, 80, 35, 35, 45, 70, 100, mankeyMoves);
+                return mankey;
             }
-
+        
             case "ROOKIDEE" -> {
-                return new Pokemon("ROOKIDEE", Type.FLYING, 38, 47, 35, 33, 35, 57, 100, rookideeMoves);
+                Pokemon rookidee = new Pokemon("ROOKIDEE", Type.FLYING, 38, 47, 33, 35, 35, 57, 100, rookideeMoves);
+                return rookidee;
             }
-
+        
             case "GASTLY" -> {
-                return new Pokemon("GASTLY", Type.GHOST, 30, 35, 30, 100, 35, 80, 100, gastlyMoves);
+                Pokemon gastly = new Pokemon("GASTLY", Type.GHOST, 30, 35, 100, 30, 35, 80, 100, gastlyMoves);
+                return gastly;
             }
-
+        
             case "SANDSHREW" -> {
-                return new Pokemon("SANDSHREW", Type.GROUND, 50, 75, 85, 20, 30, 40, 100, sandshrewMoves);
+                Pokemon sandshrew = new Pokemon("SANDSHREW", Type.GROUND, 50, 75, 20, 85, 30, 40, 100, sandshrewMoves);
+                return sandshrew;
             }
-
+        
             case "VULPIX-ALOLA" -> {
-                return new Pokemon("VULPIX-ALOLA", Type.ICE, 38, 41, 40, 50, 65, 65, 100, vulpixAlolaMoves);
+                Pokemon vulpixAlola = new Pokemon("VULPIX-ALOLA", Type.ICE, 38, 41, 50, 40, 65, 65, 100, vulpixAlolaMoves);
+                return vulpixAlola;
             }
-
+        
             case "RATATTA" -> {
-                return new Pokemon("RATATTA", Type.NORMAL, 30, 56, 35, 25, 35, 72, 100, ratattaMoves);
+                Pokemon rattata = new Pokemon("RATATTA", Type.NORMAL, 30, 56, 25, 35, 35, 72, 100, ratattaMoves);
+                return rattata;
             }
-
+        
             case "EKANS" -> {
-                return new Pokemon("EKANS", Type.POISON, 35, 60, 44, 40, 54, 55, 100, ekansMoves);
+                Pokemon ekans = new Pokemon("EKANS", Type.POISON, 35, 60, 40, 44, 54, 55, 100, ekansMoves);
+                return ekans;
             }
-
+        
             case "SPOINK" -> {
-                return new Pokemon("SPOINK", Type.PSYCHIC, 60, 25, 35, 70, 80, 60, 100, spoinkMoves);
+                Pokemon spoink = new Pokemon("SPOINK", Type.PSYCHIC, 60, 25, 70, 35, 80, 60, 100, spoinkMoves);
+                return spoink;
             }
-
+        
             case "NOSEPASS" -> {
-                return new Pokemon("NOSEPASS", Type.ROCK, 30, 45, 135, 45, 90, 30, 100, nosepassMoves);
+                Pokemon nosepass = new Pokemon("NOSEPASS", Type.ROCK, 30, 45, 45, 135, 90, 30, 100, nosepassMoves);
+                return nosepass;
             }
-
+        
             case "KLINK" -> {
-                return new Pokemon("KLINK", Type.STEEL, 40, 55, 70, 45, 60, 30, 100, klinkMoves);
+                Pokemon klink = new Pokemon("KLINK", Type.STEEL, 40, 55, 45, 70, 60, 30, 100, klinkMoves);
+                return klink;
             }
             
             default -> throw new IllegalArgumentException("Pokemon not found");

@@ -50,10 +50,14 @@ public class Combat {
             }
             moves += "}";
 
-            if (p1.getHp() == 0)
+            if (p1.getHp() == 0) {
                 winner = p2;
-            else if (p2.getHp() == 0)
+                p2.addWin();
+            }
+            else if (p2.getHp() == 0) {
                 winner = p1;
+                p1.addWin();
+            }
             else {
                 observer.handleEvent(AbilityEvent.TURN_END);
                 winner = null;

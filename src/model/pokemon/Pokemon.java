@@ -24,6 +24,7 @@ public class Pokemon {
     private final double[] accuracy;
     private final Move[] moves;
     private double hp;
+    private int[] statistics = new int[2];
 
     public Pokemon(String name, Type type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Move[] moves) {
         this.name = name; 
@@ -168,6 +169,7 @@ public class Pokemon {
             observer.handleEvent(AbilityEvent.AFTER_MOVE);
         }
 
+        addMoves();
         return selectedMove.getName();
     }
 
@@ -216,6 +218,22 @@ public class Pokemon {
 		}
 		throw new Exception("Método " + nome + " não encontrado");
 	}
+
+    public void addWin() {
+        statistics[0]++;
+    }
+    
+    public void addMoves() {
+        statistics[1]++;
+    }
+
+    public int getWins() {
+        return statistics[0];
+    }
+
+    public int getMoves() {
+        return statistics[1];
+    }
 
     public void heal() {
         this.hp = hpmax;

@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+
+import model.pokemon.Pokemon;
 import model.util.LogHandler;
 import view.Panel;
 
@@ -9,6 +11,8 @@ public class Simulation {
     private final Panel panel;
     private final int repetitions = 1000;
     private final ArrayList<String> selectedPokemons = new ArrayList<>();
+    private final ArrayList<Pokemon> pokemons = new ArrayList<>();
+
     private final LogHandler log = new LogHandler();
 
     private final SimulationState selectionState = new SelectionState();
@@ -52,13 +56,21 @@ public class Simulation {
     public void createLog() {
         log.createLog();
     }
+    
+    public int getRepetitions() {
+        return repetitions;
+    }
 
     public ArrayList<String> getSelectedPokemons() {
         return selectedPokemons;
     }
-    
-    public int getRepetitions() {
-        return repetitions;
+
+    public ArrayList<Pokemon> getPokemons() {
+        return pokemons;
+    }
+
+    public void setPokemon(ArrayList<Pokemon> pokemons) {
+        this.pokemons.addAll(pokemons);
     }
 
     public void setState(SimulationState state) {
@@ -80,5 +92,6 @@ public class Simulation {
     
     public void reset() {
         selectedPokemons.clear();
-    }    
+        pokemons.clear();
+    }
 }    

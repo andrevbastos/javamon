@@ -29,6 +29,7 @@ public class CombatState implements SimulationState {
         for (String pokeName : sim.getSelectedPokemons()) {
             selectedPokemons.add(pf.getPokemon(pokeName));
         }
+        sim.setPokemon(selectedPokemons);
 
         try {
             Thread.sleep(1000);
@@ -51,7 +52,9 @@ public class CombatState implements SimulationState {
             e.printStackTrace();
         }
         
+        sim.setPokemon(selectedPokemons);
         sim.setState(sim.getStatsState());
+
         battling = false;
         battleStatus = "Preparing to battle...";
     }
