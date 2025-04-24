@@ -1,229 +1,121 @@
 package model.pokemon;
 
-import model.abilities.Overgrow;
+import model.abilities.AbilityFactory;
 import model.moves.Move;
 import model.moves.MovesFactory;
 import model.util.Types.Type;
 
 public class PokemonFactory {
     private final MovesFactory mf = new MovesFactory();
-    private final Move charmanderMoves[] = {
-        mf.getMove("GROWL"),
-        mf.getMove("SCRATCH"),
-        mf.getMove("EMBER"),
-        mf.getMove("SMOKESCREEN")
-    };
-    
-    private final Move bulbasaurMoves[] = {
-        mf.getMove("GROWL"),
-        mf.getMove("TACKLE"),
-        mf.getMove("VINE WHIP"),
-        mf.getMove("GROWTH")
-    };
-
-    private final Move squirtleMoves[] = {
-        mf.getMove("TAIL WHIP"),
-        mf.getMove("TACKLE"),
-        mf.getMove("WATER GUN"),
-        mf.getMove("WITHDRAW")
-    };
-
-    private final Move pikachuMoves[] = {
-        mf.getMove("THUNDER SHOCK"),
-        mf.getMove("GROWL"),
-        mf.getMove("SWIFT"),
-        mf.getMove("AGILITY")
-    };
-
-    private final Move caterpieMoves[] = {
-        mf.getMove("TACKLE"),
-        mf.getMove("STRING SHOT"),
-        mf.getMove("BUG BITE"),
-        mf.getMove("HARDEN")
-    };
-
-    private final Move poochyenaMoves[] = {
-        mf.getMove("TACKLE"),
-        mf.getMove("HOWL"),
-        mf.getMove("BITE"),
-        mf.getMove("SAND ATTACK")
-    };
-
-    private final Move axewMoves[] = {
-        mf.getMove("SCRATCH"),
-        mf.getMove("LEER"),
-        mf.getMove("DRAGON RAGE"),
-        mf.getMove("SLASH")
-    };
-
-    private final Move togepiMoves[] = {
-        mf.getMove("GROWL"),
-        mf.getMove("CHARM"),
-        mf.getMove("METRONOME"),
-        mf.getMove("FAIRY WIND")
-    };
-
-    private final Move mankeyMoves[] = {
-        mf.getMove("SCRATCH"),
-        mf.getMove("LEER"),
-        mf.getMove("LOW KICK"),
-        mf.getMove("KARATE CHOP")
-    };
-
-    private final Move rookideeMoves[] = {
-        mf.getMove("PECK"),
-        mf.getMove("LEER"),
-        mf.getMove("POWER TRIP"),
-        mf.getMove("WING ATTACK")
-    };
-
-    private final Move gastlyMoves[] = {
-        mf.getMove("LICK"),
-        mf.getMove("CONFUSE RAY"),
-        mf.getMove("NIGHT SHADE"),
-        mf.getMove("SMOG")
-    };
-
-    private final Move sandshrewMoves[] = {
-        mf.getMove("SCRATCH"),
-        mf.getMove("DEFENSE CURL"),
-        mf.getMove("MUD-SLAP"),
-        mf.getMove("ROLLOUT")
-    };
-
-    private final Move vulpixAlolaMoves[] = {
-        mf.getMove("POWDER SNOW"),
-        mf.getMove("TAIL WHIP"),
-        mf.getMove("CONFUSE RAY"),
-        mf.getMove("ICY WIND")
-    };
-
-    private final Move ratattaMoves[] = {
-        mf.getMove("TACKLE"),
-        mf.getMove("TAIL WHIP"),
-        mf.getMove("QUICK ATTACK"),
-        mf.getMove("HYPER FANG")
-    };
-
-    private final Move ekansMoves[] = {
-        mf.getMove("POISON STING"),
-        mf.getMove("LEER"),
-        mf.getMove("WRAP"),
-        mf.getMove("BITE")
-    };
-
-    private final Move spoinkMoves[] = {
-        mf.getMove("SPLASH"),
-        mf.getMove("PSYBEAM"),
-        mf.getMove("CONFUSE RAY"),
-        mf.getMove("PSYCH UP")
-    };
-
-    private final Move nosepassMoves[] = {
-        mf.getMove("TACKLE"),
-        mf.getMove("HARDEN"),
-        mf.getMove("ROCK THROW"),
-        mf.getMove("BLOCK")
-    };
-
-    private final Move klinkMoves[] = {
-        mf.getMove("VICE GRIP"),
-        mf.getMove("CHARGE"),
-        mf.getMove("THUNDER SHOCK"),
-        mf.getMove("GEAR GRIND")
-    };
-
+    private final AbilityFactory af = new AbilityFactory();
     public Pokemon getPokemon(String p) {		
         switch (p) {
-            case "CHARMANDER" -> {
-                Pokemon charmander = new Pokemon("CHARMANDER", Type.FIRE, 39, 52, 60, 43, 50, 65, 100, charmanderMoves);
-                return charmander;
+            case "EEVEE" -> {
+                Move[] moves = {
+                    mf.getMove("COVET"),
+                    mf.getMove("GROWL"),
+                    mf.getMove("HEADBUTT"),
+                    mf.getMove("TAIL WHIP")
+                };
+                Pokemon eevee = new Pokemon("EEVEE", Type.NORMAL, 55, 55, 50, 45, 65, 55, moves);
+                eevee.setAbility(af.get("ADAPTABILITY", eevee));
+                return eevee;
             }
-        
-            case "BULBASAUR" -> {
-                Pokemon bulbasaur = new Pokemon("BULBASAUR", Type.GRASS, 45, 49, 65, 49, 65, 45, 100, bulbasaurMoves);
-                bulbasaur.setAbility(new Overgrow(bulbasaur));
-                return bulbasaur;
+
+            case "ESPEON" -> {
+                Move[] moves = {
+                    mf.getMove("CONFUSION"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("TAIL WHIP"),
+                    mf.getMove("SWIFT")
+                };
+                Pokemon espeon = new Pokemon("ESPEON", Type.PSYCHIC, 65, 65, 60, 130, 95, 110, moves);
+                espeon.setAbility(af.get("SYNCHRONIZE", espeon));
+                return espeon;
             }
-        
-            case "SQUIRTLE" -> {
-                Pokemon squirtle = new Pokemon("SQUIRTLE", Type.WATER, 44, 48, 50, 65, 64, 43, 100, squirtleMoves);
-                return squirtle;
+
+            case "UMBREON" -> {
+                Move[] moves = {
+                    mf.getMove("BITE"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("TAIL WHIP"),
+                    mf.getMove("SCREECH")
+                };
+                Pokemon umbreon = new Pokemon("UMBREON", Type.DARK, 95, 65, 110, 60, 130, 65, moves);
+                umbreon.setAbility(af.get("SYNCHRONIZE", umbreon));
+                return umbreon;
             }
-        
-            case "PIKACHU" -> {
-                Pokemon pikachu = new Pokemon("PIKACHU", Type.ELECTRIC, 35, 55, 50, 30, 40, 90, 100, pikachuMoves);
-                return pikachu;
+
+            case "FLAREON" -> {
+                Move[] moves = {
+                    mf.getMove("FIRE FANG"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("TAIL WHIP"),
+                    mf.getMove("BITE")
+                };
+                Pokemon flareon = new Pokemon("FLAREON", Type.FIRE, 65, 130, 70, 95, 110, 95, moves);
+                flareon.setAbility(af.get("FLASH FIRE", flareon));
+                return flareon;
             }
-        
-            case "CATERPIE" -> {
-                Pokemon caterpie = new Pokemon("CATERPIE", Type.BUG, 45, 30, 20, 35, 20, 45, 100, caterpieMoves);
-                return caterpie;
+
+            case "JOLTEON" -> {
+                Move[] moves = {
+                    mf.getMove("FLASH"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("TAIL WHIP"),
+                    mf.getMove("THUNDERSHOCK")
+                };
+                Pokemon jolteon = new Pokemon("JOLTEON", Type.ELECTRIC, 65, 65, 60, 110, 95, 130, moves);
+                jolteon.setAbility(af.get("VOLT ABSORB", jolteon));
+                return jolteon;
             }
-        
-            case "POOCHYENA" -> {
-                Pokemon poochyena = new Pokemon("POOCHYENA", Type.DARK, 35, 55, 30, 35, 30, 35, 100, poochyenaMoves);
-                return poochyena;
+
+            case "VAPOREON" -> {
+                Move[] moves = {
+                    mf.getMove("WATER PULSE"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("TAIL WHIP"),
+                    mf.getMove("AURORA BEAM")
+                };
+                Pokemon vaporeon = new Pokemon("VAPOREON", Type.WATER, 130, 65, 60, 110, 95, 65, moves);
+                vaporeon.setAbility(af.get("WATER ABSORB", vaporeon));
+                return vaporeon;
             }
-        
-            case "AXEW" -> {
-                Pokemon axew = new Pokemon("AXEW", Type.DRAGON, 46, 70, 30, 60, 40, 57, 100, axewMoves);
-                return axew;
+
+            case "LEAFEON" -> {
+                Move[] moves = {
+                    mf.getMove("RAZOR LEAF"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("TAIL WHIP"),
+                    mf.getMove("GRASS WHISTLE")
+                };
+                Pokemon leafeon = new Pokemon("LEAFEON", Type.GRASS, 65, 130, 110, 60, 65, 95, moves);
+                leafeon.setAbility(af.get("SAP SIPPER", leafeon));
+                return leafeon;
             }
-        
-            case "TOGEPI" -> {
-                Pokemon togepi = new Pokemon("TOGEPI", Type.FAIRY, 35, 20, 40, 65, 65, 20, 100, togepiMoves);
-                return togepi;
+
+            case "GLACEON" -> {
+                Move[] moves = {
+                    mf.getMove("ICY WIND"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("GROWL"),
+                    mf.getMove("BITE")
+                };
+                Pokemon glaceon = new Pokemon("GLACEON", Type.ICE, 80, 45, 100, 130, 95, 75, moves);
+                glaceon.setAbility(af.get("ICE BODY", glaceon));
+                return glaceon;
             }
-        
-            case "MANKEY" -> {
-                Pokemon mankey = new Pokemon("MANKEY", Type.FIGHTING, 40, 80, 35, 35, 45, 70, 100, mankeyMoves);
-                return mankey;
-            }
-        
-            case "ROOKIDEE" -> {
-                Pokemon rookidee = new Pokemon("ROOKIDEE", Type.FLYING, 38, 47, 33, 35, 35, 57, 100, rookideeMoves);
-                return rookidee;
-            }
-        
-            case "GASTLY" -> {
-                Pokemon gastly = new Pokemon("GASTLY", Type.GHOST, 30, 35, 100, 30, 35, 80, 100, gastlyMoves);
-                return gastly;
-            }
-        
-            case "SANDSHREW" -> {
-                Pokemon sandshrew = new Pokemon("SANDSHREW", Type.GROUND, 50, 75, 20, 85, 30, 40, 100, sandshrewMoves);
-                return sandshrew;
-            }
-        
-            case "VULPIX-ALOLA" -> {
-                Pokemon vulpixAlola = new Pokemon("VULPIX-ALOLA", Type.ICE, 38, 41, 50, 40, 65, 65, 100, vulpixAlolaMoves);
-                return vulpixAlola;
-            }
-        
-            case "RATATTA" -> {
-                Pokemon rattata = new Pokemon("RATATTA", Type.NORMAL, 30, 56, 25, 35, 35, 72, 100, ratattaMoves);
-                return rattata;
-            }
-        
-            case "EKANS" -> {
-                Pokemon ekans = new Pokemon("EKANS", Type.POISON, 35, 60, 40, 44, 54, 55, 100, ekansMoves);
-                return ekans;
-            }
-        
-            case "SPOINK" -> {
-                Pokemon spoink = new Pokemon("SPOINK", Type.PSYCHIC, 60, 25, 70, 35, 80, 60, 100, spoinkMoves);
-                return spoink;
-            }
-        
-            case "NOSEPASS" -> {
-                Pokemon nosepass = new Pokemon("NOSEPASS", Type.ROCK, 30, 45, 45, 135, 90, 30, 100, nosepassMoves);
-                return nosepass;
-            }
-        
-            case "KLINK" -> {
-                Pokemon klink = new Pokemon("KLINK", Type.STEEL, 40, 55, 45, 70, 60, 30, 100, klinkMoves);
-                return klink;
+
+            case "SYLVEON" -> {
+                Move[] moves = {
+                    mf.getMove("DISARM CRY"),
+                    mf.getMove("TACKLE"),
+                    mf.getMove("GROWL"),
+                    mf.getMove("SWIFT")
+                };
+                Pokemon sylveon = new Pokemon("SYLVEON", Type.FAIRY, 95, 65, 65, 110, 130, 60, moves);
+                sylveon.setAbility(af.get("PIXILATE", sylveon));
+                return sylveon;
             }
             
             default -> throw new IllegalArgumentException("Pokemon not found");

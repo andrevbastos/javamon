@@ -13,8 +13,6 @@ public class StatsState implements SimulationState {
     public void update(Simulation sim, Panel panel, Graphics2D g2d) {
         g2d.setFont(panel.pkmn.deriveFont(10f));
         ArrayList<Pokemon> pokemons = orderPokemons(sim.getPokemons());
-        System.out.println(sim.getPokemons().size());
-        System.out.println(pokemons.size());
 
         int endIndex = Math.min(pokeIndex + 9, pokemons.size());
         for (int i = pokeIndex; i < endIndex; i++) {
@@ -27,8 +25,7 @@ public class StatsState implements SimulationState {
         }
 
         g2d.setFont(panel.pkmn.deriveFont(10f));
-        g2d.drawString("E to create logs", 10, panel.height - 50);
-        g2d.drawString("Q to battle again", 10, panel.height - 30);
+        g2d.drawString("E to create logs", 10, panel.height - 30);
         g2d.drawString("R to restart", 10, panel.height - 10);
     }
 

@@ -13,7 +13,7 @@ public class Move {
     public Move(String name, Type type, String category, int power) {
         this.name = name;
         this.type = type;
-        this.category = category;
+        this.category = category.toUpperCase();
         this.power = power;
         this.attribute1 = null;
         this.attribute2 = null;

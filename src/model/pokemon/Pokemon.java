@@ -26,17 +26,17 @@ public class Pokemon {
     private double hp;
     private int[] statistics = new int[2];
 
-    public Pokemon(String name, Type type, int hpmax, double attack, double spattack, double defense, double spdefense, double speed, double accuracy, Move[] moves) {
+    public Pokemon(String name, Type type, int hpmax, double attack, double defense, double spattack, double spdefense, double speed, Move[] moves) {
         this.name = name; 
         this.type = type;
         this.hpmax = hpmax;
         this.hp = hpmax;
         this.attack = new double[] {0, attack};
-        this.spattack = new double[] {0, spattack};
         this.defense = new double[] {0, defense};
+        this.spattack = new double[] {0, spattack};
         this.spdefense = new double[] {0, spdefense};
         this.speed = new double[] {0, speed};
-        this.accuracy = new double[] {0, accuracy};
+        this.accuracy = new double[] {0, 100};
         this.moves = moves;
     }
 
@@ -181,8 +181,8 @@ public class Pokemon {
         switch (category) {
             case "PHYSICAL" -> damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
             case "SPECIAL" -> damage = (int) ((move.getPower() * attacker.getSpAttack() / this.getSpDefense()) / 5) + 2;
-            case "STATUS1" -> status(move, this, -1);
-            case "STATUS2" -> status(move, attacker, 1);
+            case "STATUS1" -> status(move, this, 1);
+            case "STATUS2" -> status(move, attacker, -1);
         }
 
         if (category != "STATUS1" && category != "STATUS2") {

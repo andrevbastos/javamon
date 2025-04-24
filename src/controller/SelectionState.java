@@ -6,12 +6,9 @@ import view.Panel;
 public class SelectionState implements SimulationState {
     private int pokeIndex = 0;
     private final String[] availablePokemons = {
-        "CHARMANDER", "BULBASAUR", "SQUIRTLE",
-        "PIKACHU", "CATERPIE", "POOCHYENA",
-        "AXEW", "TOGEPI", "MANKEY", 
-        "ROOKIDEE", "GASTLY", "SANDSHREW", 
-        "VULPIX-ALOLA", "RATATTA", "EKANS", 
-        "SPOINK", "NOSEPASS", "KLINK"
+        "EEVEE", "ESPEON", "UMBREON",
+        "FLAREON", "JOLTEON", "VAPOREON",
+        "LEAFEON", "GLACEON", "SYLVEON"
     };
 
     @Override
