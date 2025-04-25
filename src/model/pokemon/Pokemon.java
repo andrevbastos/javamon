@@ -1,8 +1,5 @@
 package model.pokemon;
 
-import static model.util.Status.CONFUSION;
-import static model.util.Status.FROZEN;
-
 import java.lang.reflect.Method;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
