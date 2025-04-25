@@ -1,29 +1,30 @@
 package model.moves;
 
-import model.util.Types.Type;
+import model.util.Status;
+import model.util.Category;
+import model.util.Type;
 
 public class Move {
     private final String name;
-    private final Type type;
-    private final String category;
-    private final int power;
-    private final String attribute1;
-    private final String attribute2;
+    private Type type;
+    private final Category category1;
+    private final Category category2;
+    private int power;
+    private final int accuracy1;
+    private final int accuracy2;
+    private final Status attribute1;
+    private final Status attribute2;
 
-    public Move(String name, Type type, String category, int power) {
+    public Move(String name, Type type, Category category1, Category category2,
+        int power, Status attribute1, Status attribute2, int accuracy1, int accuracy2) 
+    {
         this.name = name;
         this.type = type;
-        this.category = category.toUpperCase();
+        this.category1 = category1;
+        this.category2 = category2;
         this.power = power;
-        this.attribute1 = null;
-        this.attribute2 = null;
-    }
-
-    public Move(String name, Type type, String category, String attribute1, String attribute2) {
-        this.name = name;
-        this.type = type;
-        this.category = category;
-        this.power = 0;
+        this.accuracy1 = accuracy1;
+        this.accuracy2 = accuracy2;
         this.attribute1 = attribute1;
         this.attribute2 = attribute2;
     }
@@ -40,16 +41,35 @@ public class Move {
         return power;
     }
 
-    public String getCategory() {
-        return category;
+    public Category getCategory1() {
+        return category1;
     }
 
-    public String getAttribute1() {
+    public Category getCategory2() {
+        return category2;
+    }
+
+    public int getAccuracy1() {
+        return accuracy1;
+    }
+
+    public int getAccuracy2() {
+        return accuracy2;
+    }
+
+    public Status getAttribute1() {
         return attribute1;
     }
 
-    public String getAttribute2() {
+    public Status getAttribute2() {
         return attribute2;
     }
 
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
 }

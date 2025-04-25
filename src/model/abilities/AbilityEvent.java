@@ -6,5 +6,7 @@ public enum AbilityEvent {
     TURN_END,
     BEFORE_MOVE,
     AFTER_MOVE,
-    ON_HIT
+    ON_HIT,
+    ON_STATUS_SELF,
+    ON_STATUS_ENEMY
 };

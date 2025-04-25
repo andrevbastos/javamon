@@ -1,10 +1,13 @@
 package model.abilities;
 
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
 import model.moves.Move;
 import model.pokemon.Pokemon;
-import model.util.Types.Type;
+import model.util.Category;
+import model.util.Status;
+import model.util.Type;
 
 public abstract class Ability {
     Pokemon owner;
@@ -18,44 +21,50 @@ public abstract class Ability {
     Pokemon getOwner() { return owner; };
     AbilityEvent getAbilityEvent() { return event; };
 
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier) {};
+    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {};
 }
 
-class Blaze extends Ability {
-    public Blaze(Pokemon owner) {
+class Adaptability extends Ability {
+    public Adaptability(Pokemon owner) {
         super(owner, AbilityEvent.BEFORE_MOVE);
     }
 
     @Override
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier) {
-        if (move.getType() == Type.FIRE && getOwner().getHp() <= getOwner().getHpmax() / 3) {
-            multiplier.set(1.5f);
+    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+        if (move.getType() == owner.getType()) {
+            multiplier.set(1.3f);
         }
     }
 }
 
-class Torrent extends Ability {
-    public Torrent(Pokemon owner) {
-        super(owner, AbilityEvent.BEFORE_MOVE);
+class IceBody extends Ability {
+    public IceBody(Pokemon owner) {
+        super(owner, AbilityEvent.ON_HIT);
     }
 
     @Override
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier) {
-        if (move.getType() == Type.WATER && getOwner().getHp() <= getOwner().getHpmax() / 3) {
-            multiplier.set(1.5f);
+    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+        if (move.getCategory1() == Category.PHYSICAL) {
+            Random rn = new Random();
+            int roll = rn.nextInt(4) + 1;
+            if (roll == 4) {
+                enemy.status(Status.FROZEN, null, enemy, -1);
+            }
         }
     }
 }
 
-class Overgrow extends Ability {
-    public Overgrow(Pokemon owner) {
+class Pixilate extends Ability {
+    public Pixilate(Pokemon owner) {
         super(owner, AbilityEvent.BEFORE_MOVE);
     }
 
     @Override
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier) {
-        if (move.getType() == Type.GRASS && getOwner().getHp() <= getOwner().getHpmax() / 3) {
-            multiplier.set(1.5f);
+    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+        if (move.getType() == Type.NORMAL) {
+            move.setType(Type.FAIRY);
+            int newPower = (int) (move.getPower() * 1.3f);
+            move.setPower(newPower);
         }
     }
 }

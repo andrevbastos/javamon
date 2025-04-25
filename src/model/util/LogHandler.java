@@ -14,11 +14,11 @@ public class LogHandler {
 
     public void createLog() {
         try {        
-            File logDir = new File("log");
+            File logDir = new File("logs");
             if (!logDir.exists()) {
                 logDir.mkdirs();
             }
-            String logFilename = "log/log.txt";
+            String logFilename = "logs/log.txt";
             try (BufferedWriter w = new BufferedWriter(new FileWriter(logFilename, false))) {
                 w.write(logString);
             }

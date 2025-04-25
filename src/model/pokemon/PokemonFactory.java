@@ -3,7 +3,7 @@ package model.pokemon;
 import model.abilities.AbilityFactory;
 import model.moves.Move;
 import model.moves.MovesFactory;
-import model.util.Types.Type;
+import model.util.Type;
 
 public class PokemonFactory {
     private final MovesFactory mf = new MovesFactory();
@@ -30,7 +30,7 @@ public class PokemonFactory {
                     mf.getMove("SWIFT")
                 };
                 Pokemon espeon = new Pokemon("ESPEON", Type.PSYCHIC, 65, 65, 60, 130, 95, 110, moves);
-                espeon.setAbility(af.get("SYNCHRONIZE", espeon));
+                espeon.setAbility(af.get("MAGIC BOUNCE", espeon));
                 return espeon;
             }
 

@@ -9,7 +9,7 @@ import view.Panel;
 
 public class Simulation {
     private final Panel panel;
-    private final int repetitions = 1000;
+    private final int repetitions = 1;
     private final ArrayList<String> selectedPokemons = new ArrayList<>();
     private final ArrayList<Pokemon> pokemons = new ArrayList<>();
 

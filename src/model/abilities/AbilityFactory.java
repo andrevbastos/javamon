@@ -5,12 +5,12 @@ import model.pokemon.Pokemon;
 public class AbilityFactory {
         public Ability get(String abilityName, Pokemon owner) {
         switch (abilityName.toUpperCase()) {
-            case "OVERGROW":
-                return new Overgrow(owner);
-            case "BLAZE":
-                return new Blaze(owner);
-            case "TORRENT":
-                return new Torrent(owner);
+            case "ADAPTABILITY":
+                return new Adaptability(owner);
+            case "ICE BODY":
+                return new IceBody(owner);
+            case "PIXILATE":
+                return new Pixilate(owner);
             default:
                 System.out.println("Habilidade desconhecida: " + abilityName);
                 return null;

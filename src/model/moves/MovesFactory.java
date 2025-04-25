@@ -2,7 +2,15 @@ package model.moves;
 
 import java.util.HashMap;
 import java.util.Map;
-import model.util.Types.Type;
+
+import model.util.Category;
+import static model.util.Category.*;
+
+import model.util.Status;
+import static model.util.Status.*;
+
+import model.util.Type;
+import static model.util.Type.*;
 
 public class MovesFactory {
     
@@ -13,34 +21,39 @@ public class MovesFactory {
     }
 
     private void createMoves() {
-        addMove("COVET", Type.FAIRY, "PHYSICAL", 40);
-        addMove("GROWL", Type.NORMAL, "STATUS2", "Attack", null);
-        addMove("HEADBUTT", Type.NORMAL, "PHYSICAL", 70);
-        addMove("TAIL WHIP", Type.NORMAL, "STATUS2", "Defense", null);
-        addMove("CONFUSION", Type.PSYCHIC, "SPECIAL", 50); // !!! confusion
-        addMove("TACKLE", Type.NORMAL, "PHYSICAL", 40);
-        addMove("SWIFT", Type.NORMAL, "SPECIAL", 60);
-        addMove("BITE", Type.DARK, "PHYSICAL", 60);
-        addMove("SCREECH", Type.NORMAL, "STATUS2", "Defense", null);
-        addMove("FIRE FANG", Type.FIRE, "PHYSICAL", 65); // !!! burn
-        addMove("FLASH", Type.ELECTRIC, "SPECIAL", 60); // !!! -atk
-        addMove("THUNDERSHOCK", Type.ELECTRIC, "SPECIAL", 40); // !!! paralyze
-        addMove("WATER PULSE", Type.WATER, "SPECIAL", 60); // !!! confusion
-        addMove("AURORA BEAM", Type.ICE, "SPECIAL", 65); // !!! -atk
-        addMove("RAZOR LEAF", Type.GRASS, "PHYSICAL", 55);
-        addMove("GRASS WHISTLE", Type.GRASS, "STATUS2", "Attack", null); // !!! sleep
-        addMove("ICY WIND", Type.ICE, "SPECIAL", 55); // !!! -spd
-        addMove("DISARM CRY", Type.FAIRY, "SPECIAL", 40);
+        addMove("COVET", FAIRY, PHYSICAL, 40, 100);
+        addMove("GROWL", NORMAL, STATUS_ENEMY, ATK, null, 100);
+        addMove("HEADBUTT", NORMAL, PHYSICAL, 70, 100);
+        addMove("TAIL WHIP", NORMAL, STATUS_ENEMY, DEF, null, 100);
+        addMove("CONFUSION", PSYCHIC, SPECIAL, STATUS_ENEMY, 50, CONFUSION, null, 100, 10);
+        addMove("TACKLE", NORMAL, PHYSICAL, 40, 100);
+        addMove("SWIFT", NORMAL, SPECIAL, 60, 101);
+        addMove("BITE", DARK, PHYSICAL, 60, 100);
+        addMove("SCREECH", NORMAL, STATUS_ENEMY, DEF, null, 100);
+        addMove("FIRE FANG", FIRE, PHYSICAL, STATUS_ENEMY, 65, BURN, null, 100, 10);
+        addMove("FLASH", ELECTRIC, SPECIAL, STATUS_ENEMY, 60, ATK, null, 100, 10);
+        addMove("THUNDERSHOCK", ELECTRIC, SPECIAL, STATUS_ENEMY, 40, PARALYZE, null, 100, 10);
+        addMove("WATER PULSE", WATER, SPECIAL, STATUS_ENEMY, 60, CONFUSION, null, 100, 10);
+        addMove("AURORA BEAM", ICE, SPECIAL, STATUS_ENEMY, 65, ATK, null, 100, 10);
+        addMove("RAZOR LEAF", GRASS, PHYSICAL, 55, 100);
+        addMove("GRASS WHISTLE", GRASS, STATUS_ENEMY, SLEEP, null, 55);
+        addMove("ICY WIND", ICE, SPECIAL, STATUS_ENEMY, 55, SPD, null, 100, 10);
+        addMove("DISARM CRY", FAIRY, SPECIAL, 40, 100);
     }
 
-    private void addMove(String name, Type type, String category, int power) {
-        Move move = new Move(name, type, category, power);
+    private void addMove(String name, Type type, Category category1, Category category2,
+        int power, Status attribute1, Status attribute2, int accuracy1, int accuracy2) 
+    {
+        Move move = new Move(name, type, category1, category2, power, attribute1, attribute2, accuracy1, accuracy2);
         movesChart.put(name, move);
     }
 
-    private void addMove(String name, Type type, String category, String attribute1, String attribute2) {
-        Move move = new Move(name, type, category, attribute1, attribute2);
-        movesChart.put(name, move);
+    private void addMove(String name, Type type, Category category, int power, int accuracy) {
+        addMove(name, type, category, null, power, null, null, accuracy, 0);
+    }
+
+    private void addMove(String name, Type type, Category category, Status attribute1, Status attribute2,  int accuracy) {
+        addMove(name, type, category, null, 0, attribute1, attribute2, accuracy, 0);
     }
 
     public Move getMove(String name) {

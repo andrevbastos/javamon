@@ -1,5 +1,8 @@
 package model.pokemon;
 
+import static model.util.Status.CONFUSION;
+import static model.util.Status.FROZEN;
+
 import java.lang.reflect.Method;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
@@ -8,8 +11,9 @@ import model.abilities.Ability;
 import model.abilities.AbilityEvent;
 import model.abilities.AbilityObserver;
 import model.moves.Move;
-import model.util.Types;
-import model.util.Types.Type;
+import model.util.Status;
+import model.util.Type;
+import model.util.TypesChart;
 
 public class Pokemon {
     private final String name;
@@ -24,6 +28,7 @@ public class Pokemon {
     private final double[] accuracy;
     private final Move[] moves;
     private double hp;
+    private Status condition;
     private int[] statistics = new int[2];
 
     public Pokemon(String name, Type type, int hpmax, double attack, double defense, double spattack, double spdefense, double speed, Move[] moves) {
@@ -36,8 +41,9 @@ public class Pokemon {
         this.spattack = new double[] {0, spattack};
         this.spdefense = new double[] {0, spdefense};
         this.speed = new double[] {0, speed};
-        this.accuracy = new double[] {0, 100};
+        this.accuracy = new double[] {0, 1};
         this.moves = moves;
+        this.condition = null;
     }
 
     @Override
@@ -53,16 +59,8 @@ public class Pokemon {
         return type;
     }
 
-    public void setAbility(Ability ability) {
-        this.ability = ability;
-    }
-
     public Ability getAbility() {
         return ability;
-    }
-
-    public void ability(Pokemon enemy, Move move, AtomicReference<Float> multiplier) {
-        ability.execute(enemy, move, multiplier);
     }
 
     public int getHpmax() {
@@ -117,6 +115,10 @@ public class Pokemon {
         return moves[i];
     }
 
+    public Status getCondition() {
+        return condition;
+    }
+
     public void setHp(double hp) {
         this.hp = hp;
     }
@@ -157,57 +159,119 @@ public class Pokemon {
         }
     }
 
+    public void setAbility(Ability ability) {
+        this.ability = ability;
+    }
+
+    public void setCondition(Status condition) {
+        if (this.condition == null)
+            this.condition = condition;
+    }
+
+    public void ability(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+        ability.execute(enemy, move, multiplier, status);
+    }
+
     public String useMove(AbilityObserver observer, Pokemon defender) {
         Random rn = new Random();
-        int ataque = rn.nextInt(100) + 1;
         Move selectedMove = this.getMove(rn.nextInt(4));
         AtomicReference<Float> multiplier = new AtomicReference<>(1.0f);
-        
-        if (ataque <= this.getAccuracy()) {
-            observer.handleEvent(AbilityEvent.BEFORE_MOVE, selectedMove, multiplier);
-            defender.takeMove(observer, this, selectedMove, multiplier);
-            observer.handleEvent(AbilityEvent.AFTER_MOVE);
+
+        int hitChance = 0;
+        int roll = rn.nextInt(100) + 1;
+
+        if (this.checkCondition()) {
+            if (selectedMove.getAccuracy1() == 101) {
+                hitChance = 100;
+            } else {
+                hitChance = (int)(selectedMove.getAccuracy1() * this.getAccuracy());
+            }
+            
+            if (roll <= hitChance) {
+                observer.handleEvent(AbilityEvent.BEFORE_MOVE, selectedMove, multiplier);
+                defender.takeMove(this, selectedMove, observer, multiplier);
+                observer.handleEvent(AbilityEvent.AFTER_MOVE);
+            }
         }
 
-        addMoves();
+        addRound();
         return selectedMove.getName();
     }
 
-    public void takeMove(AbilityObserver observer, Pokemon attacker, Move move, AtomicReference<Float>  multiplier) {
-        String category = move.getCategory();
+    public void takeMove(Pokemon attacker, Move move, AbilityObserver observer, AtomicReference<Float> multiplier) {
         double damage = 0;
-        multiplier.set(multiplier.get() * Types.checkMultiplier(move.getType(), this.getType()));
-
-        switch (category) {
-            case "PHYSICAL" -> damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
-            case "SPECIAL" -> damage = (int) ((move.getPower() * attacker.getSpAttack() / this.getSpDefense()) / 5) + 2;
-            case "STATUS1" -> status(move, this, 1);
-            case "STATUS2" -> status(move, attacker, -1);
+        multiplier.set(multiplier.get() * TypesChart.checkMultiplier(move.getType(), this.getType()));
+        if (attacker.getType() == move.getType()) {
+            multiplier.set(multiplier.get() * 1.5f);
         }
 
-        if (category != "STATUS1" && category != "STATUS2") {
-            damage = damage * multiplier.get();
-            if (hp - damage < 0) {
-                hp = 0;
-            } else {
+        switch (move.getCategory1()) {
+            case PHYSICAL -> {
+                damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
+                hit(damage, move, observer, multiplier);
                 observer.handleEvent(AbilityEvent.ON_HIT, move, multiplier);
-                hp += -damage;
+            }
+            case SPECIAL -> {
+                damage = ((move.getPower() * attacker.getSpAttack() / this.getSpDefense()) / 5) + 2;
+                hit(damage, move, observer, multiplier);
+                observer.handleEvent(AbilityEvent.ON_HIT, move, multiplier);
+            }
+            case STATUS_SELF -> {
+                status(move.getAttribute1(), move.getAttribute2(), attacker, 1);
+                observer.handleEvent(AbilityEvent.ON_STATUS_SELF, move.getAttribute1());
+            }
+            case STATUS_ENEMY -> {
+                status(move.getAttribute1(), move.getAttribute2(), this, -1);
+                observer.handleEvent(AbilityEvent.ON_STATUS_ENEMY, move.getAttribute1());
+            }
+        }
+
+        if (move.getCategory2() != null) {
+            Random rn = new Random();
+            int roll = rn.nextInt(100) + 1;
+
+            if (roll <= move.getAccuracy2()) {
+                switch (move.getCategory2()) {
+                    case STATUS_SELF -> {
+                        status(move.getAttribute1(), move.getAttribute2(), attacker, 1);
+                        observer.handleEvent(AbilityEvent.ON_STATUS_SELF, move.getAttribute1());
+                    }
+                    case STATUS_ENEMY -> {
+                        status(move.getAttribute1(), move.getAttribute2(), this, -1);
+                        observer.handleEvent(AbilityEvent.ON_STATUS_ENEMY, move.getAttribute1());
+                    }
+                }
             }
         }
     }
     
-    private void status(Move move, Pokemon p, int value) {
-        Method m;
-		try {
-			m = methodTroughName(Pokemon.class, "set" + move.getAttribute1());
-            m.invoke(p, value);
-            if (move.getAttribute2() != null) { 
-			    m = methodTroughName(Pokemon.class, "set" + move.getAttribute2());
-                m.invoke(p, value);
+    public void hit(double damage, Move move, AbilityObserver observer, AtomicReference<Float> multiplier) {
+        damage *= multiplier.get();
+        if (this.hp - damage < 0) {
+            this.hp = 0;
+        } else {
+            this.hp += -damage;
+        }
+    }
+
+    public void status(Status attribute1, Status attribute2, Pokemon target, int value) {
+        try {
+            Method m = methodTroughName(Pokemon.class, "set" + attribute1.getMethodSuffix());
+            if (attribute1.getMethodSuffix().equals("Condition"))
+                m.invoke(target, attribute1);
+            else 
+                m.invoke(target, value);
+    
+            if (attribute2 != null) {
+                m = methodTroughName(Pokemon.class, "set" + attribute2.getMethodSuffix());
+                if (attribute2.getMethodSuffix().equals("Condition"))
+                    m.invoke(target, attribute2);
+                else 
+                    m.invoke(target, value);
             }
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private Method methodTroughName(Class<?> c, String nome) throws Exception {
@@ -218,6 +282,52 @@ public class Pokemon {
 		}
 		throw new Exception("Método " + nome + " não encontrado");
 	}
+
+    public boolean checkCondition() {
+        if (this.condition != null) {
+            switch (this.condition) {
+                case BURN -> {
+                    this.hp -= this.hpmax / 16;
+                    return true;
+                }
+                case FROZEN -> {
+                    this.hp -= this.hpmax / 16;
+                    return true;
+                }
+                case CONFUSION -> {
+                    Random rn = new Random();
+                    int roll = rn.nextInt(3) + 1;
+                    if (roll == 3) {
+                        this.hp -= this.hpmax / 16;
+                        return false;
+                    } else {
+                        roll = rn.nextInt(3) + 1;
+                        if (roll == 3) {
+                            this.condition = null;
+                        }
+                        return true;
+                    }
+                }
+                case PARALYZE -> {
+                    Random rn = new Random();
+                    int roll = rn.nextInt(4) + 1;
+                    if (roll == 4) {
+                        return false;
+                    }
+                }
+                case SLEEP -> {
+                    Random rn = new Random();
+                    int roll = rn.nextInt(4) + 1;
+                    if (roll == 4) {
+                        this.condition = null;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
     public void addWin() {
         statistics[0]++;
@@ -231,7 +341,7 @@ public class Pokemon {
         return statistics[0];
     }
 
-    public int getMoves() {
+    public int addRound() {
         return statistics[1];
     }
 
@@ -243,6 +353,7 @@ public class Pokemon {
         this.spdefense[0] = 0;
         this.speed[0] = 0;
         this.accuracy[0] = 0;
+        this.condition = null;
     }
 
 }
