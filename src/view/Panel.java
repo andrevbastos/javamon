@@ -12,12 +12,20 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.JPanel;
 
+/**
+ * Panel class that extends JPanel to create a custom drawing area for the simulation.
+ * It handles key events and id updated by the simulation state controller.
+ * 
+ * @see Simulation
+ */
 public class Panel extends JPanel {
     private final Simulation sim = new Simulation(this);
+    private Window window;
     public int width, height;
     public Font pkmn, solid;
 
-    public Panel(int width, int height) {
+    public Panel(Window window, int width, int height) {
+        this.window = window;
         this.width = width;
         this.height = height;
 
@@ -44,6 +52,7 @@ public class Panel extends JPanel {
         String input = "";
         
         switch(keyCode) {
+            case KeyEvent.VK_ESCAPE -> input = "ESCAPE";
             case KeyEvent.VK_ENTER -> input = "ENTER";
             case KeyEvent.VK_1 -> input = "1";
             case KeyEvent.VK_2 -> input = "2";
@@ -59,6 +68,11 @@ public class Panel extends JPanel {
             case KeyEvent.VK_R -> input = "R";
         }
         
+        if (input.equals("ESCAPE")) {
+            window.dispose();
+            System.exit(0);
+        }
+
         if (!input.isEmpty()) {
             sim.handleInput(input);
             repaint();

@@ -1,6 +1,15 @@
 package view;
 import javax.swing.*;
 
+/**
+ * Window class that creates a JFrame for the application.
+ * It sets the title, icon, and adds a Panel to the frame.
+ * The window is not resizable and closes the application on exit.
+ * The icon is loaded from a specified path.
+ * The Panel is added to the frame and requested to focus.
+ * 
+ * @see Panel
+ */
 public class Window extends JFrame {
     public Window() {
         this.setTitle("2024 © IFC | Javamon");
@@ -12,10 +21,10 @@ public class Window extends JFrame {
         ImageIcon icon = null;
 
         try {
-            icon = new ImageIcon("res/pokemon/charmander.png");
+            icon = new ImageIcon("res/pokemon/eevee.png");
             this.setIconImage(icon.getImage());
 
-            Panel panel = new Panel(400, 400);
+            Panel panel = new Panel(this, 600, 600);
             this.add(panel);
             this.pack();
             panel.requestFocusInWindow();

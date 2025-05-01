@@ -3,8 +3,14 @@ package model.util;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class is responsible for managing the type advantages and disadvantages
+ * in the game. It uses a hash table to store the types and their respective
+ * advantages against other types.
+ * 
+ * @see model.util.Type
+ */
 public class TypesChart {
-    // Tabela hash dos tipos e suas vantagens
     static Map<Type, Map<Type, Float>> typeChart = new HashMap<>();
 
     static {

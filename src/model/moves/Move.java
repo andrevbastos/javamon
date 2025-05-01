@@ -1,9 +1,21 @@
 package model.moves;
 
-import model.util.Status;
-import model.util.Category;
 import model.util.Type;
+import model.util.Category;
+import model.util.Status;
 
+/**
+ * Represents a move in the game. Each move has a name, type, category, power,
+ * accuracy, and associated status effects.
+ * Some moves may have two categories, one for damage and one for status effects.
+ * For each category, there is an associated power/attribute and accuracy.
+ * 
+ * @see model.util.Type
+ * @see model.util.Category
+ * @see model.util.Status
+ * 
+ * @see model.moves.MovesFactory
+ */
 public class Move {
     private final String name;
     private Type type;

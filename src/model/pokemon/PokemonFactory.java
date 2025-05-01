@@ -5,6 +5,14 @@ import model.moves.Move;
 import model.moves.MovesFactory;
 import model.util.Type;
 
+/**
+ * The PokemonFactory class is responsible for creating instances of Pokémon.
+ * It uses the MovesFactory and AbilityFactory to create moves and abilities
+ * for the Pokémon.
+ * 
+ * @see model.moves.MovesFactory
+ * @see model.abilities.AbilityFactory
+ */
 public class PokemonFactory {
     private final MovesFactory mf = new MovesFactory();
     private final AbilityFactory af = new AbilityFactory();
@@ -24,10 +32,10 @@ public class PokemonFactory {
 
             case "ESPEON" -> {
                 Move[] moves = {
-                    mf.getMove("CONFUSION"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("TAIL WHIP"),
-                    mf.getMove("SWIFT")
+                    mf.getMove("PSYCHIC"), 
+                    mf.getMove("PSYBEAM"), 
+                    mf.getMove("SWIFT"),
+                    mf.getMove("FIERY DANCE")
                 };
                 Pokemon espeon = new Pokemon("ESPEON", Type.PSYCHIC, 65, 65, 60, 130, 95, 110, moves);
                 espeon.setAbility(af.get("MAGIC BOUNCE", espeon));
@@ -36,10 +44,10 @@ public class PokemonFactory {
 
             case "UMBREON" -> {
                 Move[] moves = {
-                    mf.getMove("BITE"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("TAIL WHIP"),
-                    mf.getMove("SCREECH")
+                    mf.getMove("CRUNCH"), 
+                    mf.getMove("CONFUSE RAY"), 
+                    mf.getMove("FEINT ATTACK"), 
+                    mf.getMove("CUT")
                 };
                 Pokemon umbreon = new Pokemon("UMBREON", Type.DARK, 95, 65, 110, 60, 130, 65, moves);
                 umbreon.setAbility(af.get("SYNCHRONIZE", umbreon));
@@ -48,10 +56,10 @@ public class PokemonFactory {
 
             case "FLAREON" -> {
                 Move[] moves = {
-                    mf.getMove("FIRE FANG"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("TAIL WHIP"),
-                    mf.getMove("BITE")
+                    mf.getMove("SACRED FIRE"), 
+                    mf.getMove("LAVA PLUME"), 
+                    mf.getMove("SMOG"), 
+                    mf.getMove("SCARY FACE")
                 };
                 Pokemon flareon = new Pokemon("FLAREON", Type.FIRE, 65, 130, 70, 95, 110, 95, moves);
                 flareon.setAbility(af.get("FLASH FIRE", flareon));
@@ -60,10 +68,10 @@ public class PokemonFactory {
 
             case "JOLTEON" -> {
                 Move[] moves = {
-                    mf.getMove("FLASH"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("TAIL WHIP"),
-                    mf.getMove("THUNDERSHOCK")
+                    mf.getMove("THUNDER"), 
+                    mf.getMove("DISCHARGE"), 
+                    mf.getMove("SIGNAL BEAM"), 
+                    mf.getMove("AGILITY")
                 };
                 Pokemon jolteon = new Pokemon("JOLTEON", Type.ELECTRIC, 65, 65, 60, 110, 95, 130, moves);
                 jolteon.setAbility(af.get("VOLT ABSORB", jolteon));
@@ -72,10 +80,10 @@ public class PokemonFactory {
 
             case "VAPOREON" -> {
                 Move[] moves = {
-                    mf.getMove("WATER PULSE"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("TAIL WHIP"),
-                    mf.getMove("AURORA BEAM")
+                    mf.getMove("HYDRO PUMP"), 
+                    mf.getMove("ACID ARMOR"), 
+                    mf.getMove("ICE BEAM"), 
+                    mf.getMove("SWIFT")
                 };
                 Pokemon vaporeon = new Pokemon("VAPOREON", Type.WATER, 130, 65, 60, 110, 95, 65, moves);
                 vaporeon.setAbility(af.get("WATER ABSORB", vaporeon));
@@ -84,10 +92,10 @@ public class PokemonFactory {
 
             case "LEAFEON" -> {
                 Move[] moves = {
-                    mf.getMove("RAZOR LEAF"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("TAIL WHIP"),
-                    mf.getMove("GRASS WHISTLE")
+                    mf.getMove("LEAF BLADE"), 
+                    mf.getMove("GRASS WHISTLE"), 
+                    mf.getMove("SWORDS DANCE"), 
+                    mf.getMove("IRON TAIL")
                 };
                 Pokemon leafeon = new Pokemon("LEAFEON", Type.GRASS, 65, 130, 110, 60, 65, 95, moves);
                 leafeon.setAbility(af.get("SAP SIPPER", leafeon));
@@ -96,10 +104,11 @@ public class PokemonFactory {
 
             case "GLACEON" -> {
                 Move[] moves = {
-                    mf.getMove("ICY WIND"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("GROWL"),
+                    mf.getMove("BLIZZARD"), 
+                    mf.getMove("FREEZE DRY"), 
+                    mf.getMove("BARRIER"), 
                     mf.getMove("BITE")
+
                 };
                 Pokemon glaceon = new Pokemon("GLACEON", Type.ICE, 80, 45, 100, 130, 95, 75, moves);
                 glaceon.setAbility(af.get("ICE BODY", glaceon));
@@ -108,10 +117,10 @@ public class PokemonFactory {
 
             case "SYLVEON" -> {
                 Move[] moves = {
-                    mf.getMove("DISARM CRY"),
-                    mf.getMove("TACKLE"),
-                    mf.getMove("GROWL"),
-                    mf.getMove("SWIFT")
+                    mf.getMove("MOONBLAST"), 
+                    mf.getMove("LIGHT SCREEN"), 
+                    mf.getMove("SWIFT"), 
+                    mf.getMove("FLASH")
                 };
                 Pokemon sylveon = new Pokemon("SYLVEON", Type.FAIRY, 95, 65, 65, 110, 130, 60, moves);
                 sylveon.setAbility(af.get("PIXILATE", sylveon));

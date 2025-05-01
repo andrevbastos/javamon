@@ -12,6 +12,20 @@ import model.util.Status;
 import model.util.Type;
 import model.util.TypesChart;
 
+/**
+ * The Pokemon class represents a Pokémon in the game.
+ * It contains attributes such as name, type, stats, moves, and status conditions.
+ * The class provides methods to manage the Pokémon's stats, abilities
+ * and interactions with other Pokémon.
+ * All interactions are followed by an Event Observer pattern to handle game logic during battles.
+ * 
+ * @see model.abilities.Ability
+ * @see model.abilities.AbilityObserver
+ * @see model.moves.Move
+ * @see model.util.Status
+ * @see model.util.Type
+ * @see model.util.TypesChart
+ */
 public class Pokemon {
     private final String name;
     private final Type type;
@@ -26,6 +40,8 @@ public class Pokemon {
     private final Move[] moves;
     private double hp;
     private Status condition;
+    private int conditionCount;
+    
     private int[] statistics = new int[2];
 
     public Pokemon(String name, Type type, int hpmax, double attack, double defense, double spattack, double spdefense, double speed, Move[] moves) {
@@ -121,37 +137,37 @@ public class Pokemon {
     }
     
     public void setAttack(int stage) {
-        if (attack[0] + stage <= 3 || attack[0] + stage >= -3) {
+        if (attack[0] + stage <= 6 || attack[0] + stage >= -6) {
             this.attack[0] += stage;
         }
     }
 
     public void setSpAttack(int stage) {
-        if (spattack[0] + stage <= 3 || spattack[0] + stage >= -3) {
+        if (spattack[0] + stage <= 6 || spattack[0] + stage >= -6) {
             this.spattack[0] += stage;
         }
     }
 
     public void setDefense(int stage) {
-        if (defense[0] + stage <= 3 || defense[0] + stage >= -3) {
+        if (defense[0] + stage <= 6 || defense[0] + stage >= -6) {
             this.defense[0] += stage;
         }
     }
 
     public void setSpDefense(int stage) {
-        if (spdefense[0] + stage <= 3 || spdefense[0] + stage >= -3) {   
+        if (spdefense[0] + stage <= 6 || spdefense[0] + stage >= -6) {   
             this.spdefense[0] += stage;
         }
     }
 
     public void setSpeed(int stage) {
-        if (speed[0] + stage <= 3 || speed[0] + stage >= -3) {  
+        if (speed[0] + stage <= 6 || speed[0] + stage >= -6) {  
             this.speed[0] += stage;
         }
     }
 
     public void setAccuracy(int stage) {
-        if (accuracy[0] + stage <= 3 || accuracy[0] + stage >= -3) { 
+        if (accuracy[0] + stage <= 6 || accuracy[0] + stage >= -6) { 
             this.accuracy[0] += stage;
         }
     }
@@ -161,8 +177,10 @@ public class Pokemon {
     }
 
     public void setCondition(Status condition) {
-        if (this.condition == null)
+        if (this.condition == null) {
             this.condition = condition;
+            conditionCount = 0;
+        }
     }
 
     public void ability(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
@@ -215,11 +233,11 @@ public class Pokemon {
             }
             case STATUS_SELF -> {
                 status(move.getAttribute1(), move.getAttribute2(), attacker, 1);
-                observer.handleEvent(AbilityEvent.ON_STATUS_SELF, move.getAttribute1());
+                observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
             }
             case STATUS_ENEMY -> {
                 status(move.getAttribute1(), move.getAttribute2(), this, -1);
-                observer.handleEvent(AbilityEvent.ON_STATUS_ENEMY, move.getAttribute1());
+                observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
             }
         }
 
@@ -231,11 +249,11 @@ public class Pokemon {
                 switch (move.getCategory2()) {
                     case STATUS_SELF -> {
                         status(move.getAttribute1(), move.getAttribute2(), attacker, 1);
-                        observer.handleEvent(AbilityEvent.ON_STATUS_SELF, move.getAttribute1());
+                        observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
                     }
                     case STATUS_ENEMY -> {
                         status(move.getAttribute1(), move.getAttribute2(), this, -1);
-                        observer.handleEvent(AbilityEvent.ON_STATUS_ENEMY, move.getAttribute1());
+                        observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
                     }
                 }
             }
@@ -285,24 +303,25 @@ public class Pokemon {
             switch (this.condition) {
                 case BURN -> {
                     this.hp -= this.hpmax / 16;
-                    return true;
                 }
                 case FROZEN -> {
                     this.hp -= this.hpmax / 16;
-                    return true;
                 }
                 case CONFUSION -> {
                     Random rn = new Random();
+
+                    if (conditionCount == 0) {
+                        conditionCount = rn.nextInt(3) + 1;
+                    } else if (conditionCount == 1) {
+                        this.condition = null;
+                        this.conditionCount = 0;
+                    }
+
                     int roll = rn.nextInt(3) + 1;
                     if (roll == 3) {
                         this.hp -= this.hpmax / 16;
+                        this.conditionCount--;
                         return false;
-                    } else {
-                        roll = rn.nextInt(3) + 1;
-                        if (roll == 3) {
-                            this.condition = null;
-                        }
-                        return true;
                     }
                 }
                 case PARALYZE -> {
@@ -321,7 +340,16 @@ public class Pokemon {
                         return false;
                     }
                 }
+                case POISONED -> {
+                    this.hp -= (this.hpmax / 16) * conditionCount;
+                }
             }
+            
+            if (this.hp <= 0) {
+                this.hp = 0;
+                return false;
+            }
+            return true;
         }
         return true;
     }

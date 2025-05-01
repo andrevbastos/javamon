@@ -6,6 +6,16 @@ import model.moves.Move;
 import model.pokemon.Pokemon;
 import model.util.Status;
 
+/**
+ * The AbilityObserver class is responsible for observing and handling events
+ * related to Pokémon abilities during battles. It manages the interaction
+ * between two Pokémon and their abilities, allowing them to react to specific
+ * events in the battle.
+ * 
+ * @see model.pokemon.Pokemon
+ * @see model.abilities.Ability
+ * @see model.abilities.AbilityEvent
+ */
 public class AbilityObserver {
     Pokemon p1, p2;
 

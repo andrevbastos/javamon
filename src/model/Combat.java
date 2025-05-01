@@ -6,6 +6,19 @@ import model.abilities.AbilityEvent;
 import model.abilities.AbilityObserver;
 import model.pokemon.Pokemon;
 
+/**
+ * The Combat class is responsible for simulating battles between Pokémon.
+ * It manages the selected Pokemon and instantiates them using the
+ * PokemonFactory class.
+ * The class handles the battle logic, including determining the order of moves,
+ * logging the alterations and determining the winner.
+ * It uses the AbilityObserver to handle events during the battle.
+ * 
+ * @see model.pokemon.Pokemon
+ * @see model.pokemon.PokemonFactory
+ * 
+ * @see model.abilities.AbilityObserver
+ */
 public class Combat {
     private AbilityObserver observer = new AbilityObserver();
     private ArrayList<Pokemon> selectedPokemons = new ArrayList<>();
@@ -19,7 +32,6 @@ public class Combat {
 
         for (int i = 0; i < selectedPokemons.size() - 1; i++) {
             for (int j = i + 1; j < selectedPokemons.size(); j++) {
-                System.out.println(selectedPokemons.get(i).getName() + " " + selectedPokemons.get(j).getName());
                 for (int rep = 0; rep < repetitions; rep++) {
                     log += singleBattle(selectedPokemons.get(i), selectedPokemons.get(j));
                 }
