@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['update_0',['update',['../classcontroller_1_1CombatState.html#a1ab87f6d4f788370f8df2b98a663d164',1,'controller.CombatState.update()'],['../classcontroller_1_1CompositeState.html#a16ee8cfea91fd544f3b25f123ba7565b',1,'controller.CompositeState.update()'],['../classcontroller_1_1SelectionState.html#ae55491e4d55d5cd2f139d6d34bc3c06f',1,'controller.SelectionState.update()'],['../classcontroller_1_1Simulation.html#a0caa77c393992db327fc39d02ad75c2f',1,'controller.Simulation.update()'],['../interfacecontroller_1_1SimulationState.html#a6edabd2786d44babe4c91e968bf9b84b',1,'controller.SimulationState.update()'],['../classcontroller_1_1StatsState.html#a6b6a78c903b7d87a4fb5068765cd30e7',1,'controller.StatsState.update()']]],
-  ['usemove_1',['useMove',['../classmodel_1_1pokemon_1_1Pokemon.html#ac6b17d1b47686962def8bd47507e60f0',1,'model::pokemon::Pokemon']]]
-];
