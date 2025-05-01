@@ -5,8 +5,8 @@ import model.util.Category;
 import model.util.Status;
 
 /**
- * Represents a move in the game. Each move has a name, type, category, power,
- * accuracy, and associated status effects.
+ * @class Move
+ * @brief Represents a move in the game. Each move has a name, type, category, power, accuracy, and associated status effects.
  * Some moves may have two categories, one for damage and one for status effects.
  * For each category, there is an associated power/attribute and accuracy.
  * 
@@ -27,6 +27,18 @@ public class Move {
     private final Status attribute1;
     private final Status attribute2;
 
+    /**
+     * @brief Constructs a move with full parameters.
+     * @param name Move name
+     * @param type Move type
+     * @param category1 Primary category
+     * @param category2 Secondary category (nullable)
+     * @param power Base power (0 for status moves)
+     * @param attribute1 Primary status effect (nullable)
+     * @param attribute2 Secondary status effect (nullable)
+     * @param accuracy1 Primary accuracy
+     * @param accuracy2 Secondary accuracy
+     */
     public Move(String name, Type type, Category category1, Category category2,
         int power, Status attribute1, Status attribute2, int accuracy1, int accuracy2) 
     {

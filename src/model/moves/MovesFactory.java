@@ -10,7 +10,8 @@ import model.util.Type;
 import static model.util.Type.*;
 
 /**
- * This class is responsible for creating and managing moves in the game.
+ * @class MovesFactory
+ * @brief This class is responsible for creating and managing moves in the game.
  * It uses the Factory design pattern to create moves and store them in a
  * moves chart. All moves are created when the factory is instantiated and
  * can be retrieved by their name.
@@ -21,8 +22,25 @@ public class MovesFactory {
     
     private final Map<String, Move> movesChart = new HashMap<>();
 
+    /**
+     * @brief Constructs the factory and populates moves chart.
+     */
     public MovesFactory() {
         createMoves();
+    }
+
+    /**
+     * @brief Retrieves a move by name.
+     * @param name The move name to lookup
+     * @return Move The requested move
+     * @note Returns HEADBUTT as default if move not found
+     */
+    public Move getMove(String name) {
+        if (!movesChart.containsKey(name)) {
+            System.out.println("Move not found: " + name);
+            return movesChart.get("HEADBUTT");
+        }
+        return movesChart.get(name);
     }
 
     private void createMoves() {
@@ -80,6 +98,19 @@ public class MovesFactory {
         addMove("FLASH", ELECTRIC, SPECIAL, STATUS_ENEMY, 60, ATK, null, 100, 10);
     }
 
+
+    /**
+     * @brief Adds a damage-dealing and status altering move to the moves chart.
+     * @param name Move name
+     * @param type Move type
+     * @param category1 Damage category (PHYSICAL/SPECIAL)
+     * @param category2 Status category (STATUS_SELF/STATUS_ENEMY)
+     * @param power Base power
+     * @param attribute1 Primary status effect
+     * @param attribute2 Secondary status effect (nullable)
+     * @param accuracy1 Accuracy percentage (1-100)
+     * @param accuracy2 Accuracy percentage (1-100)
+     */
     private void addMove(String name, Type type, Category category1, Category category2,
         int power, Status attribute1, Status attribute2, int accuracy1, int accuracy2) 
     {
@@ -87,20 +118,29 @@ public class MovesFactory {
         movesChart.put(name, move);
     }
 
+    /**
+     * @brief Adds a damage-dealing move to the moves chart.
+     * @param name Move name
+     * @param type Move type
+     * @param category Damage category (PHYSICAL/SPECIAL)
+     * @param power Base power
+     * @param accuracy Accuracy percentage (1-100)
+     */
     private void addMove(String name, Type type, Category category, int power, int accuracy) {
         addMove(name, type, category, null, power, null, null, accuracy, 0);
     }
 
+    /**
+     * @brief Adds a status altering move to the moves chart.
+     * @param name Move name
+     * @param type Move type
+     * @param category Status category (STATUS_SELF/STATUS_ENEMY)
+     * @param attribute1 Primary status effect
+     * @param attribute2 Secondary status effect (nullable)
+     * @param accuracy Accuracy percentage (1-100)
+     */
     private void addMove(String name, Type type, Category category, Status attribute1, Status attribute2,  int accuracy) {
         addMove(name, type, category, null, 0, attribute1, attribute2, accuracy, 0);
-    }
-
-    public Move getMove(String name) {
-        if (!movesChart.containsKey(name)) {
-            System.out.println("Move not found: " + name);
-            return movesChart.get("HEADBUTT");
-        }
-        return movesChart.get(name);
     }
 
 }

@@ -6,7 +6,8 @@ import model.moves.MovesFactory;
 import model.util.Type;
 
 /**
- * The PokemonFactory class is responsible for creating instances of Pokémon.
+ * @class PokemonFactory
+ * @brief The PokemonFactory class is responsible for creating instances of Pokémon.
  * It uses the MovesFactory and AbilityFactory to create moves and abilities
  * for the Pokémon.
  * 
@@ -16,6 +17,19 @@ import model.util.Type;
 public class PokemonFactory {
     private final MovesFactory mf = new MovesFactory();
     private final AbilityFactory af = new AbilityFactory();
+
+    /**
+     * @brief Creates a Pokémon instance based on the given name.
+     * @param p The name of the Pokémon to create (e.g., "EEVEE", "VAPOREON")
+     * @return Pokemon The created Pokémon instance
+     * @throws IllegalArgumentException If the Pokémon name is not recognized
+     * 
+     * @details
+     * For each Pokémon, this method:
+     * 1. Creates a moveset using MovesFactory
+     * 2. Sets base stats according to canonical values
+     * 3. Assigns an appropriate ability using AbilityFactory
+     */
     public Pokemon getPokemon(String p) {		
         switch (p) {
             case "EEVEE" -> {

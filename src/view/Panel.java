@@ -13,7 +13,8 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 /**
- * Panel class that extends JPanel to create a custom drawing area for the simulation.
+ * @class Panel
+ * @brief Panel class that extends JPanel to create a custom drawing area for the simulation.
  * It handles key events and id updated by the simulation state controller.
  * 
  * @see Simulation

@@ -1,9 +1,18 @@
 package model.abilities;
 
 /**
- * The AbilityEvent enum represents the different events that can trigger
- * abilities in Pokémon battles. Each event corresponds to a specific point
- * in the battle where an ability may activate.
+ * @enum AbilityEvent
+ * @brief Defines trigger points for ability activation.
+ * Represents key battle moments when abilities may activate.
+ * Used by AbilityObserver for event dispatching.
+ * 
+ * @details Timeline:
+ * 1. BATTLE_START - When battle begins
+ * 2. TURN_START - Start of each turn
+ * 3. BEFORE_MOVE - Before move execution
+ * 4. AFTER_MOVE - After move completes
+ * 5. ON_HIT - When hit by a move
+ * 6. ON_STATUS - When status effect is applied
  * 
  * @see model.abilities.Ability
  */

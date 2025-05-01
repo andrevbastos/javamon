@@ -8,18 +8,35 @@ import java.io.File;
 import view.Panel;
 
 /**
- * SelectionState is a class that represents the state of the simulation
- * where the user can select their Pokémon. It implements the SimulationState.
- * Once user selects at least 2 Pokémon, it transitions to the CombatState.
+ * @class SelectionState
+ * @brief Represents the Pokémon selection phase of the simulation.
+ * This state allows users to select their Pokémon before battle. 
+ * Implements the SimulationState interface as part of the State design pattern.
+ * 
+ * @details 
+ * - Manages a list of available Pokémon (Eevee and its evolutions)
+ * - Handles pagination for displaying Pokémon selection
+ * - Transitions to CombatState when at least 2 Pokémon are selected
+ * - Implements all required SimulationState interface methods
+ * 
+ * @note The Pokémon sprites are loaded from the "res/pokemon/" directory
  * 
  * @see controller.Simulation
  * @see controller.SimulationState
  * @see controller.CombatState
  */
 public class SelectionState implements SimulationState {
+    /** @brief Current page index for Pokémon display pagination */
     private int pokeIndex = 0;
+    
+    /** @brief List of available Pokémon names */
     private final ArrayList<String> availablePokemons = new ArrayList<>(); 
 
+    /**
+     * @brief Constructs a SelectionState with default Pokémon roster
+     * 
+     * Initializes the available Pokémon list with Eevee and its evolutions.
+     */
     public SelectionState() {
         availablePokemons.add("EEVEE");
         availablePokemons.add("ESPEON");
@@ -32,6 +49,19 @@ public class SelectionState implements SimulationState {
         availablePokemons.add("SYLVEON");
     }
 
+    /**
+     * @brief Updates and renders the selection screen
+     * 
+     * @param sim The Simulation controller
+     * @param panel The view panel to render to
+     * @param g2d Graphics context for drawing
+     * 
+     * @details
+     * - Displays selection instructions
+     * - Renders available Pokémon with pagination
+     * - Shows selected Pokémon in color, others in grayscale
+     * - Displays navigation controls
+     */
     @Override
     public void update(Simulation sim, Panel panel, Graphics2D g2d) {
         g2d.setFont(panel.pkmn.deriveFont(20f));
@@ -83,6 +113,17 @@ public class SelectionState implements SimulationState {
         g2d.drawString("" + (1 + (pokeIndex / 5)), panel.width - 30, panel.height - 10);
     }
 
+    /**
+     * @brief Handles user input for Pokémon selection
+     * 
+     * @param sim The Simulation controller
+     * @param input The user input string
+     * 
+     * @details Handles:
+     * - ENTER: Confirm selection and transition to combat (if >= 2 Pokémon)
+     * - E/Q: Page navigation through available Pokémon
+     * - Number inputs: Select/deselect specific Pokémon
+     */
     @Override
     public void handleInput(Simulation sim, String input) {
         try {
@@ -119,6 +160,11 @@ public class SelectionState implements SimulationState {
         }
     }
 
+    /**
+     * @brief Resets the selection state
+     * 
+     * Resets the pagination index to 0 for a new selection session.
+     */
     @Override
     public void reset() {
         pokeIndex = 0;

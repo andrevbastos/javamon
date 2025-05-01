@@ -11,21 +11,42 @@ import model.pokemon.Pokemon;
 import view.Panel;
 
 /**
- * StatsState is a class that represents the state of the simulation
- * where the user can view the statistics of the Pokémon battles
- * and create the logs of the battle's statistics.
- * It implements the SimulationState.
- * By user input, it can either transition back to the SelectionState
- * or end the aplication.
+ * @class StatsState
+ * @brief Represents the statistics viewing phase of the simulation.
+ * This state displays battle statistics and handles log creation.
+ * Implements the SimulationState interface as part of the State design pattern.
+ * 
+ * @details
+ * - Displays Pokémon win statistics in sorted order
+ * - Provides pagination for viewing multiple Pokémon
+ * - Handles log creation and simulation restart
+ * - Manages transitions back to SelectionState
+ * 
+ * @note Pokémon sprites are loaded from "res/pokemon/" directory
  * 
  * @see controller.Simulation
  * @see controller.SimulationState
  * @see controller.SelectionState
  */
 public class StatsState implements SimulationState {
+    /** @brief Current page index for pagination */
     private int pokeIndex = 0;
+    
+    /** @brief List of Pokémon with their battle statistics */
     ArrayList<Pokemon> pokemons = new ArrayList<>();
 
+    /**
+     * @brief Updates and renders the statistics screen
+     * 
+     * @param sim The Simulation controller
+     * @param panel The view panel to render to
+     * @param g2d Graphics context for drawing
+     * 
+     * @details
+     * - Displays Pokémon win statistics in descending order
+     * - Shows Pokémon sprites and win counts
+     * - Renders navigation controls and options
+     */
     @Override
     public void update(Simulation sim, Panel panel, Graphics2D g2d) {
         g2d.setFont(panel.pkmn.deriveFont(20f));
@@ -76,6 +97,17 @@ public class StatsState implements SimulationState {
         g2d.drawString("" + (1 + (pokeIndex / 5)), panel.width - 30, panel.height - 10);
     }
 
+    /**
+     * @brief Handles user input for statistics screen
+     * 
+     * @param sim The Simulation controller
+     * @param input The user input string
+     * 
+     * @details Handles:
+     * - ENTER: Creates battle logs
+     * - E/Q: Page navigation
+     * - R: Restarts simulation (returns to SelectionState)
+     */
     @Override
     public void handleInput(Simulation sim, String input) {
         try {
@@ -101,11 +133,22 @@ public class StatsState implements SimulationState {
         }
     }
 
+    /**
+     * @brief Orders Pokémon by win count (descending)
+     * 
+     * @param pokemons List of Pokémon to sort
+     * @return Sorted list of Pokémon by win count
+     */
     public ArrayList<Pokemon> orderPokemons(ArrayList<Pokemon> pokemons) {
         pokemons.sort((p1, p2) -> Integer.compare(p2.getWins(), p1.getWins()));
         return pokemons;
     }
 
+    /**
+     * @brief Resets the statistics state
+     * 
+     * Resets pagination index for new session
+     */
     @Override
     public void reset() {
         pokeIndex = 0;

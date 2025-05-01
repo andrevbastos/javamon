@@ -2,7 +2,8 @@ package view;
 import javax.swing.*;
 
 /**
- * Window class that creates a JFrame for the application.
+ * @class Window
+ * @brief  Window class that creates a JFrame for the application.
  * It sets the title, icon, and adds a Panel to the frame.
  * The window is not resizable and closes the application on exit.
  * The icon is loaded from a specified path.

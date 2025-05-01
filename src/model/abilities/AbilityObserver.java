@@ -1,24 +1,38 @@
 package model.abilities;
 
 import java.util.concurrent.atomic.AtomicReference;
-
 import model.moves.Move;
 import model.pokemon.Pokemon;
 import model.util.Status;
 
 /**
- * The AbilityObserver class is responsible for observing and handling events
- * related to Pokémon abilities during battles. It manages the interaction
- * between two Pokémon and their abilities, allowing them to react to specific
- * events in the battle.
+ * @class AbilityObserver
+ * @brief Mediates ability-triggered interactions between battling Pokémon.
+ * Acts as the central hub for ability activation during battles. Implements the
+ * Observer pattern to handle ability events between two Pokémon.
+ * 
+ * @details
+ * - Tracks two battling Pokémon (p1 and p2)
+ * - Dispatches events to appropriate abilities
+ * - Handles four event types with method overloading
+ * 
+ * @note Thread-safe through AtomicReference for damage multipliers
  * 
  * @see model.pokemon.Pokemon
  * @see model.abilities.Ability
  * @see model.abilities.AbilityEvent
  */
 public class AbilityObserver {
-    Pokemon p1, p2;
+    /** @brief First battling Pokémon */
+    Pokemon p1;
+    /** @brief Second battling Pokémon */
+    Pokemon p2;
 
+    /**
+     * @brief Sets the battling Pokémon pair
+     * @param p1 First Pokémon
+     * @param p2 Second Pokémon
+     */
     public void setPokemons(Pokemon p1, Pokemon p2) {
         this.p1 = p1;
         this.p2 = p2;
