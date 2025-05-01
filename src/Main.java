@@ -33,8 +33,7 @@
  * 1. Ensure Java 11+ JDK is installed
  * 2. Clone repository:
  *    `git clone https://github.com/andrevbastos/javamon.git`
- * 3. Build and run:
- *    `mvn clean install && java -jar target/javamon.jar`
+ * 3. TODO
  * 
  * @section controls Controls
  * - [1-9] Select Pokémon
