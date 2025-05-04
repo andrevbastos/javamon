@@ -106,9 +106,9 @@ public class Pokemon {
             }
             
             if (roll <= hitChance) {
-                observer.handleEvent(AbilityEvent.BEFORE_MOVE, selectedMove, multiplier);
+                observer.handleEvent(AbilityEvent.BEFORE_MOVE, this, selectedMove, multiplier);
                 defender.takeMove(this, selectedMove, observer, multiplier);
-                observer.handleEvent(AbilityEvent.AFTER_MOVE);
+                observer.handleEvent(AbilityEvent.AFTER_MOVE, this, selectedMove);
             }
         }
 
@@ -142,20 +142,20 @@ public class Pokemon {
             case PHYSICAL -> {
                 damage = (int) ((move.getPower() * attacker.getAttack() / this.getDefense()) / 5) + 2;
                 hit(damage, move, observer, multiplier);
-                observer.handleEvent(AbilityEvent.ON_HIT, move, multiplier);
+                observer.handleEvent(AbilityEvent.ON_HIT, this, move);
             }
             case SPECIAL -> {
                 damage = ((move.getPower() * attacker.getSpAttack() / this.getSpDefense()) / 5) + 2;
                 hit(damage, move, observer, multiplier);
-                observer.handleEvent(AbilityEvent.ON_HIT, move, multiplier);
+                observer.handleEvent(AbilityEvent.ON_HIT, this, move);
             }
             case STATUS_SELF -> {
                 status(move.getAttribute1(), move.getAttribute2(), attacker, 1);
-                observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
+                observer.handleEvent(AbilityEvent.ON_STATUS, this, move.getAttribute1());
             }
             case STATUS_ENEMY -> {
                 status(move.getAttribute1(), move.getAttribute2(), this, -1);
-                observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
+                observer.handleEvent(AbilityEvent.ON_STATUS, this, move.getAttribute1());
             }
         }
 
@@ -167,11 +167,11 @@ public class Pokemon {
                 switch (move.getCategory2()) {
                     case STATUS_SELF -> {
                         status(move.getAttribute1(), move.getAttribute2(), attacker, 1);
-                        observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
+                        observer.handleEvent(AbilityEvent.ON_STATUS, this, move.getAttribute1());
                     }
                     case STATUS_ENEMY -> {
                         status(move.getAttribute1(), move.getAttribute2(), this, -1);
-                        observer.handleEvent(AbilityEvent.ON_STATUS, move.getAttribute1());
+                        observer.handleEvent(AbilityEvent.ON_STATUS, this, move.getAttribute1());
                     }
                 }
             }
@@ -433,9 +433,8 @@ public class Pokemon {
     }
 
     public void ability(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
-        ability.execute(enemy, move, multiplier, status);
+        ability.execute(this, enemy, move, multiplier, status);
     }
-
 
     public void addWin() {
         statistics[0]++;

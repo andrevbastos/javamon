@@ -27,20 +27,16 @@ import model.util.Type;
  * @see model.util.Status
  */
 public abstract class Ability {
-    /** @brief The Pokémon possessing this ability */
-    protected Pokemon owner;
     /** @brief When this ability activates */
     protected AbilityEvent event;
 
     Ability(Pokemon owner, AbilityEvent event) {
-        this.owner = owner;
         this.event = event;
     }
 
-    Pokemon getOwner() { return owner; };
     AbilityEvent getAbilityEvent() { return event; };
 
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {};
+    public void execute(Pokemon user, Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {};
 }
 
 /**
@@ -56,8 +52,8 @@ class Adaptability extends Ability {
     }
 
     @Override
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
-        if (move.getType() == owner.getType()) {
+    public void execute(Pokemon user, Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+        if (move.getType() == user.getType()) {
             multiplier.set(1.3f);
         }
     }
@@ -76,7 +72,7 @@ class IceBody extends Ability {
     }
 
     @Override
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+    public void execute(Pokemon user, Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
         if (move.getCategory1() == Category.PHYSICAL) {
             Random rn = new Random();
             int roll = rn.nextInt(4) + 1;
@@ -100,7 +96,7 @@ class Pixilate extends Ability {
     }
 
     @Override
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+    public void execute(Pokemon user, Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
         if (move.getType() == Type.NORMAL) {
             move.setType(Type.FAIRY);
             int newPower = (int) (move.getPower() * 1.3f);
@@ -122,7 +118,7 @@ class MagicBounce extends Ability {
     }
 
     @Override
-    public void execute(Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
+    public void execute(Pokemon user, Pokemon enemy, Move move, AtomicReference<Float> multiplier, Status status) {
         if (status.getMethodSuffix().equals("Condition")) {
             enemy.status(status, null, enemy, -1);
         }
