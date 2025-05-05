@@ -32,7 +32,7 @@ import view.Panel;
  */
 public class Simulation {
     /** @brief Number of repetitions for statistical simulation */
-    private final int repetitions = 100;
+    private int repetitions;
 
     /** @brief Reference to the view panel */
     private final Panel panel;
@@ -42,6 +42,9 @@ public class Simulation {
     
     /** @brief Pokémon selection state */
     private final SelectionState selectionState = new SelectionState();
+
+    /** @brief Repetitions state for setting simulation repetitions */
+    private final RepetitionsState repetitionsState = new RepetitionsState();
     
     /** @brief Pokémon battle state */
     private final CombatState combatState = new CombatState();
@@ -69,6 +72,7 @@ public class Simulation {
         this.panel = panel;
 
         states.addState(selectionState);
+        states.addState(repetitionsState);
         states.addState(combatState);
         states.addState(statsState);
 
@@ -135,6 +139,14 @@ public class Simulation {
     }
 
     /**
+     * @brief Sets the number of simulation repetitions
+     * @param repetitions The number of repetitions to set
+     */
+    public void setRepetitions(int repetitions) {
+        this.repetitions = repetitions;
+    }
+
+    /**
      * @brief Gets selected Pokémon names
      * @return List of selected Pokémon names
      */
@@ -173,6 +185,14 @@ public class Simulation {
      */
     public SimulationState getSelectionState() {
         return selectionState;
+    }
+
+    /**
+     * @brief Gets the repetition state
+     * @return Repetition state instance
+     */
+    public SimulationState getRepetitionsState() {
+        return repetitionsState;
     }
         
     /**

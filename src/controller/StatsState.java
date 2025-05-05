@@ -76,7 +76,7 @@ public class StatsState implements SimulationState {
                     spriteX,
                     currentY - 10 - panel.height/20,
                     panel.width/10,
-                    panel.height/10,
+                    panel.width/10,
                     null
                 );
                 g2d.drawString(

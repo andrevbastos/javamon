@@ -55,6 +55,7 @@ public class Panel extends JPanel {
         switch(keyCode) {
             case KeyEvent.VK_ESCAPE -> input = "ESCAPE";
             case KeyEvent.VK_ENTER -> input = "ENTER";
+            case KeyEvent.VK_BACK_SPACE -> input = "BACKSPACE";
             case KeyEvent.VK_1 -> input = "1";
             case KeyEvent.VK_2 -> input = "2";
             case KeyEvent.VK_3 -> input = "3";

@@ -13,7 +13,7 @@ import javax.swing.*;
  */
 public class Window extends JFrame {
     public Window() {
-        this.setTitle("2024 © IFC | Javamon");
+        this.setTitle("2025 © IFC | Javamon");
         
         this.setVisible(true);
         this.setResizable(false);
@@ -25,7 +25,7 @@ public class Window extends JFrame {
             icon = new ImageIcon("res/pokemon/eevee.png");
             this.setIconImage(icon.getImage());
 
-            Panel panel = new Panel(this, 600, 600);
+            Panel panel = new Panel(this, 600, 500);
             this.add(panel);
             this.pack();
             panel.requestFocusInWindow();

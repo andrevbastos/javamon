@@ -58,7 +58,7 @@ public class CombatState implements SimulationState {
         g2d.setFont(panel.pkmn.deriveFont(20f));
         FontMetrics fm = g2d.getFontMetrics();
         int textWidth = fm.stringWidth(battleStatus);
-        g2d.drawString(battleStatus, 300 - (textWidth / 2), 300);
+        g2d.drawString(battleStatus, 300 - (textWidth / 2), 250);
         
         if (!battling) {
             battling = true;

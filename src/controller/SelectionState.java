@@ -66,7 +66,7 @@ public class SelectionState implements SimulationState {
     public void update(Simulation sim, Panel panel, Graphics2D g2d) {
         g2d.setFont(panel.pkmn.deriveFont(20f));
         g2d.drawString("Select your pokémons", 50, 50);
-                
+        
         try {
             int startX = panel.width / 5;
             int spriteX = startX + 50;
@@ -94,7 +94,7 @@ public class SelectionState implements SimulationState {
                     spriteX,
                     currentY - 10 - panel.height/20,
                     panel.width/10,
-                    panel.height/10,
+                    panel.width/10,
                     null
                 );
                 g2d.drawString(
@@ -129,7 +129,7 @@ public class SelectionState implements SimulationState {
         try {
             if (input.equals("ENTER")) {
                 if (sim.getSelectedPokemons().size() >= 2) {
-                    sim.setState(sim.getCombatState());
+                    sim.setState(sim.getRepetitionsState());
                 } else {
                     System.out.println("Selecione pelo menos 2 Pokémon!");
                 }
