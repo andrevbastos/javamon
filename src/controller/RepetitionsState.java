@@ -46,7 +46,6 @@ public class RepetitionsState implements SimulationState {
         g2d.drawString("2. 10", panel.width / 5, 150);
         g2d.drawString("3. 100", panel.width / 5, 190);
         g2d.drawString("4. 1000", panel.width / 5, 230);
-        g2d.drawString("5. 10000", panel.width / 5, 270);
 
         g2d.setFont(panel.pkmn.deriveFont(10f));
         g2d.drawString("Press ENTER to start", 10, panel.height - 10);
@@ -75,7 +74,6 @@ public class RepetitionsState implements SimulationState {
                 case 2 -> { this.repetitions = 10; }
                 case 3 -> { this.repetitions = 100; }
                 case 4 -> { this.repetitions = 1000; }
-                case 5 -> { this.repetitions = 10000; }
             }
         } catch (NumberFormatException e) {
             sim.addToLog("Invalid input. Please select a valid option.");
