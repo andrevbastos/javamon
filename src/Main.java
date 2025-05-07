@@ -4,7 +4,7 @@
  * 
  * @see Javamon
  * 
- *  * @mainpage Javamon Pokémon Battle Simulator
+ * @mainpage Javamon Pokémon Battle Simulator
  * 
  * @section introduction Introduction
  * Javamon is an interactive Pokémon battle simulator featuring:
@@ -29,14 +29,16 @@
  * | State          | UI flow control               |
  * 
  * @section installation Installation
- *   1. Ensure Java 11+ JDK is installed on your system.
- *   2. Clone repository:
- *      git clone https://github.com/zezevitor/javamon.git
- *   3. Compile and run:
- *      cd javamon &&
- *      mkdir bin &&
- *      javac -d bin --source-path src $(find src -name "*.java") &&
- *      java -cp bin Main
+ * <pre>
+ * 1. Ensure Java 11+ JDK is installed on your system.
+ * 2. Clone repository:
+ *    git clone https://github.com/zezevitor/javamon.git
+ * 3. Compile and run:
+ *    cd javamon &&
+ *    mkdir bin &&
+ *    javac -d bin --source-path src $(find src -name "*.java") &&
+ *    java -cp bin Main
+ * </pre>
  * 
  * @section controls Controls
  * - [1-9] Select Pokémon
@@ -45,9 +47,10 @@
  * - [ESC] Exit application
  * 
  * @author André Vitor Bastos de Macêdo
- * @contact
- * GitHub: [andrevbastos](https://github.com/andrevbastos)
- * GitLab: [andrevbastos](https://gitlab.com/andrevbastos)
+ * <ul>
+ * <li><a href="https://github.com/andrevbastos">GitHub</a></li>
+ * <li><a href="https://gitlab.com/andrevbastos">GitLab</a></li>
+ * </ul>
  * 
  * @version 2.0
  */
