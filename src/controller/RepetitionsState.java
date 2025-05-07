@@ -1,10 +1,19 @@
 package controller;
 
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
 import view.Panel;
 
+/**
+ * @class RepetitionsState
+ * @brief Represents the state of the simulation where the user selects the number of repetitions.
+ * 
+ * This class implements the SimulationState interface and is responsible for handling
+ * the user input related to the number of repetitions for the simulation.
+ * 
+ * @see controller.Simulation
+ * @see controller.SimulationState
+ */
 public class RepetitionsState implements SimulationState {
     /** @brief Number of repetitions for the simulation */
     private int repetitions = 1;

@@ -11,7 +11,9 @@ digraph "controller.SimulationState"
   Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="controller.CompositeState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1CompositeState.html",tooltip="Manages multiple simulation states using Composite pattern."];
   Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="controller.SelectionState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1SelectionState.html",tooltip="Represents the Pokémon selection phase of the simulation."];
+  Node4 [id="Node000004",label="controller.RepetitionsState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1RepetitionsState.html",tooltip="Represents the state of the simulation where the user selects the number of repetitions."];
   Node1 -> Node5 [id="edge4_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="controller.StatsState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1StatsState.html",tooltip="Represents the statistics viewing phase of the simulation."];
+  Node5 [id="Node000005",label="controller.SelectionState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1SelectionState.html",tooltip="Represents the Pokémon selection phase of the simulation."];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="controller.StatsState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1StatsState.html",tooltip="Represents the statistics viewing phase of the simulation."];
 }

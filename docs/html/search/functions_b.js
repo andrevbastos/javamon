@@ -11,13 +11,14 @@ var searchData=
   ['setpokemon_8',['setPokemon',['../classcontroller_1_1Simulation.html#a5d9a8db52accce3ac6db3ef6312b464f',1,'controller::Simulation']]],
   ['setpokemons_9',['setPokemons',['../classmodel_1_1abilities_1_1AbilityObserver.html#a9339fa9e8f77a636b14624798bd857a8',1,'model::abilities::AbilityObserver']]],
   ['setpower_10',['setPower',['../classmodel_1_1moves_1_1Move.html#acae0528c5817cca2651f137bbba8dfdf',1,'model::moves::Move']]],
-  ['setspattack_11',['setSpAttack',['../classmodel_1_1pokemon_1_1Pokemon.html#a60873aa289d8127d2ea84d24ed3fe39d',1,'model::pokemon::Pokemon']]],
-  ['setspdefense_12',['setSpDefense',['../classmodel_1_1pokemon_1_1Pokemon.html#afc19e5dcb53d4bd9dc4202ae3c551417',1,'model::pokemon::Pokemon']]],
-  ['setspeed_13',['setSpeed',['../classmodel_1_1pokemon_1_1Pokemon.html#a49965d87d8a49960bee7ff74f247890e',1,'model::pokemon::Pokemon']]],
-  ['setstate_14',['setState',['../classcontroller_1_1Simulation.html#a9c9dcad64cb07e14ca23f348ac8e636d',1,'controller::Simulation']]],
-  ['settype_15',['setType',['../classmodel_1_1moves_1_1Move.html#a618ab04b0a57e3c1079d50ea6807bf62',1,'model::moves::Move']]],
-  ['setupkeylistener_16',['setupKeyListener',['../classview_1_1Panel.html#a7c7e01a6083f0149efc6271e4a6c77f2',1,'view::Panel']]],
-  ['simulation_17',['Simulation',['../classcontroller_1_1Simulation.html#a9c2b66b0b7fa3ca044c8544109d912b6',1,'controller::Simulation']]],
-  ['singlebattle_18',['singleBattle',['../classmodel_1_1Combat.html#a32d685b6d2a5676de1682a2f17e360e4',1,'model::Combat']]],
-  ['status_19',['status',['../classmodel_1_1pokemon_1_1Pokemon.html#a14a33a0e4dc060705caf3cf7c3c86c9d',1,'model.pokemon.Pokemon.status()'],['../enummodel_1_1util_1_1Status.html#af46be06d060cb00819cfe488c9984c73',1,'model.util.Status.Status()']]]
+  ['setrepetitions_11',['setrepetitions',['../classcontroller_1_1RepetitionsState.html#acabf3f49273c215cc4c298c04ebb7355',1,'controller.RepetitionsState.setRepetitions()'],['../classcontroller_1_1Simulation.html#a7d314118feb6448e8594d6a2933da5d9',1,'controller.Simulation.setRepetitions()']]],
+  ['setspattack_12',['setSpAttack',['../classmodel_1_1pokemon_1_1Pokemon.html#a60873aa289d8127d2ea84d24ed3fe39d',1,'model::pokemon::Pokemon']]],
+  ['setspdefense_13',['setSpDefense',['../classmodel_1_1pokemon_1_1Pokemon.html#afc19e5dcb53d4bd9dc4202ae3c551417',1,'model::pokemon::Pokemon']]],
+  ['setspeed_14',['setSpeed',['../classmodel_1_1pokemon_1_1Pokemon.html#a49965d87d8a49960bee7ff74f247890e',1,'model::pokemon::Pokemon']]],
+  ['setstate_15',['setState',['../classcontroller_1_1Simulation.html#a9c9dcad64cb07e14ca23f348ac8e636d',1,'controller::Simulation']]],
+  ['settype_16',['setType',['../classmodel_1_1moves_1_1Move.html#a618ab04b0a57e3c1079d50ea6807bf62',1,'model::moves::Move']]],
+  ['setupkeylistener_17',['setupKeyListener',['../classview_1_1Panel.html#a7c7e01a6083f0149efc6271e4a6c77f2',1,'view::Panel']]],
+  ['simulation_18',['Simulation',['../classcontroller_1_1Simulation.html#a9c2b66b0b7fa3ca044c8544109d912b6',1,'controller::Simulation']]],
+  ['singlebattle_19',['singleBattle',['../classmodel_1_1Combat.html#a32d685b6d2a5676de1682a2f17e360e4',1,'model::Combat']]],
+  ['status_20',['status',['../classmodel_1_1pokemon_1_1Pokemon.html#a14a33a0e4dc060705caf3cf7c3c86c9d',1,'model.pokemon.Pokemon.status()'],['../enummodel_1_1util_1_1Status.html#af46be06d060cb00819cfe488c9984c73',1,'model.util.Status.Status()']]]
 ];

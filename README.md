@@ -1,12 +1,21 @@
 # Javamon
 
-Simulador simples de batalha pokémon, faz 1000 iterações para cada possibilidade de batalhas entre Pikachu, Charmander, Squirtle e Bulbassauro.
+Javamon is an interactive Pokémon battle simulator featuring:
+ - All Eevee evolutions with game accurate stats, moves and abilities
+ - Turn-based battle system
+ - Detailed battle logging
 
-## Instalação
+## Installation
 
-1. Clone o reposiório
+1. Ensure Java 11+ JDK is installed
+2. Clone repository:
 ```bash
-git clone https://github.com/zezevitor/Javamon.git
+git clone https://github.com/zezevitor/javamon.git
 ```
-
-2. TODO
+3. Compile and run:
+```bash
+cd javamon &&
+mkdir bin &&
+javac -d bin --source-path src $(find src -name "*.java") &&
+java -cp bin Main
+```

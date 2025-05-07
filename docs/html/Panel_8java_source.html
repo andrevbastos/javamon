@@ -139,63 +139,64 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">switch</span>(keyCode) {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">case</span> KeyEvent.VK_ESCAPE -&gt; input = <span class="stringliteral">&quot;ESCAPE&quot;</span>;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">case</span> KeyEvent.VK_ENTER -&gt; input = <span class="stringliteral">&quot;ENTER&quot;</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">case</span> KeyEvent.VK_1 -&gt; input = <span class="stringliteral">&quot;1&quot;</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">case</span> KeyEvent.VK_2 -&gt; input = <span class="stringliteral">&quot;2&quot;</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">case</span> KeyEvent.VK_3 -&gt; input = <span class="stringliteral">&quot;3&quot;</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">case</span> KeyEvent.VK_4 -&gt; input = <span class="stringliteral">&quot;4&quot;</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">case</span> KeyEvent.VK_5 -&gt; input = <span class="stringliteral">&quot;5&quot;</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">case</span> KeyEvent.VK_6 -&gt; input = <span class="stringliteral">&quot;6&quot;</span>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">case</span> KeyEvent.VK_7 -&gt; input = <span class="stringliteral">&quot;7&quot;</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">case</span> KeyEvent.VK_8 -&gt; input = <span class="stringliteral">&quot;8&quot;</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">case</span> KeyEvent.VK_9 -&gt; input = <span class="stringliteral">&quot;9&quot;</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">case</span> KeyEvent.VK_E -&gt; input = <span class="stringliteral">&quot;E&quot;</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">case</span> KeyEvent.VK_Q -&gt; input = <span class="stringliteral">&quot;Q&quot;</span>;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">case</span> KeyEvent.VK_R -&gt; input = <span class="stringliteral">&quot;R&quot;</span>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">if</span> (input.equals(<span class="stringliteral">&quot;ESCAPE&quot;</span>)) {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a3b834f0ea76f928dea49ec17dd178c30">window</a>.dispose();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            System.exit(0);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">if</span> (!input.isEmpty()) {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a1db33068fc15647e9a0d898101b8349e">sim</a>.handleInput(input);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            repaint();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">case</span> KeyEvent.VK_BACK_SPACE -&gt; input = <span class="stringliteral">&quot;BACKSPACE&quot;</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">case</span> KeyEvent.VK_1 -&gt; input = <span class="stringliteral">&quot;1&quot;</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">case</span> KeyEvent.VK_2 -&gt; input = <span class="stringliteral">&quot;2&quot;</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">case</span> KeyEvent.VK_3 -&gt; input = <span class="stringliteral">&quot;3&quot;</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">case</span> KeyEvent.VK_4 -&gt; input = <span class="stringliteral">&quot;4&quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">case</span> KeyEvent.VK_5 -&gt; input = <span class="stringliteral">&quot;5&quot;</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">case</span> KeyEvent.VK_6 -&gt; input = <span class="stringliteral">&quot;6&quot;</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">case</span> KeyEvent.VK_7 -&gt; input = <span class="stringliteral">&quot;7&quot;</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">case</span> KeyEvent.VK_8 -&gt; input = <span class="stringliteral">&quot;8&quot;</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">case</span> KeyEvent.VK_9 -&gt; input = <span class="stringliteral">&quot;9&quot;</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">case</span> KeyEvent.VK_E -&gt; input = <span class="stringliteral">&quot;E&quot;</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">case</span> KeyEvent.VK_Q -&gt; input = <span class="stringliteral">&quot;Q&quot;</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">case</span> KeyEvent.VK_R -&gt; input = <span class="stringliteral">&quot;R&quot;</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">if</span> (input.equals(<span class="stringliteral">&quot;ESCAPE&quot;</span>)) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a3b834f0ea76f928dea49ec17dd178c30">window</a>.dispose();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            System.exit(0);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">if</span> (!input.isEmpty()) {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a1db33068fc15647e9a0d898101b8349e">sim</a>.handleInput(input);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            repaint();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
 </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    @Override</div>
-<div class="foldopen" id="foldopen00084" data-start="{" data-end="}">
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classview_1_1Panel.html#a8c00c53d3448da21bf334679be97cf51">   84</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classview_1_1Panel.html#a8c00c53d3448da21bf334679be97cf51">paintComponent</a>(Graphics g) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        super.paintComponent(g);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        Graphics2D g2d = (Graphics2D) g;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_variable" href="classview_1_1Panel.html#a1db33068fc15647e9a0d898101b8349e">sim</a>.update(<span class="keyword">this</span>, g2d);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    @Override</div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classview_1_1Panel.html#a8c00c53d3448da21bf334679be97cf51">   85</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classview_1_1Panel.html#a8c00c53d3448da21bf334679be97cf51">paintComponent</a>(Graphics g) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        super.paintComponent(g);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        Graphics2D g2d = (Graphics2D) g;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_variable" href="classview_1_1Panel.html#a1db33068fc15647e9a0d898101b8349e">sim</a>.update(<span class="keyword">this</span>, g2d);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
 </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classview_1_1Panel.html#a1c876db27024f6733f2da7636d096628">   91</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classview_1_1Panel.html#a1c876db27024f6733f2da7636d096628">createFonts</a>() {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a2356574be033a01747a1fbbefc8698f2">pkmn</a> = Font.createFont(Font.TRUETYPE_FONT, <span class="keyword">new</span> File(<span class="stringliteral">&quot;res/fonts/PKMN.ttf&quot;</span>));</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a5ee8cb95532e667f3f06f26a7b932061">solid</a> = Font.createFont(Font.TRUETYPE_FONT, <span class="keyword">new</span> File(<span class="stringliteral">&quot;res/fonts/PokemonSolid.ttf&quot;</span>));</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        } <span class="keywordflow">catch</span> (FontFormatException | IOException e) {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            e.printStackTrace();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classview_1_1Panel.html#a1c876db27024f6733f2da7636d096628">   92</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classview_1_1Panel.html#a1c876db27024f6733f2da7636d096628">createFonts</a>() {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a2356574be033a01747a1fbbefc8698f2">pkmn</a> = Font.createFont(Font.TRUETYPE_FONT, <span class="keyword">new</span> File(<span class="stringliteral">&quot;res/fonts/PKMN.ttf&quot;</span>));</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <a class="code hl_variable" href="classview_1_1Panel.html#a5ee8cb95532e667f3f06f26a7b932061">solid</a> = Font.createFont(Font.TRUETYPE_FONT, <span class="keyword">new</span> File(<span class="stringliteral">&quot;res/fonts/PokemonSolid.ttf&quot;</span>));</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        } <span class="keywordflow">catch</span> (FontFormatException | IOException e) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            e.printStackTrace();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
 </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
 </div>
 <div class="ttc" id="aclasscontroller_1_1Simulation_html"><div class="ttname"><a href="classcontroller_1_1Simulation.html">controller.Simulation</a></div><div class="ttdoc">Main controller class for the Javamon simulation.</div><div class="ttdef"><b>Definition</b> <a href="Simulation_8java_source.html#l00033">Simulation.java:33</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html"><div class="ttname"><a href="classview_1_1Panel.html">view.Panel</a></div><div class="ttdoc">Panel class that extends JPanel to create a custom drawing area for the simulation.</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00022">Panel.java:22</a></div></div>
-<div class="ttc" id="aclassview_1_1Panel_html_a1c876db27024f6733f2da7636d096628"><div class="ttname"><a href="classview_1_1Panel.html#a1c876db27024f6733f2da7636d096628">view.Panel.createFonts</a></div><div class="ttdeci">void createFonts()</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00091">Panel.java:91</a></div></div>
+<div class="ttc" id="aclassview_1_1Panel_html_a1c876db27024f6733f2da7636d096628"><div class="ttname"><a href="classview_1_1Panel.html#a1c876db27024f6733f2da7636d096628">view.Panel.createFonts</a></div><div class="ttdeci">void createFonts()</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00092">Panel.java:92</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_a1db33068fc15647e9a0d898101b8349e"><div class="ttname"><a href="classview_1_1Panel.html#a1db33068fc15647e9a0d898101b8349e">view.Panel.sim</a></div><div class="ttdeci">final Simulation sim</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00023">Panel.java:23</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_a2356574be033a01747a1fbbefc8698f2"><div class="ttname"><a href="classview_1_1Panel.html#a2356574be033a01747a1fbbefc8698f2">view.Panel.pkmn</a></div><div class="ttdeci">Font pkmn</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00026">Panel.java:26</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_a3b834f0ea76f928dea49ec17dd178c30"><div class="ttname"><a href="classview_1_1Panel.html#a3b834f0ea76f928dea49ec17dd178c30">view.Panel.window</a></div><div class="ttdeci">Window window</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00024">Panel.java:24</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_a5ee8cb95532e667f3f06f26a7b932061"><div class="ttname"><a href="classview_1_1Panel.html#a5ee8cb95532e667f3f06f26a7b932061">view.Panel.solid</a></div><div class="ttdeci">Font solid</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00026">Panel.java:26</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_a7c7e01a6083f0149efc6271e4a6c77f2"><div class="ttname"><a href="classview_1_1Panel.html#a7c7e01a6083f0149efc6271e4a6c77f2">view.Panel.setupKeyListener</a></div><div class="ttdeci">void setupKeyListener()</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00040">Panel.java:40</a></div></div>
-<div class="ttc" id="aclassview_1_1Panel_html_a8c00c53d3448da21bf334679be97cf51"><div class="ttname"><a href="classview_1_1Panel.html#a8c00c53d3448da21bf334679be97cf51">view.Panel.paintComponent</a></div><div class="ttdeci">void paintComponent(Graphics g)</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00084">Panel.java:84</a></div></div>
+<div class="ttc" id="aclassview_1_1Panel_html_a8c00c53d3448da21bf334679be97cf51"><div class="ttname"><a href="classview_1_1Panel.html#a8c00c53d3448da21bf334679be97cf51">view.Panel.paintComponent</a></div><div class="ttdeci">void paintComponent(Graphics g)</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00085">Panel.java:85</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_ab0a0dc7dcab1a8cbaa5daf8f672fd345"><div class="ttname"><a href="classview_1_1Panel.html#ab0a0dc7dcab1a8cbaa5daf8f672fd345">view.Panel.width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00025">Panel.java:25</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_abf01d99023f3cc531323c3acb9a3cf3e"><div class="ttname"><a href="classview_1_1Panel.html#abf01d99023f3cc531323c3acb9a3cf3e">view.Panel.Panel</a></div><div class="ttdeci">Panel(Window window, int width, int height)</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00028">Panel.java:28</a></div></div>
 <div class="ttc" id="aclassview_1_1Panel_html_af1bcfefe668885056786d09a9189ad78"><div class="ttname"><a href="classview_1_1Panel.html#af1bcfefe668885056786d09a9189ad78">view.Panel.handleKeyInput</a></div><div class="ttdeci">void handleKeyInput(int keyCode)</div><div class="ttdef"><b>Definition</b> <a href="Panel_8java_source.html#l00052">Panel.java:52</a></div></div>

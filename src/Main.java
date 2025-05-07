@@ -8,9 +8,8 @@
  * 
  * @section introduction Introduction
  * Javamon is an interactive Pokémon battle simulator featuring:
- * - All Eevee evolutions with canonical stats
+ * - All Eevee evolutions with game accurate stats
  * - Turn-based battle system
- * - Comprehensive ability effects
  * - Detailed battle logging
  * 
  * @section features Features
@@ -30,10 +29,14 @@
  * | State          | UI flow control               |
  * 
  * @section installation Installation
- * 1. Ensure Java 11+ JDK is installed
- * 2. Clone repository:
- *    `git clone https://github.com/andrevbastos/javamon.git`
- * 3. TODO
+ *   1. Ensure Java 11+ JDK is installed on your system.
+ *   2. Clone repository:
+ *      git clone https://github.com/zezevitor/javamon.git
+ *   3. Compile and run:
+ *      cd javamon &&
+ *      mkdir bin &&
+ *      javac -d bin --source-path src $(find src -name "*.java") &&
+ *      java -cp bin Main
  * 
  * @section controls Controls
  * - [1-9] Select Pokémon
