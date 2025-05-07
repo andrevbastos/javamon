@@ -1,0 +1,26 @@
+digraph "controller.Simulation"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="controller.Simulation",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Main controller class for the Javamon simulation."];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" states",fontcolor="grey" ];
+  Node2 [id="Node000002",label="controller.CompositeState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1CompositeState.html",tooltip="Manages multiple simulation states using Composite pattern."];
+  Node3 -> Node2 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="controller.SimulationState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$interfacecontroller_1_1SimulationState.html",tooltip="Defines the interface for all simulation states."];
+  Node4 -> Node1 [id="edge3_Node000001_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" selectionState",fontcolor="grey" ];
+  Node4 [id="Node000004",label="controller.SelectionState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1SelectionState.html",tooltip="Represents the Pokémon selection phase of the simulation."];
+  Node3 -> Node4 [id="edge4_Node000004_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 -> Node1 [id="edge5_Node000001_Node000005",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" repetitionsState",fontcolor="grey" ];
+  Node5 [id="Node000005",label="controller.RepetitionsState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1RepetitionsState.html",tooltip="Represents the state of the simulation where the user selects the number of repetitions."];
+  Node3 -> Node5 [id="edge6_Node000005_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node1 [id="edge7_Node000001_Node000006",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" combatState",fontcolor="grey" ];
+  Node6 [id="Node000006",label="controller.CombatState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1CombatState.html",tooltip="Represents the battle phase of the simulation."];
+  Node3 -> Node6 [id="edge8_Node000006_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 -> Node1 [id="edge9_Node000001_Node000007",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" statsState",fontcolor="grey" ];
+  Node7 [id="Node000007",label="controller.StatsState",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classcontroller_1_1StatsState.html",tooltip="Represents the statistics viewing phase of the simulation."];
+  Node3 -> Node7 [id="edge10_Node000007_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 -> Node1 [id="edge11_Node000001_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" currentState",fontcolor="grey" ];
+}
