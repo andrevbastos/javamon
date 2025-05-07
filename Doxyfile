@@ -2870,3 +2870,4 @@ EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = YES
 EXTRACT_STATIC         = YES
 SOURCE_BROWSER         = YES
+HTML_BASE_URL          = https://andrevbastos.github.io/javamon/
