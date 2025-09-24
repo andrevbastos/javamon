@@ -1,5 +1,7 @@
 # Javamon
 
+Also check out dev branch! Transitioning to use Spring de PostgreSQL!
+
 Javamon is an interactive Pokémon battle simulator featuring:
  - All Eevee evolutions with game accurate stats, moves and abilities
  - Turn-based battle system
