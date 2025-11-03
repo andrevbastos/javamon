@@ -1,15 +1,16 @@
 package br.com.andrebastos.javamon_online;
 
-import br.com.andrebastos.javamon_online.common.MoveJsonDto;
-import br.com.andrebastos.javamon_online.common.PokemonJsonDto;
-import br.com.andrebastos.javamon_online.common.PokemonMovesetDto;
+import br.com.andrebastos.javamon_online.common.*;
 import br.com.andrebastos.javamon_online.move.Move;
 import br.com.andrebastos.javamon_online.move.MoveRepository;
+import br.com.andrebastos.javamon_online.ability.Ability;
+import br.com.andrebastos.javamon_online.ability.AbilityRepository;
 import br.com.andrebastos.javamon_online.pokemon.Pokemon;
 import br.com.andrebastos.javamon_online.pokemon.PokemonRepository;
 import br.com.andrebastos.javamon_online.shared.Category;
 import br.com.andrebastos.javamon_online.shared.Status;
 import br.com.andrebastos.javamon_online.shared.Type;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -29,12 +30,14 @@ public class DbSeeder implements CommandLineRunner {
 
     private final PokemonRepository pokemonRepository;
     private final MoveRepository moveRepository;
+    private final AbilityRepository abilityRepository;
     private final ResourceLoader resourceLoader;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public DbSeeder(PokemonRepository pokemonRepository, MoveRepository moveRepository, ResourceLoader resourceLoader) {
+    public DbSeeder(PokemonRepository pokemonRepository, MoveRepository moveRepository, AbilityRepository abilityRepository, ResourceLoader resourceLoader) {
         this.pokemonRepository = pokemonRepository;
         this.moveRepository = moveRepository;
+        this.abilityRepository = abilityRepository;
         this.resourceLoader = resourceLoader;
     }
 
@@ -42,15 +45,18 @@ public class DbSeeder implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         if (pokemonRepository.count() > 0) {
-            System.out.println("O banco de dados já parece estar populado. Seeder não será executado.");
+            System.out.println("O banco de dados já parece estar populado.");
             return;
         }
 
-        System.out.println("Iniciando o seeder do banco de dados a partir de arquivos JSON...");
+        System.out.println("Iniciando o seeder do banco de dados...");
 
         Map<Long, Move> allMoves = loadMoves();
+        Map<Long, Ability> allAbilities = loadAbilities();
         Map<Long, Pokemon> allPokemons = loadPokemons();
+
         loadPokemonMoveRelations(allPokemons, allMoves);
+        loadPokemonAbilityRelations(allPokemons, allAbilities);
 
         System.out.println("Seeder finalizado com sucesso!");
     }
@@ -91,6 +97,22 @@ public class DbSeeder implements CommandLineRunner {
         return savedMovesMap;
     }
 
+    private Map<Long, Ability> loadAbilities() throws Exception {
+        InputStream inputStream = resourceLoader.getResource("classpath:data/abilities.json").getInputStream();
+        List<AbilityJsonDto> abilityDtos = mapper.readValue(inputStream, new TypeReference<>() {});
+        Map<Long, Ability> savedAbilitiesMap = new HashMap<>();
+
+        abilityDtos.forEach(dto -> {
+            Ability ability = new Ability();
+            ability.setName(dto.getNome());
+            ability.setDescription(dto.getDescricao());
+            abilityRepository.save(ability);
+            savedAbilitiesMap.put(dto.getId(), ability);
+        });
+        System.out.println(savedAbilitiesMap.size() + " habilidades foram salvas.");
+        return savedAbilitiesMap;
+    }
+
     private Map<Long, Pokemon> loadPokemons() throws Exception {
         InputStream inputStream = resourceLoader.getResource("classpath:data/pokemon.json").getInputStream();
         List<PokemonJsonDto> pokemonDtos = mapper.readValue(inputStream, new TypeReference<>() {});
@@ -111,12 +133,10 @@ public class DbSeeder implements CommandLineRunner {
             pokemon.setSpattack(stats.getSpAttack());
             pokemon.setSpdefense(stats.getSpDefense());
             pokemon.setSpeed(stats.getSpeed());
-            pokemon.setLevel(1);
-            pokemon.setExperience(0);
 
             try {
                 if (dto.getType() != null && !dto.getType().isEmpty()) {
-                    pokemon.setType(Type.valueOf(dto.getType().get(0).toUpperCase()));
+                    pokemon.setType(Type.valueOf(dto.getType().getFirst().toUpperCase()));
                 } else {
                     System.err.println("AVISO: Pokémon '" + dto.getName() + "' não tem tipo definido. Pulando.");
                     return;
@@ -155,5 +175,28 @@ public class DbSeeder implements CommandLineRunner {
             pokemon.setMoves(moveSet);
         });
         System.out.println("Associação de golpes finalizada.");
+    }
+
+    private void loadPokemonAbilityRelations(Map<Long, Pokemon> pokemons, Map<Long, Ability> abilities) throws Exception {
+        InputStream inputStream = resourceLoader.getResource("classpath:data/pokemon_abilities.json").getInputStream();
+        List<PokemonAbilityDto> relations = mapper.readValue(inputStream, new TypeReference<>() {});
+
+        System.out.println("Associando habilidades aos Pokémon...");
+        relations.forEach(relation -> {
+            Pokemon pokemon = pokemons.get(relation.getPokemonId());
+            if (pokemon == null) return;
+
+            Set<Ability> abilitySet = new HashSet<>();
+            if (relation.getAbilities() != null && !relation.getAbilities().isEmpty()) {
+                relation.getAbilities().forEach(abilityId -> {
+                    Ability ability = abilities.get(abilityId);
+                    if (ability != null) {
+                        abilitySet.add(ability);
+                    }
+                });
+            }
+            pokemon.setAbilities(abilitySet);
+        });
+        System.out.println("Associação de habilidades finalizada.");
     }
 }

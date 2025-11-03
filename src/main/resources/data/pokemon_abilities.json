@@ -1,0 +1,1257 @@
+[
+  {
+    "pokemon_id": 1,
+    "pokemon_name": "Bulbasaur",
+    "abilities": [71, 10]
+  },
+  {
+    "pokemon_id": 2,
+    "pokemon_name": "Ivysaur",
+    "abilities": [71, 10]
+  },
+  {
+    "pokemon_id": 3,
+    "pokemon_name": "Venusaur",
+    "abilities": [71, 10]
+  },
+  {
+    "pokemon_id": 4,
+    "pokemon_name": "Charmander",
+    "abilities": [9, 103]
+  },
+  {
+    "pokemon_id": 5,
+    "pokemon_name": "Charmeleon",
+    "abilities": [9, 103]
+  },
+  {
+    "pokemon_id": 6,
+    "pokemon_name": "Charizard",
+    "abilities": [9, 103]
+  },
+  {
+    "pokemon_id": 7,
+    "pokemon_name": "Squirtle",
+    "abilities": [119, 81]
+  },
+  {
+    "pokemon_id": 8,
+    "pokemon_name": "Wartortle",
+    "abilities": [119, 81]
+  },
+  {
+    "pokemon_id": 9,
+    "pokemon_name": "Blastoise",
+    "abilities": [119, 81]
+  },
+  {
+    "pokemon_id": 10,
+    "pokemon_name": "Caterpie",
+    "abilities": [99, 87]
+  },
+  {
+    "pokemon_id": 11,
+    "pokemon_name": "Metapod",
+    "abilities": [96]
+  },
+  {
+    "pokemon_id": 12,
+    "pokemon_name": "Butterfree",
+    "abilities": [14, 118]
+  },
+  {
+    "pokemon_id": 13,
+    "pokemon_name": "Weedle",
+    "abilities": [99, 87]
+  },
+  {
+    "pokemon_id": 14,
+    "pokemon_name": "Kakuna",
+    "abilities": [96]
+  },
+  {
+    "pokemon_id": 15,
+    "pokemon_name": "Beedrill",
+    "abilities": [111, 101]
+  },
+  {
+    "pokemon_id": 16,
+    "pokemon_name": "Pidgey",
+    "abilities": [50, 114, 8]
+  },
+  {
+    "pokemon_id": 17,
+    "pokemon_name": "Pidgeotto",
+    "abilities": [50, 114, 8]
+  },
+  {
+    "pokemon_id": 18,
+    "pokemon_name": "Pidgeot",
+    "abilities": [50, 114, 8]
+  },
+  {
+    "pokemon_id": 19,
+    "pokemon_name": "Rattata",
+    "abilities": [87, 33, 37]
+  },
+  {
+    "pokemon_id": 20,
+    "pokemon_name": "Raticate",
+    "abilities": [87, 33, 37]
+  },
+  {
+    "pokemon_id": 21,
+    "pokemon_name": "Spearow",
+    "abilities": [50, 101]
+  },
+  {
+    "pokemon_id": 22,
+    "pokemon_name": "Fearow",
+    "abilities": [50, 101]
+  },
+  {
+    "pokemon_id": 23,
+    "pokemon_name": "Ekans",
+    "abilities": [47, 96, 123]
+  },
+  {
+    "pokemon_id": 24,
+    "pokemon_name": "Arbok",
+    "abilities": [47, 96, 123]
+  },
+  {
+    "pokemon_id": 25,
+    "pokemon_name": "Pikachu",
+    "abilities": [85, 54]
+  },
+  {
+    "pokemon_id": 26,
+    "pokemon_name": "Raichu",
+    "abilities": [85, 54]
+  },
+  {
+    "pokemon_id": 27,
+    "pokemon_name": "Sandshrew",
+    "abilities": [91, 89]
+  },
+  {
+    "pokemon_id": 28,
+    "pokemon_name": "Sandslash",
+    "abilities": [91, 89]
+  },
+  {
+    "pokemon_id": 29,
+    "pokemon_name": "Nidoran♀",
+    "abilities": [76, 85, 37]
+  },
+  {
+    "pokemon_id": 30,
+    "pokemon_name": "Nidorina",
+    "abilities": [76, 85, 37]
+  },
+  {
+    "pokemon_id": 31,
+    "pokemon_name": "Nidoqueen",
+    "abilities": [76, 85, 97]
+  },
+  {
+    "pokemon_id": 32,
+    "pokemon_name": "Nidoran♂",
+    "abilities": [76, 85, 37]
+  },
+  {
+    "pokemon_id": 33,
+    "pokemon_name": "Nidorino",
+    "abilities": [76, 85, 37]
+  },
+  {
+    "pokemon_id": 34,
+    "pokemon_name": "Nidoking",
+    "abilities": [76, 85, 97]
+  },
+  {
+    "pokemon_id": 35,
+    "pokemon_name": "Clefairy",
+    "abilities": [17, 58, 30]
+  },
+  {
+    "pokemon_id": 36,
+    "pokemon_name": "Clefable",
+    "abilities": [17, 58, 121]
+  },
+  {
+    "pokemon_id": 37,
+    "pokemon_name": "Vulpix",
+    "abilities": [28, 22]
+  },
+  {
+    "pokemon_id": 38,
+    "pokemon_name": "Ninetales",
+    "abilities": [28, 22]
+  },
+  {
+    "pokemon_id": 39,
+    "pokemon_name": "Jigglypuff",
+    "abilities": [17, 13, 30]
+  },
+  {
+    "pokemon_id": 40,
+    "pokemon_name": "Wigglytuff",
+    "abilities": [17, 13, 31]
+  },
+  {
+    "pokemon_id": 41,
+    "pokemon_name": "Zubat",
+    "abilities": [45, 44]
+  },
+  {
+    "pokemon_id": 42,
+    "pokemon_name": "Golbat",
+    "abilities": [45, 44]
+  },
+  {
+    "pokemon_id": 43,
+    "pokemon_name": "Oddish",
+    "abilities": [10, 87]
+  },
+  {
+    "pokemon_id": 44,
+    "pokemon_name": "Gloom",
+    "abilities": [10, 107]
+  },
+  {
+    "pokemon_id": 45,
+    "pokemon_name": "Vileplume",
+    "abilities": [10, 25]
+  },
+  {
+    "pokemon_id": 46,
+    "pokemon_name": "Paras",
+    "abilities": [25, 23, 18]
+  },
+  {
+    "pokemon_id": 47,
+    "pokemon_name": "Parasect",
+    "abilities": [25, 23, 18]
+  },
+  {
+    "pokemon_id": 48,
+    "pokemon_name": "Venonat",
+    "abilities": [14, 118, 87]
+  },
+  {
+    "pokemon_id": 49,
+    "pokemon_name": "Venomoth",
+    "abilities": [99, 118, 58]
+  },
+  {
+    "pokemon_id": 50,
+    "pokemon_name": "Diglett",
+    "abilities": [91, 6, 88]
+  },
+  {
+    "pokemon_id": 51,
+    "pokemon_name": "Dugtrio",
+    "abilities": [91, 6, 88]
+  },
+  {
+    "pokemon_id": 52,
+    "pokemon_name": "Meowth",
+    "abilities": [74, 115, 123]
+  },
+  {
+    "pokemon_id": 53,
+    "pokemon_name": "Persian",
+    "abilities": [55, 115, 123]
+  },
+  {
+    "pokemon_id": 54,
+    "pokemon_name": "Psyduck",
+    "abilities": [18, 12, 112]
+  },
+  {
+    "pokemon_id": 55,
+    "pokemon_name": "Golduck",
+    "abilities": [18, 12, 112]
+  },
+  {
+    "pokemon_id": 56,
+    "pokemon_name": "Mankey",
+    "abilities": [124, 4, 19]
+  },
+  {
+    "pokemon_id": 57,
+    "pokemon_name": "Primeape",
+    "abilities": [124, 4, 19]
+  },
+  {
+    "pokemon_id": 58,
+    "pokemon_name": "Growlithe",
+    "abilities": [47, 28, 49]
+  },
+  {
+    "pokemon_id": 59,
+    "pokemon_name": "Arcanine",
+    "abilities": [47, 28, 49]
+  },
+  {
+    "pokemon_id": 60,
+    "pokemon_name": "Poliwag",
+    "abilities": [126, 18, 112]
+  },
+  {
+    "pokemon_id": 61,
+    "pokemon_name": "Poliwhirl",
+    "abilities": [126, 18, 112]
+  },
+  {
+    "pokemon_id": 62,
+    "pokemon_name": "Poliwrath",
+    "abilities": [126, 18, 112]
+  },
+  {
+    "pokemon_id": 63,
+    "pokemon_name": "Abra",
+    "abilities": [113, 45, 58]
+  },
+  {
+    "pokemon_id": 64,
+    "pokemon_name": "Kadabra",
+    "abilities": [113, 45, 58]
+  },
+  {
+    "pokemon_id": 65,
+    "pokemon_name": "Alakazam",
+    "abilities": [113, 45, 58]
+  },
+  {
+    "pokemon_id": 66,
+    "pokemon_name": "Machop",
+    "abilities": [33, 68, 106]
+  },
+  {
+    "pokemon_id": 67,
+    "pokemon_name": "Machoke",
+    "abilities": [33, 68, 106]
+  },
+  {
+    "pokemon_id": 68,
+    "pokemon_name": "Machamp",
+    "abilities": [33, 68, 106]
+  },
+  {
+    "pokemon_id": 69,
+    "pokemon_name": "Bellsprout",
+    "abilities": [10, 32]
+  },
+  {
+    "pokemon_id": 70,
+    "pokemon_name": "Weepinbell",
+    "abilities": [10, 32]
+  },
+  {
+    "pokemon_id": 71,
+    "pokemon_name": "Victreebel",
+    "abilities": [10, 32]
+  },
+  {
+    "pokemon_id": 72,
+    "pokemon_name": "Tentacool",
+    "abilities": [11, 56, 81]
+  },
+  {
+    "pokemon_id": 73,
+    "pokemon_name": "Tentacruel",
+    "abilities": [11, 56, 81]
+  },
+  {
+    "pokemon_id": 74,
+    "pokemon_name": "Geodude",
+    "abilities": [86, 109, 91]
+  },
+  {
+    "pokemon_id": 75,
+    "pokemon_name": "Graveler",
+    "abilities": [86, 109, 91]
+  },
+  {
+    "pokemon_id": 76,
+    "pokemon_name": "Golem",
+    "abilities": [86, 109, 91]
+  },
+  {
+    "pokemon_id": 77,
+    "pokemon_name": "Ponyta",
+    "abilities": [87, 28, 27]
+  },
+  {
+    "pokemon_id": 78,
+    "pokemon_name": "Rapidash",
+    "abilities": [87, 28, 27]
+  },
+  {
+    "pokemon_id": 79,
+    "pokemon_name": "Slowpoke",
+    "abilities": [69, 72, 84]
+  },
+  {
+    "pokemon_id": 80,
+    "pokemon_name": "Slowbro",
+    "abilities": [69, 72, 84]
+  },
+  {
+    "pokemon_id": 81,
+    "pokemon_name": "Magnemite",
+    "abilities": [60, 109, 3]
+  },
+  {
+    "pokemon_id": 82,
+    "pokemon_name": "Magneton",
+    "abilities": [60, 109, 3]
+  },
+  {
+    "pokemon_id": 83,
+    "pokemon_name": "Farfetch'd",
+    "abilities": [50, 45, 19]
+  },
+  {
+    "pokemon_id": 84,
+    "pokemon_name": "Doduo",
+    "abilities": [87, 24, 114]
+  },
+  {
+    "pokemon_id": 85,
+    "pokemon_name": "Dodrio",
+    "abilities": [87, 24, 114]
+  },
+  {
+    "pokemon_id": 86,
+    "pokemon_name": "Seel",
+    "abilities": [117, 38, 40]
+  },
+  {
+    "pokemon_id": 87,
+    "pokemon_name": "Dewgong",
+    "abilities": [117, 38, 40]
+  },
+  {
+    "pokemon_id": 88,
+    "pokemon_name": "Grimer",
+    "abilities": [107, 108, 77]
+  },
+  {
+    "pokemon_id": 89,
+    "pokemon_name": "Muk",
+    "abilities": [107, 108, 77]
+  },
+  {
+    "pokemon_id": 90,
+    "pokemon_name": "Shellder",
+    "abilities": [98, 100, 70]
+  },
+  {
+    "pokemon_id": 91,
+    "pokemon_name": "Cloyster",
+    "abilities": [98, 100, 70]
+  },
+  {
+    "pokemon_id": 92,
+    "pokemon_name": "Gastly",
+    "abilities": [52]
+  },
+  {
+    "pokemon_id": 93,
+    "pokemon_name": "Haunter",
+    "abilities": [52]
+  },
+  {
+    "pokemon_id": 94,
+    "pokemon_name": "Gengar",
+    "abilities": [16]
+  },
+  {
+    "pokemon_id": 95,
+    "pokemon_name": "Onix",
+    "abilities": [86, 109, 128]
+  },
+  {
+    "pokemon_id": 96,
+    "pokemon_name": "Drowzee",
+    "abilities": [46, 29, 45]
+  },
+  {
+    "pokemon_id": 97,
+    "pokemon_name": "Hypno",
+    "abilities": [46, 29, 45]
+  },
+  {
+    "pokemon_id": 98,
+    "pokemon_name": "Krabby",
+    "abilities": [39, 98, 97]
+  },
+  {
+    "pokemon_id": 99,
+    "pokemon_name": "Kingler",
+    "abilities": [39, 98, 97]
+  },
+  {
+    "pokemon_id": 100,
+    "pokemon_name": "Voltorb",
+    "abilities": [104, 85, 2]
+  },
+  {
+    "pokemon_id": 101,
+    "pokemon_name": "Electrode",
+    "abilities": [104, 85, 2]
+  },
+  {
+    "pokemon_id": 102,
+    "pokemon_name": "Exeggcute",
+    "abilities": [10, 34]
+  },
+  {
+    "pokemon_id": 103,
+    "pokemon_name": "Exeggutor",
+    "abilities": [10, 31, 34]
+  },
+  {
+    "pokemon_id": 104,
+    "pokemon_name": "Cubone",
+    "abilities": [86, 54, 7]
+  },
+  {
+    "pokemon_id": 105,
+    "pokemon_name": "Marowak",
+    "abilities": [86, 54, 7]
+  },
+  {
+    "pokemon_id": 106,
+    "pokemon_name": "Hitmonlee",
+    "abilities": [55, 83, 122]
+  },
+  {
+    "pokemon_id": 107,
+    "pokemon_name": "Hitmonchan",
+    "abilities": [50, 48, 45]
+  },
+  {
+    "pokemon_id": 108,
+    "pokemon_name": "Lickitung",
+    "abilities": [72, 69, 12]
+  },
+  {
+    "pokemon_id": 109,
+    "pokemon_name": "Koffing",
+    "abilities": [52, 67]
+  },
+  {
+    "pokemon_id": 110,
+    "pokemon_name": "Weezing",
+    "abilities": [52, 67]
+  },
+  {
+    "pokemon_id": 111,
+    "pokemon_name": "Rhyhorn",
+    "abilities": [54, 86, 83]
+  },
+  {
+    "pokemon_id": 112,
+    "pokemon_name": "Rhydon",
+    "abilities": [54, 86, 83]
+  },
+  {
+    "pokemon_id": 113,
+    "pokemon_name": "Chansey",
+    "abilities": [66, 94, 35]
+  },
+  {
+    "pokemon_id": 114,
+    "pokemon_name": "Tangela",
+    "abilities": [10, 51, 84]
+  },
+  {
+    "pokemon_id": 115,
+    "pokemon_name": "Kangaskhan",
+    "abilities": [24, 93, 45]
+  },
+  {
+    "pokemon_id": 116,
+    "pokemon_name": "Horsea",
+    "abilities": [112, 101, 18]
+  },
+  {
+    "pokemon_id": 117,
+    "pokemon_name": "Seadra",
+    "abilities": [77, 101, 18]
+  },
+  {
+    "pokemon_id": 118,
+    "pokemon_name": "Goldeen",
+    "abilities": [112, 127, 54]
+  },
+  {
+    "pokemon_id": 119,
+    "pokemon_name": "Seaking",
+    "abilities": [112, 127, 54]
+  },
+  {
+    "pokemon_id": 120,
+    "pokemon_name": "Staryu",
+    "abilities": [41, 66, 3]
+  },
+  {
+    "pokemon_id": 121,
+    "pokemon_name": "Starmie",
+    "abilities": [41, 66, 3]
+  },
+  {
+    "pokemon_id": 122,
+    "pokemon_name": "Mr. Mime",
+    "abilities": [104, 26, 115]
+  },
+  {
+    "pokemon_id": 123,
+    "pokemon_name": "Scyther",
+    "abilities": [111, 115, 106]
+  },
+  {
+    "pokemon_id": 124,
+    "pokemon_name": "Jynx",
+    "abilities": [69, 29, 23]
+  },
+  {
+    "pokemon_id": 125,
+    "pokemon_name": "Electabuzz",
+    "abilities": [85, 124]
+  },
+  {
+    "pokemon_id": 126,
+    "pokemon_name": "Magmar",
+    "abilities": [27, 124]
+  },
+  {
+    "pokemon_id": 127,
+    "pokemon_name": "Pinsir",
+    "abilities": [39, 62, 64]
+  },
+  {
+    "pokemon_id": 128,
+    "pokemon_name": "Tauros",
+    "abilities": [47, 4, 97]
+  },
+  {
+    "pokemon_id": 129,
+    "pokemon_name": "Magikarp",
+    "abilities": [112, 82]
+  },
+  {
+    "pokemon_id": 130,
+    "pokemon_name": "Gyarados",
+    "abilities": [47, 64]
+  },
+  {
+    "pokemon_id": 131,
+    "pokemon_name": "Lapras",
+    "abilities": [126, 98, 38]
+  },
+  {
+    "pokemon_id": 132,
+    "pokemon_name": "Ditto",
+    "abilities": [55, 43]
+  },
+  {
+    "pokemon_id": 133,
+    "pokemon_name": "Eevee",
+    "abilities": [87, 1, 5]
+  },
+  {
+    "pokemon_id": 134,
+    "pokemon_name": "Vaporeon",
+    "abilities": [126, 38]
+  },
+  {
+    "pokemon_id": 135,
+    "pokemon_name": "Jolteon",
+    "abilities": [125, 80]
+  },
+  {
+    "pokemon_id": 136,
+    "pokemon_name": "Flareon",
+    "abilities": [28, 33]
+  },
+  {
+    "pokemon_id": 137,
+    "pokemon_name": "Porygon",
+    "abilities": [120, 20, 3]
+  },
+  {
+    "pokemon_id": 138,
+    "pokemon_name": "Omanyte",
+    "abilities": [112, 98, 128]
+  },
+  {
+    "pokemon_id": 139,
+    "pokemon_name": "Omastar",
+    "abilities": [112, 98, 128]
+  },
+  {
+    "pokemon_id": 140,
+    "pokemon_name": "Kabuto",
+    "abilities": [112, 7, 128]
+  },
+  {
+    "pokemon_id": 141,
+    "pokemon_name": "Kabutops",
+    "abilities": [112, 7, 128]
+  },
+  {
+    "pokemon_id": 142,
+    "pokemon_name": "Aerodactyl",
+    "abilities": [86, 79, 123]
+  },
+  {
+    "pokemon_id": 143,
+    "pokemon_name": "Snorlax",
+    "abilities": [42, 117, 32]
+  },
+  {
+    "pokemon_id": 144,
+    "pokemon_name": "Articuno",
+    "abilities": [79, 102]
+  },
+  {
+    "pokemon_id": 145,
+    "pokemon_name": "Zapdos",
+    "abilities": [79, 85]
+  },
+  {
+    "pokemon_id": 146,
+    "pokemon_name": "Moltres",
+    "abilities": [79, 27]
+  },
+  {
+    "pokemon_id": 147,
+    "pokemon_name": "Dratini",
+    "abilities": [96, 61]
+  },
+  {
+    "pokemon_id": 148,
+    "pokemon_name": "Dragonair",
+    "abilities": [96, 61]
+  },
+  {
+    "pokemon_id": 149,
+    "pokemon_name": "Dragonite",
+    "abilities": [45, 65]
+  },
+  {
+    "pokemon_id": 150,
+    "pokemon_name": "Mewtwo",
+    "abilities": [79, 123]
+  },
+  {
+    "pokemon_id": 151,
+    "pokemon_name": "Mew",
+    "abilities": [113]
+  },
+  {
+    "pokemon_id": 152,
+    "pokemon_name": "Chikorita",
+    "abilities": [71, 51]
+  },
+  {
+    "pokemon_id": 153,
+    "pokemon_name": "Bayleef",
+    "abilities": [71, 51]
+  },
+  {
+    "pokemon_id": 154,
+    "pokemon_name": "Meganium",
+    "abilities": [71, 51]
+  },
+  {
+    "pokemon_id": 155,
+    "pokemon_name": "Cyndaquil",
+    "abilities": [9, 28]
+  },
+  {
+    "pokemon_id": 156,
+    "pokemon_name": "Quilava",
+    "abilities": [9, 28]
+  },
+  {
+    "pokemon_id": 157,
+    "pokemon_name": "Typhlosion",
+    "abilities": [9, 28]
+  },
+  {
+    "pokemon_id": 158,
+    "pokemon_name": "Totodile",
+    "abilities": [119, 97]
+  },
+  {
+    "pokemon_id": 159,
+    "pokemon_name": "Croconaw",
+    "abilities": [119, 97]
+  },
+  {
+    "pokemon_id": 160,
+    "pokemon_name": "Feraligatr",
+    "abilities": [119, 97]
+  },
+  {
+    "pokemon_id": 161,
+    "pokemon_name": "Sentret",
+    "abilities": [87, 50, 31]
+  },
+  {
+    "pokemon_id": 162,
+    "pokemon_name": "Furret",
+    "abilities": [87, 50, 31]
+  },
+  {
+    "pokemon_id": 163,
+    "pokemon_name": "Hoothoot",
+    "abilities": [46, 50, 118]
+  },
+  {
+    "pokemon_id": 164,
+    "pokemon_name": "Noctowl",
+    "abilities": [46, 50, 118]
+  },
+  {
+    "pokemon_id": 165,
+    "pokemon_name": "Ledyba",
+    "abilities": [111, 24, 82]
+  },
+  {
+    "pokemon_id": 166,
+    "pokemon_name": "Ledian",
+    "abilities": [111, 24, 48]
+  },
+  {
+    "pokemon_id": 167,
+    "pokemon_name": "Spinarak",
+    "abilities": [111, 46, 101]
+  },
+  {
+    "pokemon_id": 168,
+    "pokemon_name": "Ariados",
+    "abilities": [111, 46, 101]
+  },
+  {
+    "pokemon_id": 169,
+    "pokemon_name": "Crobat",
+    "abilities": [45, 44]
+  },
+  {
+    "pokemon_id": 170,
+    "pokemon_name": "Chinchou",
+    "abilities": [125, 41, 126]
+  },
+  {
+    "pokemon_id": 171,
+    "pokemon_name": "Lanturn",
+    "abilities": [125, 41, 126]
+  },
+  {
+    "pokemon_id": 172,
+    "pokemon_name": "Pichu",
+    "abilities": [85, 54]
+  },
+  {
+    "pokemon_id": 173,
+    "pokemon_name": "Cleffa",
+    "abilities": [17, 58, 30]
+  },
+  {
+    "pokemon_id": 174,
+    "pokemon_name": "Igglybuff",
+    "abilities": [17, 13, 30]
+  },
+  {
+    "pokemon_id": 175,
+    "pokemon_name": "Togepi",
+    "abilities": [37, 94, 110]
+  },
+  {
+    "pokemon_id": 176,
+    "pokemon_name": "Togetic",
+    "abilities": [37, 94, 110]
+  },
+  {
+    "pokemon_id": 177,
+    "pokemon_name": "Natu",
+    "abilities": [113, 24, 57]
+  },
+  {
+    "pokemon_id": 178,
+    "pokemon_name": "Xatu",
+    "abilities": [113, 24, 57]
+  },
+  {
+    "pokemon_id": 179,
+    "pokemon_name": "Mareep",
+    "abilities": [85, 75]
+  },
+  {
+    "pokemon_id": 180,
+    "pokemon_name": "Flaaffy",
+    "abilities": [85, 75]
+  },
+  {
+    "pokemon_id": 181,
+    "pokemon_name": "Ampharos",
+    "abilities": [85, 75]
+  },
+  {
+    "pokemon_id": 182,
+    "pokemon_name": "Bellossom",
+    "abilities": [10, 35]
+  },
+  {
+    "pokemon_id": 183,
+    "pokemon_name": "Marill",
+    "abilities": [117, 36, 92]
+  },
+  {
+    "pokemon_id": 184,
+    "pokemon_name": "Azumarill",
+    "abilities": [117, 36, 92]
+  },
+  {
+    "pokemon_id": 185,
+    "pokemon_name": "Sudowoodo",
+    "abilities": [109, 86, 82]
+  },
+  {
+    "pokemon_id": 186,
+    "pokemon_name": "Politoed",
+    "abilities": [126, 18, 21]
+  },
+  {
+    "pokemon_id": 187,
+    "pokemon_name": "Hoppip",
+    "abilities": [10, 51, 44]
+  },
+  {
+    "pokemon_id": 188,
+    "pokemon_name": "Skiploom",
+    "abilities": [10, 51, 44]
+  },
+  {
+    "pokemon_id": 189,
+    "pokemon_name": "Jumpluff",
+    "abilities": [10, 51, 44]
+  },
+  {
+    "pokemon_id": 190,
+    "pokemon_name": "Aipom",
+    "abilities": [87, 74, 100]
+  },
+  {
+    "pokemon_id": 191,
+    "pokemon_name": "Sunkern",
+    "abilities": [10, 103, 24]
+  },
+  {
+    "pokemon_id": 192,
+    "pokemon_name": "Sunflora",
+    "abilities": [10, 103, 24]
+  },
+  {
+    "pokemon_id": 193,
+    "pokemon_name": "Yanma",
+    "abilities": [105, 14, 31]
+  },
+  {
+    "pokemon_id": 194,
+    "pokemon_name": "Wooper",
+    "abilities": [18, 126, 121]
+  },
+  {
+    "pokemon_id": 195,
+    "pokemon_name": "Quagsire",
+    "abilities": [18, 126, 121]
+  },
+  {
+    "pokemon_id": 196,
+    "pokemon_name": "Espeon",
+    "abilities": [113, 57]
+  },
+  {
+    "pokemon_id": 197,
+    "pokemon_name": "Umbreon",
+    "abilities": [113, 45]
+  },
+  {
+    "pokemon_id": 198,
+    "pokemon_name": "Murkrow",
+    "abilities": [46, 110, 78]
+  },
+  {
+    "pokemon_id": 199,
+    "pokemon_name": "Slowking",
+    "abilities": [69, 72, 84]
+  },
+  {
+    "pokemon_id": 200,
+    "pokemon_name": "Misdreavus",
+    "abilities": [52]
+  },
+  {
+    "pokemon_id": 201,
+    "pokemon_name": "Unown",
+    "abilities": [52]
+  },
+  {
+    "pokemon_id": 202,
+    "pokemon_name": "Wobbuffet",
+    "abilities": [95, 116]
+  },
+  {
+    "pokemon_id": 203,
+    "pokemon_name": "Girafarig",
+    "abilities": [45, 24, 92]
+  },
+  {
+    "pokemon_id": 204,
+    "pokemon_name": "Pineco",
+    "abilities": [109, 70]
+  },
+  {
+    "pokemon_id": 205,
+    "pokemon_name": "Forretress",
+    "abilities": [109, 70]
+  },
+  {
+    "pokemon_id": 206,
+    "pokemon_name": "Dunsparce",
+    "abilities": [94, 87, 82]
+  },
+  {
+    "pokemon_id": 207,
+    "pokemon_name": "Gligar",
+    "abilities": [39, 91, 42]
+  },
+  {
+    "pokemon_id": 208,
+    "pokemon_name": "Steelix",
+    "abilities": [86, 109, 97]
+  },
+  {
+    "pokemon_id": 209,
+    "pokemon_name": "Snubbull",
+    "abilities": [47, 87, 82]
+  },
+  {
+    "pokemon_id": 210,
+    "pokemon_name": "Granbull",
+    "abilities": [47, 80, 82]
+  },
+  {
+    "pokemon_id": 211,
+    "pokemon_name": "Qwilfish",
+    "abilities": [76, 112, 47]
+  },
+  {
+    "pokemon_id": 212,
+    "pokemon_name": "Scizor",
+    "abilities": [111, 115, 53]
+  },
+  {
+    "pokemon_id": 213,
+    "pokemon_name": "Shuckle",
+    "abilities": [109, 32, 15]
+  },
+  {
+    "pokemon_id": 214,
+    "pokemon_name": "Heracross",
+    "abilities": [111, 33, 64]
+  },
+  {
+    "pokemon_id": 215,
+    "pokemon_name": "Sneasel",
+    "abilities": [45, 50, 73]
+  },
+  {
+    "pokemon_id": 216,
+    "pokemon_name": "Teddiursa",
+    "abilities": [74, 80, 32]
+  },
+  {
+    "pokemon_id": 217,
+    "pokemon_name": "Ursaring",
+    "abilities": [33, 80, 123]
+  },
+  {
+    "pokemon_id": 218,
+    "pokemon_name": "Slugma",
+    "abilities": [59, 27, 128]
+  },
+  {
+    "pokemon_id": 219,
+    "pokemon_name": "Magcargo",
+    "abilities": [59, 27, 128]
+  },
+  {
+    "pokemon_id": 220,
+    "pokemon_name": "Swinub",
+    "abilities": [69, 102, 117]
+  },
+  {
+    "pokemon_id": 221,
+    "pokemon_name": "Piloswine",
+    "abilities": [69, 102, 117]
+  },
+  {
+    "pokemon_id": 222,
+    "pokemon_name": "Corsola",
+    "abilities": [37, 66, 84]
+  },
+  {
+    "pokemon_id": 223,
+    "pokemon_name": "Remoraid",
+    "abilities": [37, 101, 63]
+  },
+  {
+    "pokemon_id": 224,
+    "pokemon_name": "Octillery",
+    "abilities": [92, 101, 63]
+  },
+  {
+    "pokemon_id": 225,
+    "pokemon_name": "Delibird",
+    "abilities": [124, 37, 46]
+  },
+  {
+    "pokemon_id": 226,
+    "pokemon_name": "Mantine",
+    "abilities": [112, 126, 127]
+  },
+  {
+    "pokemon_id": 227,
+    "pokemon_name": "Skarmory",
+    "abilities": [109, 50, 128]
+  },
+  {
+    "pokemon_id": 228,
+    "pokemon_name": "Houndour",
+    "abilities": [24, 28, 123]
+  },
+  {
+    "pokemon_id": 229,
+    "pokemon_name": "Houndoom",
+    "abilities": [24, 28, 123]
+  },
+  {
+    "pokemon_id": 230,
+    "pokemon_name": "Kingdra",
+    "abilities": [112, 101, 18]
+  },
+  {
+    "pokemon_id": 231,
+    "pokemon_name": "Phanpy",
+    "abilities": [74, 91]
+  },
+  {
+    "pokemon_id": 232,
+    "pokemon_name": "Donphan",
+    "abilities": [109, 91]
+  },
+  {
+    "pokemon_id": 233,
+    "pokemon_name": "Porygon2",
+    "abilities": [120, 20, 3]
+  },
+  {
+    "pokemon_id": 234,
+    "pokemon_name": "Stantler",
+    "abilities": [47, 31, 92]
+  },
+  {
+    "pokemon_id": 235,
+    "pokemon_name": "Smeargle",
+    "abilities": [72, 115, 63]
+  },
+  {
+    "pokemon_id": 236,
+    "pokemon_name": "Tyrogue",
+    "abilities": [33, 106, 124]
+  },
+  {
+    "pokemon_id": 237,
+    "pokemon_name": "Hitmontop",
+    "abilities": [47, 115, 106]
+  },
+  {
+    "pokemon_id": 238,
+    "pokemon_name": "Smoochum",
+    "abilities": [69, 29, 38]
+  },
+  {
+    "pokemon_id": 239,
+    "pokemon_name": "Elekid",
+    "abilities": [85, 124]
+  },
+  {
+    "pokemon_id": 240,
+    "pokemon_name": "Magby",
+    "abilities": [27, 124]
+  },
+  {
+    "pokemon_id": 241,
+    "pokemon_name": "Miltank",
+    "abilities": [117, 93, 92]
+  },
+  {
+    "pokemon_id": 242,
+    "pokemon_name": "Blissey",
+    "abilities": [66, 94, 35]
+  },
+  {
+    "pokemon_id": 243,
+    "pokemon_name": "Raikou",
+    "abilities": [79, 45]
+  },
+  {
+    "pokemon_id": 244,
+    "pokemon_name": "Entei",
+    "abilities": [79, 45]
+  },
+  {
+    "pokemon_id": 245,
+    "pokemon_name": "Suicune",
+    "abilities": [79, 45]
+  },
+  {
+    "pokemon_id": 246,
+    "pokemon_name": "Larvitar",
+    "abilities": [33, 91]
+  },
+  {
+    "pokemon_id": 247,
+    "pokemon_name": "Pupitar",
+    "abilities": [96]
+  },
+  {
+    "pokemon_id": 248,
+    "pokemon_name": "Tyranitar",
+    "abilities": [90, 123]
+  },
+  {
+    "pokemon_id": 249,
+    "pokemon_name": "Lugia",
+    "abilities": [79, 65]
+  },
+  {
+    "pokemon_id": 250,
+    "pokemon_name": "Ho-Oh",
+    "abilities": [79, 84]
+  },
+  {
+    "pokemon_id": 251,
+    "pokemon_name": "Celebi",
+    "abilities": [66]
+  }
+]

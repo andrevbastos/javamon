@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import br.com.andrebastos.javamon_online.ability.Ability;
 import br.com.andrebastos.javamon_online.move.Move;
 import br.com.andrebastos.javamon_online.pokemon.Pokemon;
 import br.com.andrebastos.javamon_online.shared.Status;
@@ -20,6 +21,8 @@ public class PokemonInBattle {
     private final double spDefense;
     private final double speed;
 
+    private final int level;
+
     private double currentHp;
     private final List<Move> moves;
 
@@ -33,9 +36,42 @@ public class PokemonInBattle {
     private int speedStage;
     private int accuracyStage;
 
-    public PokemonInBattle(Pokemon baseData) {
+    private final Ability activeAbility;
+
+    public PokemonInBattle(Pokemon baseData, int target_level, Ability activeAbility) {
         this.baseData = baseData;
-        int level = baseData.getLevel();
+        this.level = target_level;
+        this.activeAbility = activeAbility;
+
+        this.maxHp = Math.floor(((2 * baseData.getHpmax() * level / 100.0) + level + 10));
+        this.attack = Math.floor(((2 * baseData.getAttack() * level / 100.0) + 5));
+        this.defense = Math.floor(((2 * baseData.getDefense() * level / 100.0) + 5));
+        this.spAttack = Math.floor(((2 * baseData.getSpattack() * level / 100.0) + 5));
+        this.spDefense = Math.floor(((2 * baseData.getSpdefense() * level / 100.0) + 5));
+        this.speed = Math.floor(((2 * baseData.getSpeed() * level / 100.0) + 5));
+
+        this.currentHp = this.maxHp;
+        this.moves = new ArrayList<>(baseData.getMoves());
+
+        this.attackStage = 0;
+        this.defenseStage = 0;
+        this.spAttackStage = 0;
+        this.spDefenseStage = 0;
+        this.speedStage = 0;
+        this.accuracyStage = 0;
+        this.condition = null;
+        this.conditionCount = 0;
+    }
+
+    public PokemonInBattle(Pokemon baseData, int target_level) {
+        this.baseData = baseData;
+        this.level = target_level;
+
+        if (baseData.getAbilities() != null && !baseData.getAbilities().isEmpty()) {
+            this.activeAbility = new ArrayList<>(baseData.getAbilities()).getFirst();
+        } else {
+            this.activeAbility = null;
+        }
 
         this.maxHp = Math.floor(((2 * baseData.getHpmax() * level / 100.0) + level + 10));
         this.attack = Math.floor(((2 * baseData.getAttack() * level / 100.0) + 5));

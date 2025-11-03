@@ -8,7 +8,6 @@ import br.com.andrebastos.javamon_online.shared.TypeChart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.andrebastos.javamon_online.battle.ExperienceService;
 import br.com.andrebastos.javamon_online.move.Move;
 import br.com.andrebastos.javamon_online.pokemon.Pokemon;
 import br.com.andrebastos.javamon_online.pokemon.PokemonRepository;
@@ -20,20 +19,14 @@ public class BattleService {
     @Autowired
     private PokemonRepository pokemonRepository;
 
-    @Autowired
-    private ExperienceService experienceService;
-
     public BattleLogDto startBattle(Long pokemon1Id, Long pokemon2Id) {
         Pokemon pokemon1Entity = pokemonRepository.findById(pokemon1Id)
                 .orElseThrow(() -> new IllegalArgumentException("Pokémon com ID " + pokemon1Id + " não encontrado!"));
         Pokemon pokemon2Entity = pokemonRepository.findById(pokemon2Id)
                 .orElseThrow(() -> new IllegalArgumentException("Pokémon com ID " + pokemon2Id + " não encontrado!"));
 
-        pokemon1Entity.setLevel(50);
-        pokemon2Entity.setLevel(50);
-
-        PokemonInBattle fighter1 = new PokemonInBattle(pokemon1Entity);
-        PokemonInBattle fighter2 = new PokemonInBattle(pokemon2Entity);
+        PokemonInBattle fighter1 = new PokemonInBattle(pokemon1Entity, 50);
+        PokemonInBattle fighter2 = new PokemonInBattle(pokemon2Entity, 50);
 
         BattleLogDto battleLog = new BattleLogDto();
 
@@ -72,8 +65,6 @@ public class BattleService {
         }
 
         battleLog.getLog().add(String.format("A batalha terminou! %s é o vencedor!", battleLog.getWinnerName()));
-
-        experienceService.awardExperience(winnerEntity, loserEntity, battleLog);
 
         return battleLog;
     }
@@ -202,7 +193,7 @@ public class BattleService {
             break;
 
         case POISONED:
-            target.setCondition(Status.SLEEP);
+            target.setCondition(Status.POISONED);
             break;
 
         default:

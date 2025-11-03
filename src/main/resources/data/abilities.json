@@ -1,0 +1,647 @@
+[
+  {
+    "id": 1,
+    "nome": "Adaptability",
+    "descricao": "Aumenta o bônus de ataque do mesmo tipo (STAB) de 1.5x para 2x."
+  },
+  {
+    "id": 2,
+    "nome": "Aftermath",
+    "descricao": "Causa dano ao oponente que nocauteia o Pokémon com um ataque de contato."
+  },
+  {
+    "id": 3,
+    "nome": "Analytic",
+    "descricao": "Aumenta o poder do movimento em 30% se o Pokémon se mover por último no turno."
+  },
+  {
+    "id": 4,
+    "nome": "Anger Point",
+    "descricao": "Maximiza o Ataque do Pokémon se ele for atingido por um acerto crítico."
+  },
+  {
+    "id": 5,
+    "nome": "Anticipation",
+    "descricao": "O Pokémon estremece se o oponente tiver um movimento super eficaz ou um movimento de nocaute em um golpe."
+  },
+  {
+    "id": 6,
+    "nome": "Arena Trap",
+    "descricao": "Impede que Pokémon oponentes no chão fujam ou sejam trocados."
+  },
+  {
+    "id": 7,
+    "nome": "Battle Armor",
+    "descricao": "O Pokémon é protegido por uma armadura resistente que bloqueia acertos críticos."
+  },
+  {
+    "id": 8,
+    "nome": "Big Pecks",
+    "descricao": "Protege o Pokémon de ter sua Defesa reduzida por outros Pokémon."
+  },
+  {
+    "id": 9,
+    "nome": "Blaze",
+    "descricao": "Aumenta o poder dos movimentos do tipo Fogo em 50% quando o HP do Pokémon está abaixo de 1/3."
+  },
+  {
+    "id": 10,
+    "nome": "Chlorophyll",
+    "descricao": "Dobra a Velocidade do Pokémon sob luz solar intensa."
+  },
+  {
+    "id": 11,
+    "nome": "Clear Body",
+    "descricao": "Impede que as estatísticas do Pokémon sejam reduzidas por movimentos ou habilidades de outros Pokémon."
+  },
+  {
+    "id": 12,
+    "nome": "Cloud Nine",
+    "descricao": "Nega todos os efeitos climáticos enquanto o Pokémon estiver na batalha."
+  },
+  {
+    "id": 13,
+    "nome": "Competitive",
+    "descricao": "Aumenta o Ataque Especial do Pokémon em dois estágios quando uma de suas estatísticas é reduzida por um oponente."
+  },
+  {
+    "id": 14,
+    "nome": "Compound Eyes",
+    "descricao": "Aumenta a precisão dos movimentos do Pokémon em 30%."
+  },
+  {
+    "id": 15,
+    "nome": "Contrary",
+    "descricao": "Inverte todas as modificações de estatísticas do Pokémon."
+  },
+  {
+    "id": 16,
+    "nome": "Cursed Body",
+    "descricao": "Tem 30% de chance de desativar um movimento que atinge o Pokémon por 3 turnos."
+  },
+  {
+    "id": 17,
+    "nome": "Cute Charm",
+    "descricao": "Tem 30% de chance de causar atração em um oponente que ataca com um movimento de contato, se forem de gêneros opostos."
+  },
+  {
+    "id": 18,
+    "nome": "Damp",
+    "descricao": "Impede o uso de movimentos autodestrutivos como Self-Destruct e Explosion."
+  },
+  {
+    "id": 19,
+    "nome": "Defiant",
+    "descricao": "Aumenta o Ataque do Pokémon em dois estágios quando uma de suas estatísticas é reduzida por um oponente."
+  },
+  {
+    "id": 20,
+    "nome": "Download",
+    "descricao": "Aumenta o Ataque ou o Ataque Especial do Pokémon com base na menor estatística de Defesa ou Defesa Especial do oponente."
+  },
+  {
+    "id": 21,
+    "nome": "Drizzle",
+    "descricao": "Invoca chuva quando o Pokémon entra na batalha."
+  },
+  {
+    "id": 22,
+    "nome": "Drought",
+    "descricao": "Invoca luz solar intensa quando o Pokémon entra na batalha."
+  },
+  {
+    "id": 23,
+    "nome": "Dry Skin",
+    "descricao": "Restaura HP na chuva ou ao ser atingido por movimentos do tipo Água. Perde HP sob luz solar intensa e aumenta o dano de movimentos do tipo Fogo."
+  },
+  {
+    "id": 24,
+    "nome": "Early Bird",
+    "descricao": "O Pokémon acorda do sono na metade do tempo normal."
+  },
+  {
+    "id": 25,
+    "nome": "Effect Spore",
+    "descricao": "O contato com o Pokémon tem 30% de chance de infligir paralisia, veneno ou sono ao atacante."
+  },
+  {
+    "id": 26,
+    "nome": "Filter",
+    "descricao": "Reduz o dano de movimentos super eficazes em 25%."
+  },
+  {
+    "id": 27,
+    "nome": "Flame Body",
+    "descricao": "O contato com o Pokémon tem 30% de chance de queimar o atacante."
+  },
+  {
+    "id": 28,
+    "nome": "Flash Fire",
+    "descricao": "Torna o Pokémon imune a movimentos do tipo Fogo e aumenta o poder de seus próprios movimentos do tipo Fogo em 50% se for atingido por um."
+  },
+  {
+    "id": 29,
+    "nome": "Forewarn",
+    "descricao": "Revela o movimento de maior poder do oponente."
+  },
+  {
+    "id": 30,
+    "nome": "Friend Guard",
+    "descricao": "Reduz o dano recebido por aliados em 25%."
+  },
+  {
+    "id": 31,
+    "nome": "Frisk",
+    "descricao": "Revela o item segurado pelo oponente quando o Pokémon entra na batalha."
+  },
+  {
+    "id": 32,
+    "nome": "Gluttony",
+    "descricao": "Faz o Pokémon usar uma Berry que ele esteja segurando mais cedo (quando o HP cai para 50% ou menos)."
+  },
+  {
+    "id": 33,
+    "nome": "Guts",
+    "descricao": "Aumenta o Ataque do Pokémon em 50% se ele estiver sofrendo de uma condição de status (queimadura, paralisia, sono, veneno, congelamento)."
+  },
+  {
+    "id": 34,
+    "nome": "Harvest",
+    "descricao": "Tem 50% de chance (100% sob luz solar intensa) de restaurar uma Berry consumida no final de cada turno."
+  },
+  {
+    "id": 35,
+    "nome": "Healer",
+    "descricao": "Tem 30% de chance de curar uma condição de status de um aliado adjacente no final de cada turno."
+  },
+  {
+    "id": 36,
+    "nome": "Huge Power",
+    "descricao": "Dobra a estatística de Ataque do Pokémon."
+  },
+  {
+    "id": 37,
+    "nome": "Hustle",
+    "descricao": "Aumenta o Ataque do Pokémon em 50%, mas diminui a precisão de seus movimentos físicos em 20%."
+  },
+  {
+    "id": 38,
+    "nome": "Hydration",
+    "descricao": "Cura condições de status no final do turno se estiver chovendo."
+  },
+  {
+    "id": 39,
+    "nome": "Hyper Cutter",
+    "descricao": "Impede que a estatística de Ataque do Pokémon seja reduzida por outros Pokémon."
+  },
+  {
+    "id": 40,
+    "nome": "Ice Body",
+    "descricao": "Restaura 1/16 do HP máximo do Pokémon a cada turno durante uma tempestade de granizo."
+  },
+  {
+    "id": 41,
+    "nome": "Illuminate",
+    "descricao": "Aumenta a taxa de encontros com Pokémon selvagens."
+  },
+  {
+    "id": 42,
+    "nome": "Immunity",
+    "descricao": "Impede que o Pokémon seja envenenado."
+  },
+  {
+    "id": 43,
+    "nome": "Imposter",
+    "descricao": "O Pokémon se transforma no oponente ao entrar na batalha."
+  },
+  {
+    "id": 44,
+    "nome": "Infiltrator",
+    "descricao": "Passa pelos movimentos de proteção do oponente, como Reflect, Light Screen e Substitute."
+  },
+  {
+    "id": 45,
+    "nome": "Inner Focus",
+    "descricao": "Impede que o Pokémon recue (flinch)."
+  },
+  {
+    "id": 46,
+    "nome": "Insomnia",
+    "descricao": "Impede que o Pokémon adormeça."
+  },
+  {
+    "id": 47,
+    "nome": "Intimidate",
+    "descricao": "Reduz a estatística de Ataque do oponente em um estágio quando o Pokémon entra na batalha."
+  },
+  {
+    "id": 48,
+    "nome": "Iron Fist",
+    "descricao": "Aumenta o poder dos movimentos de soco em 20%."
+  },
+  {
+    "id": 49,
+    "nome": "Justified",
+    "descricao": "Aumenta o Ataque do Pokémon em um estágio quando atingido por um movimento do tipo Sombrio."
+  },
+  {
+    "id": 50,
+    "nome": "Keen Eye",
+    "descricao": "Impede que a precisão do Pokémon seja reduzida."
+  },
+  {
+    "id": 51,
+    "nome": "Leaf Guard",
+    "descricao": "Impede condições de status sob luz solar intensa."
+  },
+  {
+    "id": 52,
+    "nome": "Levitate",
+    "descricao": "Concede imunidade a movimentos do tipo Terrestre."
+  },
+  {
+    "id": 53,
+    "nome": "Light Metal",
+    "descricao": "Reduz o peso do Pokémon pela metade."
+  },
+  {
+    "id": 54,
+    "nome": "Lightning Rod",
+    "descricao": "Atrai todos os movimentos do tipo Elétrico para si. Absorve o movimento para aumentar seu Ataque Especial em um estágio."
+  },
+  {
+    "id": 55,
+    "nome": "Limber",
+    "descricao": "Impede que o Pokémon seja paralisado."
+  },
+  {
+    "id": 56,
+    "nome": "Liquid Ooze",
+    "descricao": "Causa dano ao oponente que usar um movimento de drenagem de HP, em vez de curá-lo."
+  },
+  {
+    "id": 57,
+    "nome": "Magic Bounce",
+    "descricao": "Reflete a maioria dos movimentos de status de volta para o usuário."
+  },
+  {
+    "id": 58,
+    "nome": "Magic Guard",
+    "descricao": "O Pokémon só recebe dano de ataques diretos."
+  },
+  {
+    "id": 59,
+    "nome": "Magma Armor",
+    "descricao": "Impede que o Pokémon seja congelado."
+  },
+  {
+    "id": 60,
+    "nome": "Magnet Pull",
+    "descricao": "Impede que Pokémon do tipo Aço fujam."
+  },
+  {
+    "id": 61,
+    "nome": "Marvel Scale",
+    "descricao": "Aumenta a Defesa do Pokémon em 50% se ele tiver uma condição de status."
+  },
+  {
+    "id": 62,
+    "nome": "Mold Breaker",
+    "descricao": "Os movimentos podem ser usados independentemente das habilidades do oponente."
+  },
+  {
+    "id": 63,
+    "nome": "Moody",
+    "descricao": "Aumenta uma estatística aleatória em dois estágios e diminui outra em um estágio no final de cada turno."
+  },
+  {
+    "id": 64,
+    "nome": "Moxie",
+    "descricao": "Aumenta o Ataque do Pokémon em um estágio sempre que ele nocauteia outro Pokémon."
+  },
+  {
+    "id": 65,
+    "nome": "Multiscale",
+    "descricao": "Reduz o dano recebido pela metade quando o Pokémon está com o HP cheio."
+  },
+  {
+    "id": 66,
+    "nome": "Natural Cure",
+    "descricao": "Cura qualquer condição de status quando o Pokémon é trocado."
+  },
+  {
+    "id": 67,
+    "nome": "Neutralizing Gas",
+    "descricao": "Suprime os efeitos das habilidades de todos os outros Pokémon em campo."
+  },
+  {
+    "id": 68,
+    "nome": "No Guard",
+    "descricao": "Garante que todos os movimentos usados por e contra o Pokémon sempre acertem."
+  },
+  {
+    "id": 69,
+    "nome": "Oblivious",
+    "descricao": "Impede que o Pokémon seja atraído ou intimidado."
+  },
+  {
+    "id": 70,
+    "nome": "Overcoat",
+    "descricao": "Protege o Pokémon de danos climáticos, como tempestades de areia e granizo, e de movimentos baseados em pó."
+  },
+  {
+    "id": 71,
+    "nome": "Overgrow",
+    "descricao": "Aumenta o poder dos movimentos do tipo Grama em 50% quando o HP do Pokémon está abaixo de 1/3."
+  },
+  {
+    "id": 72,
+    "nome": "Own Tempo",
+    "descricao": "Impede que o Pokémon fique confuso."
+  },
+  {
+    "id": 73,
+    "nome": "Pickpocket",
+    "descricao": "Rouba o item do atacante se o Pokémon for atingido por um ataque de contato."
+  },
+  {
+    "id": 74,
+    "nome": "Pickup",
+    "descricao": "O Pokémon pode pegar um item usado por outro Pokémon. Fora da batalha, pode encontrar itens."
+  },
+  {
+    "id": 75,
+    "nome": "Plus",
+    "descricao": "Aumenta o Ataque Especial em 50% se um aliado tiver a habilidade Plus ou Minus."
+  },
+  {
+    "id": 76,
+    "nome": "Poison Point",
+    "descricao": "O contato com o Pokémon tem 30% de chance de envenenar o atacante."
+  },
+  {
+    "id": 77,
+    "nome": "Poison Touch",
+    "descricao": "Tem 30% de chance de envenenar o alvo ao usar movimentos de contato."
+  },
+  {
+    "id": 78,
+    "nome": "Prankster",
+    "descricao": "Dá prioridade +1 a movimentos de status."
+  },
+  {
+    "id": 79,
+    "nome": "Pressure",
+    "descricao": "Faz com que os movimentos do oponente usem o dobro de PP."
+  },
+  {
+    "id": 80,
+    "nome": "Quick Feet",
+    "descricao": "Aumenta a Velocidade em 50% se o Pokémon tiver uma condição de status."
+  },
+  {
+    "id": 81,
+    "nome": "Rain Dish",
+    "descricao": "Restaura 1/16 do HP máximo do Pokémon a cada turno na chuva."
+  },
+  {
+    "id": 82,
+    "nome": "Rattled",
+    "descricao": "Aumenta a Velocidade em um estágio quando atingido por um movimento do tipo Sombrio, Fantasma ou Inseto."
+  },
+  {
+    "id": 83,
+    "nome": "Reckless",
+    "descricao": "Aumenta o poder dos movimentos que causam dano de recuo em 20%."
+  },
+  {
+    "id": 84,
+    "nome": "Regenerator",
+    "descricao": "Restaura 1/3 do HP máximo do Pokémon quando ele é trocado."
+  },
+  {
+    "id": 85,
+    "nome": "Rivalry",
+    "descricao": "Aumenta o poder dos movimentos em 25% contra Pokémon do mesmo gênero, mas diminui em 25% contra os do gênero oposto."
+  },
+  {
+    "id": 86,
+    "nome": "Rock Head",
+    "descricao": "Impede que o Pokémon receba dano de recuo de seus próprios ataques."
+  },
+  {
+    "id": 87,
+    "nome": "Run Away",
+    "descricao": "Permite uma fuga garantida de Pokémon selvagens."
+  },
+  {
+    "id": 88,
+    "nome": "Sand Force",
+    "descricao": "Aumenta o poder dos movimentos do tipo Rocha, Terrestre e Aço em 30% durante uma tempestade de areia."
+  },
+  {
+    "id": 89,
+    "nome": "Sand Rush",
+    "descricao": "Dobra a Velocidade do Pokémon durante uma tempestade de areia."
+  },
+  {
+    "id": 90,
+    "nome": "Sand Stream",
+    "descricao": "Invoca uma tempestade de areia quando o Pokémon entra na batalha."
+  },
+  {
+    "id": 91,
+    "nome": "Sand Veil",
+    "descricao": "Aumenta a evasão do Pokémon em 25% durante uma tempestade de areia."
+  },
+  {
+    "id": 92,
+    "nome": "Sap Sipper",
+    "descricao": "Concede imunidade a movimentos do tipo Grama e aumenta o Ataque em um estágio se atingido por um."
+  },
+  {
+    "id": 93,
+    "nome": "Scrappy",
+    "descricao": "Permite que movimentos do tipo Normal e Lutador atinjam Pokémon do tipo Fantasma."
+  },
+  {
+    "id": 94,
+    "nome": "Serene Grace",
+    "descricao": "Dobra a chance de ocorrência dos efeitos secundários dos movimentos."
+  },
+  {
+    "id": 95,
+    "nome": "Shadow Tag",
+    "descricao": "Impede que Pokémon oponentes fujam ou sejam trocados."
+  },
+  {
+    "id": 96,
+    "nome": "Shed Skin",
+    "descricao": "Tem 33% de chance de curar sua própria condição de status no final de cada turno."
+  },
+  {
+    "id": 97,
+    "nome": "Sheer Force",
+    "descricao": "Remove os efeitos secundários dos movimentos em troca de um aumento de 30% no poder."
+  },
+  {
+    "id": 98,
+    "nome": "Shell Armor",
+    "descricao": "O Pokémon é protegido por uma concha resistente que bloqueia acertos críticos."
+  },
+  {
+    "id": 99,
+    "nome": "Shield Dust",
+    "descricao": "Bloqueia os efeitos secundários dos movimentos que atingem o Pokémon."
+  },
+  {
+    "id": 100,
+    "nome": "Skill Link",
+    "descricao": "Faz com que movimentos de múltiplos acertos sempre atinjam o número máximo de vezes."
+  },
+  {
+    "id": 101,
+    "nome": "Sniper",
+    "descricao": "Aumenta o dano dos acertos críticos de 1.5x para 2.25x."
+  },
+  {
+    "id": 102,
+    "nome": "Snow Cloak",
+    "descricao": "Aumenta a evasão do Pokémon em 25% durante uma tempestade de granizo."
+  },
+  {
+    "id": 103,
+    "nome": "Solar Power",
+    "descricao": "Aumenta o Ataque Especial em 50% sob luz solar intensa, mas perde 1/8 do HP máximo a cada turno."
+  },
+  {
+    "id": 104,
+    "nome": "Soundproof",
+    "descricao": "Concede imunidade a movimentos baseados em som."
+  },
+  {
+    "id": 105,
+    "nome": "Speed Boost",
+    "descricao": "Aumenta a Velocidade do Pokémon em um estágio no final de cada turno."
+  },
+  {
+    "id": 106,
+    "nome": "Steadfast",
+    "descricao": "Aumenta a Velocidade em um estágio cada vez que o Pokémon recua (flinches)."
+  },
+  {
+    "id": 107,
+    "nome": "Stench",
+    "descricao": "O contato com o Pokémon pode fazer o oponente recuar. Fora da batalha, diminui a taxa de encontros selvagens."
+  },
+  {
+    "id": 108,
+    "nome": "Sticky Hold",
+    "descricao": "Impede que o item segurado pelo Pokémon seja removido por outros."
+  },
+  {
+    "id": 109,
+    "nome": "Sturdy",
+    "descricao": "O Pokémon não pode ser nocauteado em um único golpe a partir do HP máximo. Também o torna imune a movimentos de OHKO."
+  },
+  {
+    "id": 110,
+    "nome": "Super Luck",
+    "descricao": "Aumenta a taxa de acertos críticos do Pokémon em um estágio."
+  },
+  {
+    "id": 111,
+    "nome": "Swarm",
+    "descricao": "Aumenta o poder dos movimentos do tipo Inseto em 50% quando o HP do Pokémon está abaixo de 1/3."
+  },
+  {
+    "id": 112,
+    "nome": "Swift Swim",
+    "descricao": "Dobra a Velocidade do Pokémon na chuva."
+  },
+  {
+    "id": 113,
+    "nome": "Synchronize",
+    "descricao": "Quando o Pokémon é queimado, paralisado ou envenenado, o oponente recebe a mesma condição de status."
+  },
+  {
+    "id": 114,
+    "nome": "Tangled Feet",
+    "descricao": "Aumenta a evasão do Pokémon quando ele está confuso."
+  },
+  {
+    "id": 115,
+    "nome": "Technician",
+    "descricao": "Aumenta o poder dos movimentos com poder base de 60 ou menos em 50%."
+  },
+  {
+    "id": 116,
+    "nome": "Telepathy",
+    "descricao": "O Pokémon evita danos de ataques de seus aliados."
+  },
+  {
+    "id": 117,
+    "nome": "Thick Fat",
+    "descricao": "Reduz pela metade o dano recebido de movimentos dos tipos Fogo e Gelo."
+  },
+  {
+    "id": 118,
+    "nome": "Tinted Lens",
+    "descricao": "Dobra o poder dos movimentos que 'não são muito eficazes'."
+  },
+  {
+    "id": 119,
+    "nome": "Torrent",
+    "descricao": "Aumenta o poder dos movimentos do tipo Água em 50% quando o HP do Pokémon está abaixo de 1/3."
+  },
+  {
+    "id": 120,
+    "nome": "Trace",
+    "descricao": "O Pokémon copia a habilidade do oponente ao entrar na batalha."
+  },
+  {
+    "id": 121,
+    "nome": "Unaware",
+    "descricao": "Ignora as modificações de estatísticas do oponente ao atacar ou ser atacado."
+  },
+  {
+    "id": 122,
+    "nome": "Unburden",
+    "descricao": "Dobra a Velocidade do Pokémon se ele consumir ou perder seu item segurado."
+  },
+  {
+    "id": 123,
+    "nome": "Unnerve",
+    "descricao": "Impede que Pokémon oponentes comam suas Berries."
+  },
+  {
+    "id": 124,
+    "nome": "Vital Spirit",
+    "descricao": "Impede que o Pokémon adormeça."
+  },
+  {
+    "id": 125,
+    "nome": "Volt Absorb",
+    "descricao": "Restaura HP se atingido por um movimento do tipo Elétrico, em vez de receber dano."
+  },
+  {
+    "id": 126,
+    "nome": "Water Absorb",
+    "descricao": "Restaura HP se atingido por um movimento do tipo Água, em vez de receber dano."
+  },
+  {
+    "id": 127,
+    "nome": "Water Veil",
+    "descricao": "Impede que o Pokémon seja queimado."
+  },
+  {
+    "id": 128,
+    "nome": "Weak Armor",
+    "descricao": "Quando atingido por um ataque físico, a Defesa do Pokémon é reduzida em um estágio, mas sua Velocidade é aumentada em dois estágios."
+  },
+  {
+    "id": 129,
+    "nome": "Wonder Skin",
+    "descricao": "Reduz pela metade a precisão de movimentos de status direcionados ao Pokémon."
+  }
+]

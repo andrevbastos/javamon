@@ -1,5 +1,6 @@
 package br.com.andrebastos.javamon_online.pokemon;
 
+import br.com.andrebastos.javamon_online.ability.Ability;
 import br.com.andrebastos.javamon_online.move.Move;
 import br.com.andrebastos.javamon_online.shared.Type;
 
@@ -35,16 +36,21 @@ public class Pokemon {
     private double spdefense;
     private double speed;
 
-    private int level;
-    private int experience;
+    @ManyToMany
+    @JoinTable(
+            name = "pokemon_moves",
+            joinColumns = @JoinColumn(name = "pokemon_id"),
+            inverseJoinColumns = @JoinColumn(name = "move_id")
+    )
+    private Set<Move> moves;
 
     @ManyToMany
     @JoinTable(
-            name = "pokemon_moves", // Nome da tabela de associação
-            joinColumns = @JoinColumn(name = "pokemon_id"), // Coluna que referencia o Pokemon
-            inverseJoinColumns = @JoinColumn(name = "move_id") // Coluna que referencia o Move
+            name = "pokemon_abilities_map",
+            joinColumns = @JoinColumn(name = "pokemon_id"),
+            inverseJoinColumns = @JoinColumn(name = "ability_id")
     )
-    private Set<Move> moves;
+    private Set<Ability> abilities;
 
     public Pokemon() {
     }
@@ -121,27 +127,19 @@ public class Pokemon {
         this.speed = speed;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
     public Set<Move> getMoves() {
         return moves;
     }
 
     public void setMoves(Set<Move> moves) {
         this.moves = moves;
+    }
+
+    public Set<Ability> getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Set<Ability> abilities) {
+        this.abilities = abilities;
     }
 }
